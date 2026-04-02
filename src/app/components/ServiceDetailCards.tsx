@@ -246,9 +246,9 @@ export function ServiceDetailCards() {
                     }}
                   >
                     {/* Title + Subtitle + Items */}
-                    <div className="flex flex-col gap-[30px] md:flex-1 md:pl-[34px] md:py-[20px]">
+                    <div className="flex flex-col gap-[48px] md:flex-1 md:pl-[56px] md:py-[20px]">
                       {/* Title block */}
-                      <div className="flex flex-col">
+                      <div className="flex flex-col gap-[16px]">
                         <h3 className="font-['Figtree',sans-serif] text-[#1a1a1a] leading-[47.693px] tracking-[-1px] font-normal text-[32px] md:text-[48px]">
                           {service.title}
                         </h3>
@@ -262,7 +262,7 @@ export function ServiceDetailCards() {
                         {service.items.map((item, j) => (
                           <div
                             key={j}
-                            className="relative flex items-start justify-between py-[12px]"
+                            className="relative flex items-start justify-between py-[6px]"
                           >
                             <div
                               aria-hidden="true"

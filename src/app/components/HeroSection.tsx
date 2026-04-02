@@ -1,8 +1,16 @@
 import { motion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 /* YouTube Video ID */
 const YT_VIDEO_ID = "Lfk_qou1SYI";
+
+/* Declare global YT types */
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady: (() => void) | undefined;
+  }
+}
 
 export function HeroSection() {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -84,8 +92,79 @@ export function HeroSection() {
     return () => observer.disconnect();
   }, []);
 
-  /* ─── Iframe loaded state ─── */
+  /* ─── YouTube IFrame Player API for reliable loop ─── */
+  const playerContainerRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<any>(null);
   const [videoReady, setVideoReady] = useState(false);
+
+  const initPlayer = useCallback(() => {
+    if (!playerContainerRef.current || playerRef.current) return;
+
+    playerRef.current = new window.YT.Player(playerContainerRef.current, {
+      videoId: YT_VIDEO_ID,
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        loop: 1,
+        playlist: YT_VIDEO_ID,
+        controls: 0,
+        showinfo: 0,
+        rel: 0,
+        modestbranding: 1,
+        playsinline: 1,
+        iv_load_policy: 3,
+        disablekb: 1,
+        fs: 0,
+        cc_load_policy: 0,
+        origin: window.location.origin,
+        enablejsapi: 1,
+        vq: "hd1080",
+      },
+      events: {
+        onReady: (event: any) => {
+          event.target.mute();
+          event.target.playVideo();
+          setVideoReady(true);
+        },
+        onStateChange: (event: any) => {
+          // YT.PlayerState.ENDED = 0 — force restart for seamless loop
+          if (event.data === 0) {
+            event.target.seekTo(0);
+            event.target.playVideo();
+          }
+        },
+      },
+    });
+  }, []);
+
+  useEffect(() => {
+    // Load YouTube IFrame API script if not already loaded
+    if (window.YT && window.YT.Player) {
+      initPlayer();
+      return;
+    }
+
+    // Set the global callback
+    const prevCallback = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      prevCallback?.();
+      initPlayer();
+    };
+
+    // Check if script tag already exists
+    if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
+    }
+
+    return () => {
+      if (playerRef.current?.destroy) {
+        playerRef.current.destroy();
+        playerRef.current = null;
+      }
+    };
+  }, [initPlayer]);
 
   // Dimensions
   const INITIAL_W = Math.min(380, viewport.w - 40);
@@ -114,16 +193,11 @@ export function HeroSection() {
             willChange: "width, height, border-radius, transform",
           }}
         >
-          {/* YouTube Video Background — simple iframe embed */}
+          {/* YouTube Video Background — via IFrame Player API for reliable loop */}
           <div className="absolute inset-0 overflow-hidden bg-black">
-            <iframe
-              src={`https://www.youtube.com/embed/${YT_VIDEO_ID}?si=Vb71oiWRIbJ4MLUs&controls=0&autoplay=1&mute=1&loop=1&playlist=${YT_VIDEO_ID}&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0`}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              onLoad={() => setVideoReady(true)}
-              className="absolute pointer-events-none border-0"
+            <div
+              ref={playerContainerRef}
+              className="absolute pointer-events-none"
               style={{
                 top: "-80px",
                 left: "-80px",
@@ -134,9 +208,6 @@ export function HeroSection() {
               }}
             />
           </div>
-
-          {/* Subtle dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/20" />
 
           <motion.div
             initial={{ opacity: 0 }}

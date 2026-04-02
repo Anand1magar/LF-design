@@ -224,7 +224,7 @@ function TimelineCard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.1 }}
-      className="bg-white rounded-3xl flex flex-col px-[30px] pt-12 pb-10 md:flex-row md:px-12 md:pt-12 md:pb-12 md:h-[434px]"
+      className="bg-white rounded-3xl overflow-hidden h-[45vh] flex flex-col px-[30px] pt-12 pb-10 md:flex-row md:px-12 md:pt-12 md:pb-12 md:h-[434px]"
     >
       {/* Left – text */}
       <div className="flex flex-col gap-10 md:flex-1 md:justify-between md:pr-6 md:gap-0">

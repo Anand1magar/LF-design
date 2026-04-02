@@ -31,6 +31,19 @@ const stats = [
 
 /* ─── Team members grid ─── */
 const teamGrid = [
+  { name: "Abhash Bikram Thapa", role: "Director of Design, AI CoE" },
+  { name: "Abhinab Prasai", role: "Senior Designer, Product Design" },
+  { name: "Alish Ratna Tamrakar", role: "Designer, Product Design" },
+  { name: "Anand Magar", role: "Product Designer" },
+  { name: "Anish Maharjan", role: "Senior Designer, Product Design" },
+  { name: "Ankit J. Karki", role: "Designer, Graphic Design" },
+  { name: "Bishan Ale", role: "Lead Designer, Graphic Design" },
+  { name: "Elish Budhathoki", role: "Senior Designer, Graphic Design" },
+  { name: "Grikshmi Manandhar", role: "Senior Designer, Product Design" },
+  { name: "Niraj Thapa", role: "Design Architect, Product Design" },
+  { name: "Pema Ghising", role: "Lead Designer, Graphic Design" },
+  { name: "Prabesh Shakya", role: "Principal Designer, Product Design" },
+  { name: "Prajwal Bajracharya", role: "Senior Designer, Product Design" },
   { name: "Raush Acharya", role: "Associate Designer, Graphic Design" },
   { name: "Rujen Shrestha", role: "Designer, Product Design" },
   { name: "Sabina Maharjan", role: "Principal Designer, Product Design" },
@@ -95,9 +108,9 @@ export function About() {
       {/* ═══════════════════════════════════════════
          3. STATS SECTION
          ═══════════════════════════════════════════ */}
-      <section className="bg-[#f5f5f5] py-20 md:py-[180px]">
-        <div className="max-w-[1190px] mx-auto px-5 sm:px-8 md:px-16 lg:px-0">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <section className="bg-[#f5f5f5] py-[80px] md:py-[180px]">
+        <div className="max-w-[1190px] mx-auto px-6 sm:px-8 md:px-16 lg:px-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-3">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -105,19 +118,19 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-white rounded-[13px] p-[26px] h-[280px] md:h-[336px] flex flex-col justify-between"
+                className="bg-white rounded-[13.203px] px-[26.406px] py-[35.208px] h-[246px] md:h-[336px] md:rounded-[13px] md:p-[26px] flex flex-col justify-between"
               >
                 <p
-                  className="font-['Instrument_Sans',sans-serif] text-[#111] text-[36px] md:text-[53px] tracking-[-1px]"
+                  className="font-['Instrument_Sans',sans-serif] text-[#111] text-[52.812px] md:text-[53px] tracking-[-1px]"
                   style={{ lineHeight: 1.2 }}
                 >
                   {stat.number}
                 </p>
                 <div className="flex flex-col gap-[15px]">
-                  <p className="font-['Inter',sans-serif] font-medium text-black text-[18px] md:text-[22px] tracking-[-0.88px] leading-[28.6px]">
+                  <p className="font-['Inter',sans-serif] font-medium text-black text-[22.005px] md:text-[22px] tracking-[-0.8802px] leading-[28.606px]">
                     {stat.label}
                   </p>
-                  <p className="font-['Figtree',sans-serif] text-[#595959] text-[14px] md:text-[15px] capitalize">
+                  <p className="font-['Figtree',sans-serif] text-[#595959] text-[15.403px] md:text-[15px] capitalize leading-[normal]">
                     {stat.desc}
                   </p>
                 </div>
@@ -130,7 +143,7 @@ export function About() {
       {/* ═══════════════════════════════════════════
          4. BUILT BY SPECIALISTS — Team name grid
          ═══════════════════════════════════════════ */}
-      <section className="bg-white py-20 md:py-[180px]">
+      <section className="bg-white pt-20 pb-[40px] md:py-[180px]">
         <div className="max-w-[1190px] mx-auto px-5 sm:px-8 md:px-16 lg:px-0">
           {/* Header */}
           <motion.div
@@ -159,9 +172,9 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: i * 0.02 }}
-                className="flex flex-col gap-0.5"
+                className="flex flex-col gap-0.5 min-w-0"
               >
-                <p className="font-['Figtree',sans-serif] text-[20px] md:text-[24px] text-black whitespace-nowrap">
+                <p className="font-['Figtree',sans-serif] text-[20px] md:text-[24px] text-black whitespace-normal break-words leading-[1.2]">
                   {member.name}
                 </p>
                 <p className="font-['Figtree',sans-serif] text-[14px] md:text-[16px] text-black opacity-40">

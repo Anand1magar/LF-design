@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "motion/react";
 import imgScreenshot from "figma:asset/6622c2ead5ca7e4b244066744d572abcf02cdf6d.png";
 import imgNew41 from "figma:asset/55c65964acf381f39e149e590d4f29d001407366.png";
 import imgImage261 from "figma:asset/9e9883e10bfa0a4716f23af030b659806d17d3d8.png";
+import imgCharacterFlow from "figma:asset/5d5e372882bb155b7b6d9212ad34ffc7823a6d0e.png";
+import imgProductWeeksToHours from "figma:asset/7d9ec6e5f1cd8007c5a7887d77f2f8c5e489e670.png";
 import imgSlideRef from "figma:asset/02edef305339b1d37ff3fad24f47d669793f2de7.png";
 import imgNew21 from "figma:asset/c3673978eea43432454b7b5f17d61fdb0b4075f9.png";
 import imgSlide02 from "figma:asset/7052aabef142b9d4ff27394a578703bd7127ba8b.png";
@@ -24,7 +26,8 @@ const featureTabs = [
     speedup: "8x",
     title: "faster in character generation, storyboarding & short animations",
     description:
-      "We leverage AI throughout our design process to streamline workflows, allowing our team to focus on strategic thinking and creative execution.",
+      "Our AI-powered approach makes the process simple and efficient, allowing us to spend more time on the creative storytelling that truly connects with your audience.",
+    customSlide: "character" as const,
   },
   {
     label: "Product photography & video",
@@ -276,10 +279,10 @@ export function EfficiencySection() {
                 key={`slide-m-${activeTab}`}
                 className="absolute"
                 style={{
-                  left: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide ? "10%" : "15%",
-                  top: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "42%" : featureTabs[activeTab].customSlide ? "45%" : "38%",
-                  width: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "100%" : featureTabs[activeTab].customSlide ? "90%" : "85%",
-                  height: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "58%" : featureTabs[activeTab].customSlide ? "60%" : "65%",
+                  left: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide === "character" ? "0" : featureTabs[activeTab].customSlide === true ? "0" : featureTabs[activeTab].customSlide ? "10%" : "15%",
+                  top: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "42%" : featureTabs[activeTab].customSlide === "character" ? "36%" : featureTabs[activeTab].customSlide === true ? "34%" : featureTabs[activeTab].customSlide ? "45%" : "38%",
+                  width: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "100%" : featureTabs[activeTab].customSlide === "character" ? "100%" : featureTabs[activeTab].customSlide === true ? "100%" : featureTabs[activeTab].customSlide ? "90%" : "85%",
+                  height: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "58%" : featureTabs[activeTab].customSlide === "character" ? "64%" : featureTabs[activeTab].customSlide === true ? "62%" : featureTabs[activeTab].customSlide ? "60%" : "65%",
                 }}
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -340,6 +343,20 @@ export function EfficiencySection() {
                     alt="Professional design book mockups"
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                     src={imgDesignBooks}
+                  />
+                ) : featureTabs[activeTab].customSlide === "character" ? (
+                  /* Character generation storyboard flow (mobile) */
+                  <img
+                    alt="Character generation workflow board"
+                    className="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none"
+                    src={imgCharacterFlow}
+                  />
+                ) : featureTabs[activeTab].customSlide === true ? (
+                  /* Product photography board (mobile) */
+                  <img
+                    alt="From weeks to hours product photography workflow"
+                    className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none"
+                    src={imgProductWeeksToHours}
                   />
                 ) : featureTabs[activeTab].customSlide ? (
                   <div className="absolute inset-0 flex gap-[6px]">
@@ -443,7 +460,11 @@ export function EfficiencySection() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={`text-d-${activeTab}`}
-                className="absolute left-16 top-14 max-w-[460px] z-10"
+                className={`absolute z-10 ${
+                  featureTabs[activeTab].customSlide === true
+                    ? "left-[45px] top-[45px] max-w-[435px]"
+                    : "left-16 top-14 max-w-[460px]"
+                }`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -458,7 +479,11 @@ export function EfficiencySection() {
                   {renderTitle(featureTabs[activeTab])}
                 </motion.p>
                 <motion.p
-                  className="font-['Figtree',sans-serif] font-light text-[#333] text-[16px] leading-[21px] mt-3 opacity-80 max-w-[409px]"
+                  className={`font-['Figtree',sans-serif] font-light text-[#333] text-[16px] leading-[21px] mt-3 opacity-80 ${
+                    featureTabs[activeTab].customSlide === true
+                      ? "max-w-[435px]"
+                      : "max-w-[409px]"
+                  }`}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
@@ -474,10 +499,12 @@ export function EfficiencySection() {
                 key={`slide-d-${activeTab}`}
                 className="absolute"
                 style={{
-                  left: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide ? "10%" : "40%",
-                  top: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide ? "45%" : "0",
-                  width: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "100%" : featureTabs[activeTab].customSlide ? "90%" : "60%",
-                  height: "100%",
+                  left: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide === "character" ? "0" : featureTabs[activeTab].customSlide === true ? "0" : featureTabs[activeTab].customSlide ? "10%" : "40%",
+                  right: featureTabs[activeTab].customSlide === true ? "18px" : undefined,
+                  top: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide === "character" ? "0" : featureTabs[activeTab].customSlide === true ? "0" : featureTabs[activeTab].customSlide ? "45%" : "0",
+                  bottom: featureTabs[activeTab].customSlide === true ? "15px" : undefined,
+                  width: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "100%" : featureTabs[activeTab].customSlide === "character" ? "100%" : featureTabs[activeTab].customSlide === true ? "749px" : featureTabs[activeTab].customSlide ? "90%" : "60%",
+                  height: featureTabs[activeTab].customSlide === true ? "277px" : "100%",
                 }}
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -555,6 +582,20 @@ export function EfficiencySection() {
                     alt="Professional design book mockups"
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                     src={imgDesignBooks}
+                  />
+                ) : featureTabs[activeTab].customSlide === "character" ? (
+                  /* Character generation storyboard flow (desktop) */
+                  <img
+                    alt="Character generation workflow board"
+                    className="absolute right-0 bottom-[2%] w-[89%] h-[96%] object-cover object-right-bottom pointer-events-none"
+                    src={imgCharacterFlow}
+                  />
+                ) : featureTabs[activeTab].customSlide === true ? (
+                  /* Product photography board (desktop) */
+                  <img
+                    alt="From weeks to hours product photography workflow"
+                    className="absolute right-[28px] bottom-[20px] w-[calc(100%-56px)] h-[351px] object-cover object-center pointer-events-none"
+                    src={imgProductWeeksToHours}
                   />
                 ) : featureTabs[activeTab].customSlide ? (
                   /* Custom Figma layout for Product photography: main dark area + side thumbnails */
