@@ -552,8 +552,7 @@ export function PortfolioShowcase() {
             <div
               key={item.name}
               ref={setCardRef(i)}
-              className="flex items-center justify-center flex-shrink-0"
-              style={{ height: `${snapCfg.cardHeight}vh` }}
+              className="w-full aspect-[471/260] flex-shrink-0"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -619,7 +618,7 @@ export function PortfolioShowcase() {
               className="cursor-pointer"
             >
               {/* Image */}
-              <div className="relative w-full aspect-[4/3] rounded-[10px] overflow-hidden mb-6">
+              <div className="relative w-full aspect-[471/260] rounded-[10px] overflow-hidden mb-6">
                 <img
                   alt={item.name}
                   className="absolute inset-0 w-full h-full object-cover"

@@ -58,9 +58,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${figtree.variable} ${inter.variable} ${syne.variable}`}
     >
-      <body className="antialiased">
+      <body suppressHydrationWarning className="antialiased">
         <div className="w-full min-h-screen bg-[#fffcf8] font-[var(--font-figtree),sans-serif]">
           <Navbar />
           {/* Main content */}
