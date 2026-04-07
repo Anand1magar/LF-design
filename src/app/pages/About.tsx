@@ -1,9 +1,12 @@
 import { motion } from "motion/react";
 import { useNavigate } from "react-router";
 import { useRef, useState, useCallback } from "react";
-import imgGeminiTeam from "figma:asset/992614c01d1eceb6d9e290868cb625302c323f1f.png";
-import imgTest1 from "figma:asset/6e3abb2c76ddfd9fdc9157fcaaa67f4d81b1f86c.png";
-import imgTest2 from "figma:asset/091141f21c75218ecd91e4991bd101b8dcc547a5.png";
+import imgGeminiTeam from "src/assets/about/Anand.png";
+import imgTest1 from "src/assets/about/Saira_edited.png";
+import imgTest2 from "src/assets/about/sid_closeup_stillgrab.png";
+import imgTest3 from "src/assets/about/Sid_edited.png";
+import imgTest4 from "src/assets/about/Test2_AI enhanced.png";
+
 
 /* ─── Stats data ─── */
 const stats = [
@@ -248,6 +251,20 @@ export function About() {
             <img
               src={imgTest2}
               alt="Team gallery 3"
+              className="w-full h-full object-cover"
+            />
+          </div>
+                <div className="w-[320px] sm:w-[500px] md:w-[1050px] h-[200px] sm:h-[350px] md:h-[520px] shrink-0 overflow-hidden rounded-lg">
+            <img
+              src={imgTest3}
+              alt="Team gallery 3"
+              className="w-full h-full object-cover"
+            />
+          </div>
+                <div className="w-[320px] sm:w-[500px] md:w-[1050px] h-[200px] sm:h-[350px] md:h-[520px] shrink-0 overflow-hidden rounded-lg">
+            <img
+              src={imgTest4}
+              alt="Team gallery 4"
               className="w-full h-full object-cover"
             />
           </div>

@@ -463,7 +463,7 @@ export function PortfolioShowcase() {
         {/* Left Sticky Panel — sticks to top while cards scroll by */}
         <div className="w-[35%] sticky top-0 h-screen flex flex-col justify-between px-12 xl:px-20 py-16 xl:py-20 z-10">
           {/* Top: "Our work" + Portfolio name */}
-          <div className="flex flex-col gap-[20px] pb-[33px] border-b border-[#404040]">
+          <div className="flex flex-col gap-[8px] pb-[33px] border-b border-[#404040]">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -563,26 +563,19 @@ export function PortfolioShowcase() {
                 className="relative w-full h-full rounded-[12px] overflow-hidden group cursor-pointer"
                 onClick={() => navigate(`/project/${item.slug}`)}
               >
-                {/* Pure gradient background */}
-                <div
-                  className="absolute inset-0 z-10"
-                  style={{
-                    background: cardGradientBg(
-                      item.brandColor,
-                      (() => {
-                        const raw = cardActivations[i] ?? 0;
-                        return raw < 0.05 ? 0 : Math.min(1, raw * snapCfg.gradientBoost);
-                      })()
-                    ),
-                  }}
+                {/* Project image */}
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="absolute inset-0 w-full h-full object-cover z-0"
                 />
                 {/* Project name overlay on hover */}
-                <div className="absolute inset-0 z-20 flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div>
+                <div className="absolute right-0 bottom-0 z-20 flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="invisible">
                     <p className="font-['Figtree',sans-serif] text-white text-[24px] tracking-[-0.5px]">
                       {item.name}
                     </p>
-                    <p className="font-['Figtree',sans-serif] text-white/60 text-[13px] mt-1">
+                    <p className="font-['Figtree',sans-serif] text-white/60 text-[13px] mt-1 invisible">
                       View project &rarr;
                     </p>
                   </div>

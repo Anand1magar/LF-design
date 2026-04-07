@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Mail } from "lucide-react";
+import { Icon } from "@iconify/react";
 import dynamic from "next/dynamic";
 
 /* Render AsciiGarden only on the client — its seeded-random plant
@@ -84,6 +85,33 @@ export function ContactSection() {
         >
           hello@designstudio.com
         </motion.a>
+
+        {/* Social Media Icons */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.65 }}
+          className="mt-6 flex items-center gap-5"
+        >
+          {[
+            { icon: "ri:twitter-x-fill", href: "#", label: "X (Twitter)" },
+            { icon: "ri:tiktok-fill", href: "#", label: "TikTok" },
+            { icon: "ri:facebook-fill", href: "#", label: "Facebook" },
+            { icon: "ri:instagram-line", href: "#", label: "Instagram" },
+          ].map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              aria-label={social.label}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#666] hover:text-white transition-colors duration-300"
+            >
+              <Icon icon={social.icon} width={20} height={20} />
+            </a>
+          ))}
+        </motion.div>
       </div>
 
       <div className="px-6 md:px-12 py-6">

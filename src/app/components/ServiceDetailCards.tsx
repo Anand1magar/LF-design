@@ -27,7 +27,8 @@ import {
 const serviceDetails = [
   {
     title: "Visual Branding",
-    subtitle: "Launch a project crafted for resonance.",
+    subtitle:
+      "We craft visuals that resonate emotionally and make your brand unforgettable.",
     items: [
       "Brand Strategy",
       "AI Powered Brand Identity Guidelines and Assets",
@@ -38,7 +39,8 @@ const serviceDetails = [
   },
   {
     title: "Business Collaterals",
-    subtitle: "Launch a project crafted for resonance.",
+    subtitle:
+      "We craft visuals that resonate emotionally and make your brand unforgettable.",
     items: [
       "Brand Strategy",
       "AI Powered Brand Identity Guidelines and Assets",
@@ -49,7 +51,8 @@ const serviceDetails = [
   },
   {
     title: "Product Design",
-    subtitle: "Launch a project crafted for resonance.",
+    subtitle:
+      "We craft visuals that resonate emotionally and make your brand unforgettable.",
     items: [
       "Brand Strategy",
       "AI Powered Brand Identity Guidelines and Assets",
@@ -60,7 +63,8 @@ const serviceDetails = [
   },
   {
     title: "Motion Graphics",
-    subtitle: "Launch a project crafted for resonance.",
+    subtitle:
+      "We craft visuals that resonate emotionally and make your brand unforgettable.",
     items: [
       "Brand Strategy",
       "AI Powered Brand Identity Guidelines and Assets",
@@ -71,7 +75,8 @@ const serviceDetails = [
   },
   {
     title: "Marketing Collateral",
-    subtitle: "Launch a project crafted for resonance.",
+    subtitle:
+      "We craft visuals that resonate emotionally and make your brand unforgettable.",
     items: [
       "Brand Strategy",
       "AI Powered Brand Identity Guidelines and Assets",

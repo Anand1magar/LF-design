@@ -53,16 +53,10 @@ const navItems: NavItem[] = [
 ];
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const isAboutPage = location.pathname.startsWith("/about");
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -100,62 +94,73 @@ export function Navbar() {
     [navigate, location.pathname]
   );
 
+  const handleContact = useCallback(() => {
+    handleNav({ label: "Contact", action: "scroll", target: "contact" });
+  }, [handleNav]);
+
   return (
     <>
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 bg-transparent`}
+        className="fixed top-0 left-0 right-0 z-50"
       >
-        <div className="max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-12 py-4 md:py-[22px]">
-          <button
-            onClick={() => navigate("/")}
-            className="px-3 py-1.5 md:px-4 md:py-2 rounded-full backdrop-blur-xl cursor-pointer"
-            style={{ backgroundColor: "rgba(81,81,81,0.4)" }}
-          >
-            <Logo variant="light" />
-          </button>
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-12 py-4 md:py-[22px]">
+          <div className="hidden md:flex h-[56px] items-center justify-between rounded-[80px] bg-[rgba(60,60,60,0.73)] backdrop-blur-[8px] pl-[18px] pr-[13px]">
+            <button
+              onClick={() => navigate("/")}
+              className="flex h-[36px] w-[193px] items-center rounded-full px-4 cursor-pointer"
+            >
+              <Logo variant="light" />
+            </button>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-2">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.label}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleNav(item)}
-                className="px-4 py-2 rounded-full font-['Figtree',sans-serif] font-medium text-sm tracking-tight transition-colors text-white hover:bg-[rgba(81,81,81,0.6)] backdrop-blur-xl cursor-pointer"
-                style={{ backgroundColor: "rgba(81,81,81,0.4)" }}
-              >
-                {item.label}
-              </motion.button>
-            ))}
+            <div className="flex items-center gap-6 font-['Figtree',sans-serif] font-medium text-[14px] leading-[20px] tracking-[-0.35px] text-center text-white">
+              {navItems.map((item) => (
+                <button
+                  key={item.label}
+                  onClick={() => handleNav(item)}
+                  className={`cursor-pointer transition-opacity hover:opacity-100 ${item.target === "/about" && isAboutPage ? "opacity-100" : "opacity-[0.66]"}`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={handleContact}
+              className="h-[36px] rounded-full bg-white px-6 font-['Figtree',sans-serif] font-medium text-[14px] leading-[20px] tracking-[-0.35px] text-black cursor-pointer"
+            >
+              Contact
+            </button>
           </div>
 
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            className="hidden md:block bg-[#79B231] hover:bg-[#6a9e2a] text-white px-5 py-2 rounded-full font-['Figtree',sans-serif] font-medium text-sm transition-colors cursor-pointer backdrop-blur-xl"
-          >
-            Contact
-          </motion.button>
+          <div className="md:hidden flex items-center justify-between">
+            <button
+              onClick={() => navigate("/")}
+              className="px-3 py-1.5 rounded-full backdrop-blur-xl cursor-pointer"
+              style={{ backgroundColor: "rgba(81,81,81,0.4)" }}
+            >
+              <Logo variant="light" />
+            </button>
 
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex flex-col gap-[5px] p-2.5 rounded-full backdrop-blur-xl cursor-pointer"
-            style={{ backgroundColor: "rgba(81,81,81,0.4)" }}
-            aria-label="Toggle menu"
-          >
-            <span
-              className={`w-5 h-[1.5px] rounded-full transition-all duration-300 bg-white origin-center ${mobileOpen ? "rotate-45 translate-y-[6.5px]" : ""}`}
-            />
-            <span
-              className={`w-5 h-[1.5px] rounded-full transition-all duration-300 bg-white ${mobileOpen ? "opacity-0 scale-x-0" : ""}`}
-            />
-            <span
-              className={`w-5 h-[1.5px] rounded-full transition-all duration-300 bg-white origin-center ${mobileOpen ? "-rotate-45 -translate-y-[6.5px]" : ""}`}
-            />
-          </button>
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="flex flex-col gap-[5px] p-2.5 rounded-full backdrop-blur-xl cursor-pointer"
+              style={{ backgroundColor: "rgba(81,81,81,0.4)" }}
+              aria-label="Toggle menu"
+            >
+              <span
+                className={`w-5 h-[1.5px] rounded-full transition-all duration-300 bg-white origin-center ${mobileOpen ? "rotate-45 translate-y-[6.5px]" : ""}`}
+              />
+              <span
+                className={`w-5 h-[1.5px] rounded-full transition-all duration-300 bg-white ${mobileOpen ? "opacity-0 scale-x-0" : ""}`}
+              />
+              <span
+                className={`w-5 h-[1.5px] rounded-full transition-all duration-300 bg-white origin-center ${mobileOpen ? "-rotate-45 -translate-y-[6.5px]" : ""}`}
+              />
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -200,7 +205,7 @@ export function Navbar() {
             >
               <button
                 onClick={() => setMobileOpen(false)}
-                className="w-full bg-[#79B231] text-white py-3.5 rounded-full font-['Figtree',sans-serif] font-medium text-[15px] cursor-pointer active:scale-[0.98] transition-transform"
+                className="w-full bg-[#79B231] text-white py-3.5 rounded-full font-['Figtree',sans-serif] font-semibold text-[16px] cursor-pointer active:scale-[0.98] transition-transform"
               >
                 Contact Us
               </button>

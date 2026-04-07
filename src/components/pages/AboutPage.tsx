@@ -4,8 +4,18 @@ import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import { imgSrc } from "@/lib/img";
 import imgGeminiTeam from "figma:asset/992614c01d1eceb6d9e290868cb625302c323f1f.png";
-import imgTest1 from "figma:asset/6e3abb2c76ddfd9fdc9157fcaaa67f4d81b1f86c.png";
-import imgTest2 from "figma:asset/091141f21c75218ecd91e4991bd101b8dcc547a5.png";
+// import imgTest1 from "src/assets/about/Anand.png";
+// import imgTest2 from "figma:asset/091141f21c75218ecd91e4991bd101b8dcc547a5.png";
+// import imgTest3 from "figma:asset/091141f21c75218ecd91e4991bd101b8dcc547a5.png";
+// import imgTest4 from "figma:asset/091141f21c75218ecd91e4991bd101b8dcc547a5.png";
+
+import imgTest1 from "src/assets/about/Saira_edited.png";
+import imgTest2 from "src/assets/about/sid_closeup_stillgrab.png";
+import imgTest3 from "src/assets/about/Sid_edited.png";
+import imgTest4 from "src/assets/about/Anand.png";
+import imgTest5 from "src/assets/about/enhanced.png";
+
+
 
 /* ─── Stats data ─── */
 const stats = [
@@ -63,8 +73,9 @@ const teamGrid = [
 const galleryImages = [
   imgSrc(imgTest1),
   imgSrc(imgTest2),
-  imgSrc(imgGeminiTeam),
-  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80",
+  imgSrc(imgTest3),
+  imgSrc(imgTest4),
+  imgSrc(imgTest5),
 ];
 
 export function AboutPage() {
@@ -130,7 +141,7 @@ export function AboutPage() {
                   <p className="font-['Inter',sans-serif] font-medium text-black text-[22.005px] md:text-[22px] tracking-[-0.8802px] leading-[28.606px]">
                     {stat.label}
                   </p>
-                  <p className="font-['Figtree',sans-serif] text-[#595959] text-[15.403px] md:text-[15px] capitalize leading-[normal]">
+                  <p className="font-['Figtree',sans-serif] text-[#595959] text-[16px] capitalize leading-[normal]">
                     {stat.desc}
                   </p>
                 </div>
@@ -224,9 +235,9 @@ export function AboutPage() {
           className="mt-20 md:mt-24 px-5 overflow-hidden"
         >
           <motion.div
-            className="flex w-max items-center gap-5 md:gap-[63px]"
+            className="flex w-max items-center gap-5 md:gap-[30px]"
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
           >
             {[...galleryImages, ...galleryImages].map((src, i) => (
               <div

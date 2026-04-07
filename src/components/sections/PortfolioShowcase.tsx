@@ -114,14 +114,23 @@ function cardGradientBg(brandColor: string, activation: number): string {
 
 export function PortfolioShowcase() {
   const router = useRouter();
+  const showcaseOrder = [
+    "antaranga-ai",
+    "frogtoberfest",
+    "minimeals",
+    "second-look-health",
+  ];
+  const showcaseItems = showcaseOrder
+    .map((slug) => portfolioItems.find((item) => item.slug === slug))
+    .filter((item): item is (typeof portfolioItems)[number] => Boolean(item));
   const [activeIndex, setActiveIndex] = useState(0);
   const [cardActivations, setCardActivations] = useState<number[]>(
-    () => portfolioItems.map(() => 0)
+    () => showcaseItems.map(() => 0)
   );
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement | null>(null);
   const rafRef = useRef<number>(0);
-  const prevActivationsRef = useRef<number[]>(portfolioItems.map(() => 0));
+  const prevActivationsRef = useRef<number[]>(showcaseItems.map(() => 0));
 
   /* ─── Controller state ─── */
   const [showController, setShowController] = useState(false);
@@ -304,7 +313,7 @@ export function PortfolioShowcase() {
     setIsSaving(false);
   }, [snapCfg]);
 
-  const active = portfolioItems[activeIndex];
+  const active = showcaseItems[activeIndex];
 
   return (
     <section ref={sectionRef} className="bg-[#0a0a0a] text-white relative">
@@ -464,7 +473,7 @@ export function PortfolioShowcase() {
         {/* Left Sticky Panel — sticks to top while cards scroll by */}
         <div className="w-[35%] sticky top-0 h-screen flex flex-col justify-between px-12 xl:px-20 py-16 xl:py-20 z-10">
           {/* Top: "Our work" + Portfolio name */}
-          <div className="flex flex-col gap-[20px] pb-[33px] border-b border-[#404040]">
+          <div className="flex flex-col gap-[8px] pb-[33px] border-b border-[#404040]">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -491,7 +500,7 @@ export function PortfolioShowcase() {
 
             {/* Scroll progress dots */}
             <div className="flex gap-2 mt-2">
-              {portfolioItems.map((_, i) => (
+              {showcaseItems.map((_, i) => (
                 <div
                   key={i}
                   className="h-[3px] rounded-full transition-all duration-300"
@@ -516,40 +525,18 @@ export function PortfolioShowcase() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.22, ease: [0.25, 0.1, 0.25, 1] }}
-                className="font-['Figtree',sans-serif] font-light text-white/50 text-[13px] leading-[1.7] max-w-[380px]"
+                className="font-['Figtree',sans-serif] font-light text-white/50 text-[16px] leading-[1.7] max-w-[380px]"
               >
                 {active.description}
               </motion.p>
             </AnimatePresence>
           </div>
 
-          {/* Bottom: Logo + tagline + meta */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`meta-${activeIndex}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.18 }}
-              className="flex items-center gap-4 pb-4"
-            >
-              {/* Brand dot */}
-              {/* removed */}
-              <div>
-                <p className="font-['Figtree',sans-serif] text-white text-[13px]">
-                  {active.tagline}
-                </p>
-                <p className="font-['Figtree',sans-serif] text-white/35 text-[11px] mt-0.5">
-                  {active.year} · {active.category}
-                </p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
         </div>
 
         {/* Right Column — cards in normal page flow, NO separate scroll */}
         <div className="w-[65%] relative flex flex-col gap-[24px] pl-[0px] pr-[24px] pt-[60px] pb-[200px]">
-          {portfolioItems.map((item, i) => (
+          {showcaseItems.map((item, i) => (
             <div
               key={item.name}
               ref={setCardRef(i)}
@@ -564,30 +551,12 @@ export function PortfolioShowcase() {
                 className="relative w-full h-full rounded-[12px] overflow-hidden group cursor-pointer"
                 onClick={() => router.push(`/project/${item.slug}`)}
               >
-                {/* Pure gradient background */}
-                <div
-                  className="absolute inset-0 z-10"
-                  style={{
-                    background: cardGradientBg(
-                      item.brandColor,
-                      (() => {
-                        const raw = cardActivations[i] ?? 0;
-                        return raw < 0.05 ? 0 : Math.min(1, raw * snapCfg.gradientBoost);
-                      })()
-                    ),
-                  }}
+                {/* Project image */}
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="absolute inset-0 w-full h-full object-cover z-0"
                 />
-                {/* Project name overlay on hover */}
-                <div className="absolute inset-0 z-20 flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div>
-                    <p className="font-['Figtree',sans-serif] text-white text-[24px] tracking-[-0.5px]">
-                      {item.name}
-                    </p>
-                    <p className="font-['Figtree',sans-serif] text-white/60 text-[13px] mt-1">
-                      View project &rarr;
-                    </p>
-                  </div>
-                </div>
               </motion.div>
             </div>
           ))}
@@ -616,7 +585,7 @@ export function PortfolioShowcase() {
         </motion.h2>
 
         <div className="flex flex-col gap-16">
-          {portfolioItems.map((item, i) => (
+          {showcaseItems.map((item, i) => (
             <motion.div
               key={item.name}
               initial={{ opacity: 0, y: 40 }}

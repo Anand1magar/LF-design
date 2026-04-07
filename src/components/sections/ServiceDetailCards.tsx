@@ -29,58 +29,53 @@ import {
 const serviceDetails = [
   {
     title: "Visual Branding",
-    subtitle: "Launch a project crafted for resonance.",
+    subtitle:
+      "We craft visuals that resonate emotionally and make your brand unforgettable.",
     items: [
       "Brand Strategy",
       "AI Powered Brand Identity Guidelines and Assets",
       "Web Design and Development",
     ],
-    color: "#E8F0DE",
-    image: "https://images.unsplash.com/photo-1770591060040-25fd7d6a4c1f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aXN1YWwlMjBicmFuZGluZyUyMGxvZ28lMjBkZXNpZ24lMjBzdHVkaW98ZW58MXx8fHwxNzcyNzY2NjgwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
     title: "Business Collaterals",
-    subtitle: "Launch a project crafted for resonance.",
+    subtitle:
+      "We create polished business materials like business cards, brochures, and presentations that make your brand look credible and trustworthy.",
     items: [
       "Brand Strategy",
       "AI Powered Brand Identity Guidelines and Assets",
       "Web Design and Development",
     ],
-    color: "#DEE8F0",
-    image: "https://images.unsplash.com/photo-1617380607001-2797ed957a6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNvbGxhdGVyYWwlMjBwcmludCUyMG1hcmtldGluZyUyMG1hdGVyaWFsc3xlbnwxfHx8fDE3NzI3NjY2ODF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
     title: "Product Design",
-    subtitle: "Launch a project crafted for resonance.",
+    subtitle:
+      "We design easy-to-use digital products (like apps, websites, or custom software) that work flawlessly for your customers and help your business grow.",
     items: [
       "Brand Strategy",
       "AI Powered Brand Identity Guidelines and Assets",
       "Web Design and Development",
     ],
-    color: "#F0E8DE",
-    image: "https://images.unsplash.com/photo-1759765299418-02dfc7a6ad75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9kdWN0JTIwZGVzaWduJTIwaW50ZXJmYWNlJTIwbW9iaWxlJTIwYXBwfGVufDF8fHx8MTc3Mjc2NjY4MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
     title: "Motion Graphics",
-    subtitle: "Launch a project crafted for resonance.",
+    subtitle:
+      "We bring your ideas to life with engaging animations from explainer videos to social media clips that capture attention and tell your story clearly to your audience.",
     items: [
       "Brand Strategy",
       "AI Powered Brand Identity Guidelines and Assets",
       "Web Design and Development",
     ],
-    color: "#E8DEF0",
-    image: "https://images.unsplash.com/photo-1740174459694-4da6669ef2b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3Rpb24lMjBncmFwaGljcyUyMGFuaW1hdGlvbiUyMHZpc3VhbCUyMGVmZmVjdHN8ZW58MXx8fHwxNzcyNzY2NjgxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
     title: "Marketing Collateral",
-    subtitle: "Launch a project crafted for resonance.",
+    subtitle:
+      "We transform your brand with clear marketing materials like brochures and digital assets that make your business look trustworthy and easy to talk to.",
     items: [
       "Brand Strategy",
       "AI Powered Brand Identity Guidelines and Assets",
       "Web Design and Development",
     ],
-    color: "#F0DEDE",
-    image: "https://images.unsplash.com/photo-1722172597269-d911054badb9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYXJrZXRpbmclMjBjb2xsYXRlcmFsJTIwc29jaWFsJTIwbWVkaWElMjBjYW1wYWlnbnxlbnwxfHx8fDE3NzI3NjY2ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
 ];
 
@@ -92,11 +87,7 @@ const SCALE_STEP = 0.025;
 const SCROLL_GAP = 150;
 const SCROLL_GAP_MOBILE = 80;
 
-const STICKY_TOP_OFFSET = 50;
 
-function getStickyTop(index: number) {
-  return STICKY_TOP_OFFSET + index * PEEK;
-}
 
 /* ─── Hook: detect mobile ───────────────────────────────────────── */
 function useIsMobile(breakpoint = 768) {
@@ -119,7 +110,28 @@ function useIsMobile(breakpoint = 768) {
 export function ServiceDetailCards() {
   const sectionRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
-  const CARD_HEIGHT = isMobile ? 580 : 720;
+  const CARD_HEIGHT = isMobile ? 620 : 632;
+
+  // Center cards vertically on the viewport
+  const [stickyTopOffset, setStickyTopOffset] = useState(50);
+
+  useEffect(() => {
+    const updateOffset = () => {
+      const vh = window.innerHeight;
+      // Center the card: (viewport - card) / 2
+      const centered = Math.max(Math.round((vh - CARD_HEIGHT) / 2), 20);
+      setStickyTopOffset(centered);
+    };
+    updateOffset();
+    window.addEventListener("resize", updateOffset);
+    return () => window.removeEventListener("resize", updateOffset);
+  }, [CARD_HEIGHT]);
+
+  const getStickyTop = useCallback(
+    (index: number) => stickyTopOffset + index * PEEK,
+    [stickyTopOffset],
+  );
+
   const [cardsOnTopArr, setCardsOnTopArr] = useState<number[]>(
     () => new Array(TOTAL).fill(0),
   );
@@ -163,7 +175,7 @@ export function ServiceDetailCards() {
       }
       return prev;
     });
-  }, []);
+  }, [getStickyTop]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, {
@@ -191,10 +203,7 @@ export function ServiceDetailCards() {
         <div className="flex flex-col gap-[14px] items-start mb-12 md:mb-24 max-w-[1190px] mx-auto">
           <p className="font-['Figtree',sans-serif] font-light text-[48px] leading-[1.2] md:leading-[73.5px] tracking-[-1.5px] text-[#1a1a1a]"><span className="text-[#79b231]">End-to-end </span><span>design services</span></p>
           <p className="font-['Figtree',sans-serif] font-light text-[15px] sm:text-[17px] md:text-[20px] leading-[28px] md:leading-[32.5px] tracking-[-0.5px] text-[#555] max-w-[695px]">
-            We bridge the gap between branding, marketing &amp;
-            sales assets, UX design and motion design to give
-            you a definitive competitive edge when going to
-            market.
+            We craft a seamless blend of branding, marketing, and design that tells your story beautifully. By creating experiences that stick with people, we make sure your brand doesn't just compete—it leads!
           </p>
         </div>
 
@@ -232,7 +241,7 @@ export function ServiceDetailCards() {
               >
                 {/* Visual card — transforms here are fine, they're INSIDE the sticky element */}
                 <div
-                  className="bg-white rounded-[14px] sm:rounded-[16px] md:rounded-[18px] overflow-hidden mt-[40px] md:mt-[70px]"
+                  className="bg-white border-0 lg:border lg:border-[rgba(0,0,0,0.06)] rounded-[12px] sm:rounded-[16px] md:rounded-[18px] overflow-hidden h-full"
                   style={{
                     boxShadow: `0px 4px 75.3px 0px rgba(0,0,0,0.04), 0 ${shadowBlur}px ${shadowBlur * 2}px rgba(0,0,0,${shadowOpacity})`,
                     transform: `scale(${scale})`,
@@ -242,19 +251,16 @@ export function ServiceDetailCards() {
                   }}
                 >
                   <div
-                    className="flex flex-col md:flex-row md:items-center gap-[40px] p-[22px]"
-                    style={{
-                      height: isMobile ? 580 - 40 : 720 - 70,
-                    }}
+                    className="flex flex-col lg:flex-row lg:items-stretch gap-[32px] md:gap-[34px] lg:gap-[45px] px-[22px] pt-[37px] pb-[22px] md:p-[22px] h-full"
                   >
                     {/* Title + Subtitle + Items */}
-                    <div className="flex flex-col gap-[30px] md:flex-1 md:pl-[34px] md:py-[20px]">
+                    <div className="flex w-full flex-col gap-[30px] max-w-none md:max-w-[304px] lg:max-w-none lg:gap-[47.693px] lg:w-[560.576px] lg:pl-[70px] lg:pr-[70px] lg:justify-center">
                       {/* Title block */}
-                      <div className="flex flex-col">
-                        <h3 className="font-['Figtree',sans-serif] text-[#1a1a1a] leading-[47.693px] tracking-[-1px] font-normal text-[32px] md:text-[48px]">
+                      <div className="flex flex-col gap-[18.9px]">
+                        <h3 className="font-['Figtree',sans-serif] text-[#1a1a1a] leading-[1.05] lg:leading-[47.693px] tracking-[-1px] font-normal text-[32px] md:text-[40px] lg:text-[48px]">
                           {service.title}
                         </h3>
-                        <p className="font-['Inter',sans-serif] text-[#1a1a1a] opacity-[0.76] text-[16px] md:text-[20px] leading-[23px] font-normal">
+                        <p className="font-['Figtree',sans-serif] text-[#1a1a1a] opacity-[0.56] text-[16px] md:text-[18px] lg:text-[20px] leading-[23px] lg:leading-[28px] font-normal lg:pl-[5px]">
                           {service.subtitle}
                         </p>
                       </div>
@@ -264,11 +270,11 @@ export function ServiceDetailCards() {
                         {service.items.map((item, j) => (
                           <div
                             key={j}
-                            className="relative flex items-start justify-between py-[12px]"
+                            className="relative flex items-start justify-between py-[6.359px]"
                           >
                             <div
                               aria-hidden="true"
-                              className="absolute inset-0 border-b-[0.795px] border-dashed border-[rgba(0,0,0,0.3)] pointer-events-none"
+                              className="absolute inset-0 border-b-[0.795px] border-dashed border-[rgba(0,0,0,0.12)] pointer-events-none"
                             />
                             <p className="font-['Figtree',sans-serif] text-black opacity-[0.78] text-[16px] leading-[23px] md:leading-[47.693px] font-normal flex-1">
                               {item}
@@ -278,17 +284,10 @@ export function ServiceDetailCards() {
                       </div>
                     </div>
 
-                    {/* Color placeholder block — full height on right for desktop, flex-1 on mobile */}
+                    {/* Gray placeholder block — no image */}
                     <div
-                      className="w-full md:w-[504px] md:shrink-0 h-full md:self-stretch rounded-[13px] md:rounded-[24px] overflow-hidden relative"
-                      style={{ backgroundColor: service.color }}
-                    >
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-                    </div>
+                      className="w-full lg:w-[560.576px] lg:shrink-0 lg:flex-1 aspect-square lg:aspect-auto rounded-[10px] overflow-hidden relative bg-[#e7e7e7]"
+                    />
                   </div>
                 </div>
               </div>

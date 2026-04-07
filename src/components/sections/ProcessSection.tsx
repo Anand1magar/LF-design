@@ -66,6 +66,25 @@ function RobotIcon() {
   );
 }
 
+function PlusIcon() {
+  return (
+    <svg
+      className="shrink-0"
+      width="7"
+      height="7"
+      viewBox="0 0 7 7"
+      fill="none"
+    >
+      <path
+        d="M3.5 0.5V6.5M0.5 3.5H6.5"
+        stroke="#404040"
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 const processSteps = [
   {
     icon: "favorite",
@@ -150,6 +169,7 @@ const processSteps = [
       "We create prototypes with AI tools to define vision.",
     aiDesc:
       "This process produces multiple prototypes for testing.",
+    combinedIcons: true,
     svgContent: (
       <svg
         width="28"
@@ -256,23 +276,44 @@ export function ProcessSection() {
 
                 <div className="flex flex-col gap-5">
                   <div className="w-7 h-7">{step.svgContent}</div>
-                  <p className="font-['Syne',sans-serif] text-[#1a1a1a] text-[32px] leading-[36px] tracking-[-1px]">
+                  <p
+                    className={
+                      step.combinedIcons
+                        ? "font-['Syne',sans-serif] font-normal text-[#1a1a1a] text-[24px] leading-[32px] tracking-[-0.6px]"
+                        : "font-['Syne',sans-serif] text-[#1a1a1a] text-[32px] leading-[36px] tracking-[-1px]"
+                    }
+                  >
                     {step.title}
                   </p>
-                  <div className="flex flex-col gap-[14px]">
-                    <div className="flex gap-3 items-start">
-                      <UserIcon />
-                      <p className="flex-1 font-['Figtree',sans-serif] font-light text-[#555] text-[14px] leading-[22.75px] tracking-[-0.14px]">
-                        {step.humanDesc}
-                      </p>
-                    </div>
-                    <div className="flex gap-3 items-start">
-                      <RobotIcon />
-                      <p className="flex-1 font-['Figtree',sans-serif] font-light text-[#555] text-[14px] leading-[22.75px] tracking-[-0.14px]">
+                  {step.combinedIcons ? (
+                    <div className="flex flex-col gap-[14px]">
+                      <div className="flex gap-[4px] items-center justify-start relative shrink-0">
+                        <UserIcon />
+                        <PlusIcon />
+                        <RobotIcon />
+                      </div>
+                      <p className="font-['Figtree',sans-serif] font-light text-[#555] text-[14px] leading-[22.75px] tracking-[-0.14px] whitespace-pre-wrap">
+                        {`${step.humanDesc} `}
+                        <br />
                         {step.aiDesc}
                       </p>
                     </div>
-                  </div>
+                  ) : (
+                    <div className="flex flex-col gap-[14px]">
+                      <div className="flex gap-3 items-start">
+                        <UserIcon />
+                        <p className="flex-1 font-['Figtree',sans-serif] font-light text-[#555] text-[14px] leading-[22.75px] tracking-[-0.14px]">
+                          {step.humanDesc}
+                        </p>
+                      </div>
+                      <div className="flex gap-3 items-start">
+                        <RobotIcon />
+                        <p className="flex-1 font-['Figtree',sans-serif] font-light text-[#555] text-[14px] leading-[22.75px] tracking-[-0.14px]">
+                          {step.aiDesc}
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -357,23 +398,44 @@ export function ProcessSection() {
                     <div className="w-7 h-7">
                       {step.svgContent}
                     </div>
-                    <p className="font-['Syne',sans-serif] text-[#1a1a1a] text-xl md:text-2xl tracking-tight">
+                    <p
+                      className={
+                        step.combinedIcons
+                          ? "font-['Syne',sans-serif] font-normal text-[#1a1a1a] text-[24px] leading-[32px] tracking-[-0.6px]"
+                          : "font-['Syne',sans-serif] text-[#1a1a1a] text-xl md:text-2xl tracking-tight"
+                      }
+                    >
                       {step.title}
                     </p>
-                    <div className="flex flex-col gap-[14px]">
-                      <div className="flex gap-3 items-start">
-                        <UserIcon />
-                        <p className="flex-1 font-['Figtree',sans-serif] font-light text-[#555] text-[14px] leading-[22.75px] tracking-[-0.14px]">
-                          {step.humanDesc}
-                        </p>
-                      </div>
-                      <div className="flex gap-3 items-start">
-                        <RobotIcon />
-                        <p className="flex-1 font-['Figtree',sans-serif] font-light text-[#555] text-[14px] leading-[22.75px] tracking-[-0.14px]">
+                    {step.combinedIcons ? (
+                      <div className="flex flex-col gap-[14px]">
+                        <div className="flex gap-[4px] items-center justify-start relative shrink-0">
+                          <UserIcon />
+                          <PlusIcon />
+                          <RobotIcon />
+                        </div>
+                        <p className="font-['Figtree',sans-serif] font-light text-[#555] text-[14px] leading-[22.75px] tracking-[-0.14px] whitespace-pre-wrap">
+                          {`${step.humanDesc} `}
+                          <br />
                           {step.aiDesc}
                         </p>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="flex flex-col gap-[14px]">
+                        <div className="flex gap-3 items-start">
+                          <UserIcon />
+                          <p className="flex-1 font-['Figtree',sans-serif] font-light text-[#555] text-[14px] leading-[22.75px] tracking-[-0.14px]">
+                            {step.humanDesc}
+                          </p>
+                        </div>
+                        <div className="flex gap-3 items-start">
+                          <RobotIcon />
+                          <p className="flex-1 font-['Figtree',sans-serif] font-light text-[#555] text-[14px] leading-[22.75px] tracking-[-0.14px]">
+                            {step.aiDesc}
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               ))}

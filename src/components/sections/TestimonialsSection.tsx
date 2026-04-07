@@ -287,7 +287,7 @@ function TestimonialCardGrid() {
           </div>
 
           {/* Quote at bottom */}
-          <p className="font-['Figtree',sans-serif] font-light text-[#121212] text-[19px] lg:text-[19px] leading-[28.74px]">
+          <p className="font-['Figtree',sans-serif] font-light text-[#121212] text-[20px] leading-[30px]">
             "It would have taken months to build the product team that we
             inherited overnight with Leapfrog. They're built for startup
             speed, and they have consistently delivered a well-engineered
@@ -349,7 +349,7 @@ function TestimonialCardGrid() {
           </div>
 
           {/* Quote at bottom */}
-          <p className="font-['Figtree',sans-serif] font-light text-[#121212] text-[19px] lg:text-[19px] leading-[28.74px]">
+          <p className="font-['Figtree',sans-serif] font-light text-[#121212] text-[20px] leading-[30px]">
             Leapfrog team has been instrumental in Phil&apos;s growth so far. Their
             talent pool has been exceptional and a lot of credit goes to
             Leapfrog&apos;s high quality focus on training and onboarding. We never

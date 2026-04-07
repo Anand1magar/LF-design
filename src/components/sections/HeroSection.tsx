@@ -6,6 +6,30 @@ import { useEffect, useRef, useState } from "react";
 /* YouTube Video ID */
 const YT_VIDEO_ID = "Lfk_qou1SYI";
 
+/* cubic-bezier(0.75, 0, 0.45, 1.00) solver */
+function cubicBezier(t: number, p1x: number, p1y: number, p2x: number, p2y: number): number {
+	const cx = 3 * p1x;
+	const bx = 3 * (p2x - p1x) - cx;
+	const ax = 1 - cx - bx;
+	const cy = 3 * p1y;
+	const by = 3 * (p2y - p1y) - cy;
+	const ay = 1 - cy - by;
+	const sampleX = (u: number) => ((ax * u + bx) * u + cx) * u;
+	const sampleY = (u: number) => ((ay * u + by) * u + cy) * u;
+	const sampleDX = (u: number) => (3 * ax * u + 2 * bx) * u + cx;
+	// Newton-Raphson to solve for u given t (x-axis)
+	let u = t;
+	for (let i = 0; i < 8; i++) {
+		const dx = sampleX(u) - t;
+		if (Math.abs(dx) < 1e-6) break;
+		const d = sampleDX(u);
+		if (Math.abs(d) < 1e-6) break;
+		u -= dx / d;
+	}
+	return sampleY(u);
+}
+const introEase = (t: number) => cubicBezier(t, 0.75, 0, 0.45, 1.0);
+
 export function HeroSection() {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -14,8 +38,8 @@ export function HeroSection() {
 	const introStartTime = useRef<number | null>(null);
 	const introRaf = useRef<number>(0);
 	const [viewport, setViewport] = useState({
-		w: window.innerWidth,
-		h: window.innerHeight,
+		w: typeof window !== "undefined" ? window.innerWidth : 1440,
+		h: typeof window !== "undefined" ? window.innerHeight : 900,
 	});
 
 	const INTRO_DURATION = 2800;
@@ -42,9 +66,7 @@ export function HeroSection() {
 			}
 			const expandElapsed = elapsed - INTRO_HOLD;
 			const raw = Math.min(expandElapsed / INTRO_DURATION, 1);
-			const t = raw;
-			const eased =
-				t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+			const eased = introEase(raw);
 			setIntroProgress(eased);
 			if (raw < 1) {
 				introRaf.current = requestAnimationFrame(animate);
@@ -89,7 +111,27 @@ export function HeroSection() {
 
 	/* ─── Iframe loaded state ─── */
 	const [videoReady, setVideoReady] = useState(false);
+	const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 	const isMobileOrTablet = viewport.w < 1024;
+
+	useEffect(() => {
+		if (!isVideoModalOpen) return;
+
+		const onKeyDown = (event: KeyboardEvent) => {
+			if (event.key === "Escape") {
+				setIsVideoModalOpen(false);
+			}
+		};
+
+		const previousOverflow = document.body.style.overflow;
+		document.body.style.overflow = "hidden";
+		window.addEventListener("keydown", onKeyDown);
+
+		return () => {
+			document.body.style.overflow = previousOverflow;
+			window.removeEventListener("keydown", onKeyDown);
+		};
+	}, [isVideoModalOpen]);
 
 	// Dimensions
 	const HERO_HEIGHT_RATIO = 0.6;
@@ -129,8 +171,8 @@ export function HeroSection() {
 						willChange: "width, height, border-radius, transform",
 					}}
 				>
-					{/* YouTube Video Background — simple iframe embed */}
-					<div className="absolute inset-0 overflow-hidden bg-black">
+					{/* YouTube Video Background — iframe scaled to simulate object-fit:cover */}
+					<div className="absolute inset-0 overflow-hidden bg-white">
 						<iframe
 							src={`https://www.youtube.com/embed/${YT_VIDEO_ID}?si=Vb71oiWRIbJ4MLUs&controls=0&autoplay=1&mute=1&loop=1&playlist=${YT_VIDEO_ID}&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0`}
 							title="YouTube video player"
@@ -140,20 +182,38 @@ export function HeroSection() {
 							onLoad={() => setVideoReady(true)}
 							className="absolute pointer-events-none border-0"
 							style={{
-								top: isMobileOrTablet ? "50%" : "-80px",
-								left: isMobileOrTablet ? "50%" : "-80px",
-								width: isMobileOrTablet
-									? "calc((100% + 160px) * 1.7778)"
-									: "calc(100% + 160px)",
-								height: "calc(100% + 160px)",
-								transform: isMobileOrTablet
-									? "translate(-50%, -50%)"
-									: "none",
+								top: "50%",
+								left: "50%",
+								width: "177.78vh",   /* 16:9 ratio → height × 1.7778 */
+								height: "56.25vw",   /* 16:9 ratio → width  × 0.5625 */
+								minWidth: "100%",
+								minHeight: "100%",
+								transform: "translate(-50%, -50%)",
 								opacity: videoReady ? 1 : 0,
 								transition: "opacity 0.6s ease-in-out",
 							}}
 						/>
 					</div>
+
+					<motion.button
+						type="button"
+						onClick={() => setIsVideoModalOpen(true)}
+						aria-label="Open video"
+						whileHover={{ scale: 1.04 }}
+						whileTap={{ scale: 0.98 }}
+						className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 appearance-none border-0 bg-transparent p-0"
+					>
+						<div className="relative h-[84px] w-[84px] overflow-hidden rounded-[90px] border border-[rgba(255,255,255,0.04)] bg-[rgba(0,0,0,0.09)] backdrop-blur-[1px]">
+							<svg
+								viewBox="0 0 24 24"
+								className="absolute left-[18px] top-[18px] h-12 w-12 text-white"
+								fill="currentColor"
+								aria-hidden="true"
+							>
+								<path d="M8 6.5v11a1 1 0 0 0 1.54.84l8.5-5.5a1 1 0 0 0 0-1.68l-8.5-5.5A1 1 0 0 0 8 6.5z" />
+							</svg>
+						</div>
+					</motion.button>
 
 					<motion.div
 						initial={{ opacity: 0 }}
@@ -168,6 +228,38 @@ export function HeroSection() {
 					/>
 				</div>
 			</div>
+
+			{isVideoModalOpen && (
+				<div
+					className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm"
+					onClick={() => setIsVideoModalOpen(false)}
+				>
+					<div
+						className="relative w-full max-w-[1100px] overflow-hidden rounded-2xl bg-black shadow-2xl"
+						onClick={(event) => event.stopPropagation()}
+					>
+						<button
+							type="button"
+							onClick={() => setIsVideoModalOpen(false)}
+							aria-label="Close video"
+							className="absolute right-3 top-3 z-10 h-9 w-9 rounded-full bg-black/60 text-white transition hover:bg-black/80"
+						>
+							✕
+						</button>
+
+						<div className="relative w-full pt-[56.25%]">
+							<iframe
+								src={`https://www.youtube.com/embed/${YT_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+								title="LF Studio video"
+								className="absolute inset-0 h-full w-full border-0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								referrerPolicy="strict-origin-when-cross-origin"
+								allowFullScreen
+							/>
+						</div>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }

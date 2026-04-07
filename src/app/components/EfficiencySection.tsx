@@ -348,7 +348,7 @@ export function EfficiencySection() {
                   /* Character generation storyboard flow (mobile) */
                   <img
                     alt="Character generation workflow board"
-                    className="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none"
+                    className="absolute inset-0 w-[70px] h-auto object-cover object-bottom pointer-events-none"
                     src={imgCharacterFlow}
                   />
                 ) : featureTabs[activeTab].customSlide === true ? (

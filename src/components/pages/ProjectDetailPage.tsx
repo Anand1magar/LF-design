@@ -23,22 +23,6 @@ const fadeIn = (delay: number = 0) => ({
 
 /* ─── Gallery placeholder images ─── */
 const projectGallery: Record<string, string[]> = {
-  tripadvisor: [
-    "https://images.unsplash.com/photo-1678955084335-0546d6e1a4a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1768486173251-95f16f855830?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1764022398523-cb127ab75581?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1762893287377-ae2d4a95b11b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1760781284910-8d4200cf26cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-  ],
-  "antaranga-ai": [
-    "https://images.unsplash.com/photo-1758274526584-7f42956db4b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1770169272345-9636d5ef2681?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1758800624783-1b0ac07ae4fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1767449441925-737379bc2c4d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1758691463084-17ed846d4a50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1559117660-e81af52c0a50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-  ],
   "second-look-health": [
     "https://images.unsplash.com/photo-1666214280391-c9ef08d09da8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
     "https://images.unsplash.com/photo-1593824261342-fd6ee146f73d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",

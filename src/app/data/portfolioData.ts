@@ -1,6 +1,5 @@
 import imgTripadvisor from "figma:asset/c5c727b5e432f23b7b4e7058b4378a3881fbd272.png";
 import imgMockup21 from "figma:asset/6344a2742e01c5662fe0e4e13522e4812f6b4628.png";
-import imgImage230 from "figma:asset/8217a4299dbfea759f73b93507ed63e182dcccda.png";
 
 export interface PortfolioItem {
   name: string;
@@ -112,7 +111,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: "HEALTHCARE",
     description:
       "Second Look Health provides second-opinion diagnostics powered by expert radiologists and AI. We redesigned their entire patient-facing experience \u2014 from scan upload to results delivery \u2014 creating a calmer, more transparent journey that builds trust at every step.",
-    image: imgImage230,
+    image: "/portfolio/second-look-health.png",
     brandColor: "#7b84b8",
     client: "Second Look Health Corp.",
     role: "UX/UI Design, Design System, Front-end Development",
@@ -150,8 +149,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: "ENTERTAINMENT",
     description:
       "StreamVault was entering a saturated market and needed a distinctive edge. We crafted a visual identity and interface system that feels cinematic \u2014 dark, immersive, and effortlessly navigable \u2014 helping them stand out in a sea of sameness with a truly premium streaming experience.",
-    image:
-      "https://images.unsplash.com/photo-1761044590861-71df31e43d0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHJlYW1pbmclMjBwbGF0Zm9ybSUyMGludGVyZmFjZSUyMGRlc2lnbnxlbnwxfHx8fDE3NzE2NDE3MjB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/portfolio/streamvault.jpg",
     brandColor: "#6c5ce7",
     client: "StreamVault Entertainment Ltd.",
     role: "Brand Identity, UI/UX Design, Motion Design",

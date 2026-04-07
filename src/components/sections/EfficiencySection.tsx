@@ -9,7 +9,7 @@ import imgSlideRef from "@/assets/02edef305339b1d37ff3fad24f47d669793f2de7.png";
 import imgNew21 from "@/assets/c3673978eea43432454b7b5f17d61fdb0b4075f9.png";
 import imgSlide02 from "@/assets/7052aabef142b9d4ff27394a578703bd7127ba8b.png";
 /* General graphic design tab — composite book mockup image */
-import imgDesignBooks from "@/assets/b7c106ad167b83579ea14f5872ca1b516d68180e.png";
+import imgDesignBooks from "src/assets/efficiency/General graphic design.png";
 /* Illustrations & character consistency tab — collage images
    TODO: Replace these placeholders with actual Figma exports once available */
 const _illusPlaceholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e4df' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='14'%3EIllustration%3C/text%3E%3C/svg%3E";
@@ -22,13 +22,25 @@ const imgIllusStorybooks = _illusPlaceholder;
 /* UX workflows tab — funnel diagram image */
 import imgUxFunnel from "@/assets/cf744f1a96eb6285067a9e5d5faaf0f466edc248.png";
 
-// Fallback until the exported character flow asset is added to src/assets
-const imgCharacterFlow = "http://localhost:3845/assets/5d5e372882bb155b7b6d9212ad34ffc7823a6d0e.png";
-const imgProductWeeksToHours = "http://localhost:3845/assets/7d9ec6e5f1cd8007c5a7887d77f2f8c5e489e670.png";
-const imgIllustrationsBoard = "http://localhost:3845/assets/e28d003ca0f086320d8b17a3023f1168ebe4905c.png";
-const img3dFigmaTimeline = "http://localhost:3845/assets/c9ed2f2aae57444586212c419b0c4b8f66035639.png";
-const img3dFigmaCards = "http://localhost:3845/assets/06748153debd0491677e40b76400489d923c031a.png";
-const img3dFigmaCombined = "http://localhost:3845/assets/1daf86c9bdda90e71fae2e00d3bbe1c4b1a7cae5.png";
+/* Character generation flow */
+import imgCharacterFlowAsset from "src/assets/efficiency/character_generatio.png";
+/* Product photography — provided replacement image */
+const imgProductWeeksToHoursAsset = "/images/efficiency/product-photography-showcase.png";
+/* Illustrations board */
+import imgIllustrationsBoardAsset from "src/assets/efficiency/Illustrations & character consistency.png";
+/* 3D Figma — timeline */
+import img3dFigmaTimelineAsset from "@/assets/c9ed2f2aae57444586212c419b0c4b8f66035639.png";
+/* 3D Figma — cards */
+import img3dFigmaCardsAsset from "@/assets/06748153debd0491677e40b76400489d923c031a.png";
+/* 3D Figma — combined composition */
+import img3dFigmaCombinedAsset from "src/assets/efficiency/3D renderings & animations.png";
+
+const imgCharacterFlow = imgSrc(imgCharacterFlowAsset);
+const imgProductWeeksToHours = imgProductWeeksToHoursAsset;
+const imgIllustrationsBoard = imgSrc(imgIllustrationsBoardAsset);
+const img3dFigmaTimeline = imgSrc(img3dFigmaTimelineAsset);
+const img3dFigmaCards = imgSrc(img3dFigmaCardsAsset);
+const img3dFigmaCombined = imgSrc(img3dFigmaCombinedAsset);
 
 const featureTabs = [
   {
@@ -199,8 +211,7 @@ export function EfficiencySection() {
           <span className="text-[#1a1a1a]"> more efficient</span>
         </h2>
         <p className="font-['Figtree',sans-serif] font-light text-[#888] text-base leading-relaxed max-w-[404px] mt-4 md:mt-0">
-          Validated through extensive AI tools, model testing and workflow
-          measurement.
+            Comprehensive design services for digital growth.
         </p>
       </motion.div>
       <div className="max-w-[1190px] mx-auto flex flex-col gap-6 lg:gap-8">
@@ -324,7 +335,7 @@ export function EfficiencySection() {
                   /* Book mockups composite image (mobile) */
                   <img
                     alt="Professional design book mockups"
-                    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                    className="absolute right-0 bottom-0 w-[70%] h-[70%] object-cover pointer-events-none"
                     src={imgSrc(imgDesignBooks)}
                   />
                 ) : featureTabs[activeTab].customSlide === "illustrations" ? (
@@ -337,8 +348,9 @@ export function EfficiencySection() {
                   /* Character generation storyboard flow (mobile) */
                   <img
                     alt="Character generation workflow board"
-                    className="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none"
-                    src={imgSrc(imgCharacterFlow)}
+                    className="absolute right-0 bottom-0 w-[681.5px] h-[396.095px] object-cover object-right-bottom pointer-events-none"
+                    style={{ aspectRatio: "117 / 68" }}
+                    src={imgCharacterFlow}
                   />
                 ) : featureTabs[activeTab].customSlide === true ? (
                   /* Product photography board (mobile) */
@@ -501,8 +513,9 @@ export function EfficiencySection() {
                   /* Character generation storyboard flow (desktop) */
                   <img
                     alt="Character generation workflow board"
-                    className="absolute right-[12px] bottom-[-18px] w-[682px] h-[396px] object-cover pointer-events-none"
-                    src={imgSrc(imgCharacterFlow)}
+                    className="absolute right-[8px] bottom-[6px] w-[86%] max-w-[681.5px] h-auto object-contain object-right-bottom pointer-events-none"
+                    style={{ aspectRatio: "117 / 68" }}
+                    src={imgCharacterFlow}
                   />
                 ) : featureTabs[activeTab].customSlide === true ? (
                   /* Product photography board (desktop) */

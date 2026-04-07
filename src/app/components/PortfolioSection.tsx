@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import imgMockup21 from "figma:asset/6344a2742e01c5662fe0e4e13522e4812f6b4628.png";
-import imgImage230 from "figma:asset/8217a4299dbfea759f73b93507ed63e182dcccda.png";
 import svgPaths from "../../imports/svg-7tpy7wy2y6";
 import { useNavigate } from "react-router";
 import { portfolioItems as sharedPortfolioItems } from "../data/portfolioData";
@@ -52,7 +51,7 @@ const portfolioItems = [
     title: "Second Look Health",
     tag: "Case studies",
     bgColor: "bg-[#8a90c6]",
-    image: imgImage230,
+    image: "/portfolio/second-look-health.png",
     imageStyle: "object-center",
     overlayColor: "rgba(90,80,160,0.18)",
     Logo: SecondLookLogo,
