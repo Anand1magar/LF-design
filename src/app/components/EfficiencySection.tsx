@@ -1,10 +1,9 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, type CSSProperties } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import imgScreenshot from "figma:asset/6622c2ead5ca7e4b244066744d572abcf02cdf6d.png";
 import imgNew41 from "figma:asset/55c65964acf381f39e149e590d4f29d001407366.png";
 import imgImage261 from "figma:asset/9e9883e10bfa0a4716f23af030b659806d17d3d8.png";
 import imgCharacterFlow from "figma:asset/5d5e372882bb155b7b6d9212ad34ffc7823a6d0e.png";
-import imgProductWeeksToHours from "figma:asset/7d9ec6e5f1cd8007c5a7887d77f2f8c5e489e670.png";
 import imgSlideRef from "figma:asset/02edef305339b1d37ff3fad24f47d669793f2de7.png";
 import imgNew21 from "figma:asset/c3673978eea43432454b7b5f17d61fdb0b4075f9.png";
 import imgSlide02 from "figma:asset/7052aabef142b9d4ff27394a578703bd7127ba8b.png";
@@ -19,6 +18,8 @@ import img3dRender3 from "figma:asset/7f25c1bb5ecf5e5b99e935d4127e92c8a0499891.p
 import img3dRender4 from "figma:asset/2dccb77a319f4af0aa12e1e0947fbcce9ab42138.png";
 /* General graphic design tab — composite book mockup image */
 import imgDesignBooks from "figma:asset/b7c106ad167b83579ea14f5872ca1b516d68180e.png";
+
+const imgProductWeeksToHours = "/images/efficiency/efficent%20img2.png";
 
 const featureTabs = [
   {
@@ -89,6 +90,36 @@ const slideImages = [
   imgScreenshot,  // UX workflows
 ];
 
+type SlideVariant = "default" | "product" | "3d" | "design" | "character" | "custom";
+
+const getSlideVariant = (customSlide: (typeof featureTabs)[number]["customSlide"]): SlideVariant => {
+  if (customSlide === true) return "product";
+  if (customSlide === "3d" || customSlide === "design" || customSlide === "character") {
+    return customSlide;
+  }
+  if (customSlide) return "custom";
+  return "default";
+};
+
+// Edit these maps to quickly tweak image frame size/position in one place.
+const MOBILE_SLIDE_CONTAINER_STYLE: Record<SlideVariant, CSSProperties> = {
+  default: { left: "15%", top: "38%", width: "85%", height: "65%" },
+  product: { left: "0", top: "34%", width: "100%", height: "62%" },
+  "3d": { left: "0", top: "0", width: "100%", height: "100%" },
+  design: { left: "0", top: "42%", width: "100%", height: "58%" },
+  character: { left: "0", top: "36%", width: "100%", height: "64%" },
+  custom: { left: "10%", top: "45%", width: "90%", height: "60%" },
+};
+
+const DESKTOP_SLIDE_CONTAINER_STYLE: Record<SlideVariant, CSSProperties> = {
+  default: { left: "40%", top: "0", width: "60%", height: "100%" },
+  product: { left: "0", right: "18px", top: "0", bottom: "15px", width: "749px", height: "277px" },
+  "3d": { left: "0", top: "0", width: "100%", height: "100%" },
+  design: { left: "0", top: "0", width: "100%", height: "100%" },
+  character: { left: "0", top: "0", width: "100%", height: "100%" },
+  custom: { left: "10%", top: "45%", width: "90%", height: "100%" },
+};
+
 export function EfficiencySection() {
   const [activeTab, setActiveTab] = useState(0);
   const AUTO_CYCLE_DURATION = 3500; // 3.5 seconds
@@ -126,6 +157,9 @@ export function EfficiencySection() {
     if (timerRef.current) clearTimeout(timerRef.current);
     setActiveTab(i);
   };
+
+  const activeFeature = featureTabs[activeTab];
+  const activeVariant = getSlideVariant(activeFeature.customSlide);
 
   /** Render tab title — highlights speedup value in green when found inside slideTitle */
   const renderTitle = (tab: (typeof featureTabs)[number]) => {
@@ -262,7 +296,7 @@ export function EfficiencySection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  {renderTitle(featureTabs[activeTab])}
+                  {renderTitle(activeFeature)}
                 </motion.p>
                 <motion.p
                   className="font-['Figtree',sans-serif] font-light text-[#333] text-[14px] md:text-base leading-[21px] mt-3 opacity-80 max-w-[320px] md:max-w-[403px]"
@@ -270,7 +304,7 @@ export function EfficiencySection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  {featureTabs[activeTab].slideDescription || featureTabs[activeTab].description}
+                  {activeFeature.slideDescription || activeFeature.description}
                 </motion.p>
               </motion.div>
             </AnimatePresence>
@@ -278,18 +312,13 @@ export function EfficiencySection() {
               <motion.div
                 key={`slide-m-${activeTab}`}
                 className="absolute"
-                style={{
-                  left: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide === "character" ? "0" : featureTabs[activeTab].customSlide === true ? "0" : featureTabs[activeTab].customSlide ? "10%" : "15%",
-                  top: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "42%" : featureTabs[activeTab].customSlide === "character" ? "36%" : featureTabs[activeTab].customSlide === true ? "34%" : featureTabs[activeTab].customSlide ? "45%" : "38%",
-                  width: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "100%" : featureTabs[activeTab].customSlide === "character" ? "100%" : featureTabs[activeTab].customSlide === true ? "100%" : featureTabs[activeTab].customSlide ? "90%" : "85%",
-                  height: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "58%" : featureTabs[activeTab].customSlide === "character" ? "64%" : featureTabs[activeTab].customSlide === true ? "62%" : featureTabs[activeTab].customSlide ? "60%" : "65%",
-                }}
+                style={MOBILE_SLIDE_CONTAINER_STYLE[activeVariant]}
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                {featureTabs[activeTab].customSlide === "3d" ? (
+                {activeVariant === "3d" ? (
                   /* 3D Renderings: cascading cards (mobile) */
                   <>
                     <div className="absolute right-0 top-[10%] w-[55%] h-[85%]">
@@ -337,28 +366,28 @@ export function EfficiencySection() {
                       </div>
                     </div>
                   </>
-                ) : featureTabs[activeTab].customSlide === "design" ? (
+                ) : activeVariant === "design" ? (
                   /* Book mockups composite image (mobile) */
                   <img
                     alt="Professional design book mockups"
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                     src={imgDesignBooks}
                   />
-                ) : featureTabs[activeTab].customSlide === "character" ? (
+                ) : activeVariant === "character" ? (
                   /* Character generation storyboard flow (mobile) */
                   <img
                     alt="Character generation workflow board"
                     className="absolute inset-0 w-[70px] h-auto object-cover object-bottom pointer-events-none"
                     src={imgCharacterFlow}
                   />
-                ) : featureTabs[activeTab].customSlide === true ? (
+                ) : activeVariant === "product" ? (
                   /* Product photography board (mobile) */
                   <img
                     alt="From weeks to hours product photography workflow"
                     className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none"
                     src={imgProductWeeksToHours}
                   />
-                ) : featureTabs[activeTab].customSlide ? (
+                ) : activeVariant === "custom" ? (
                   <div className="absolute inset-0 flex gap-[6px]">
                     <div className="flex-1 bg-black rounded-[4px] overflow-hidden relative">
                       <img
@@ -387,7 +416,7 @@ export function EfficiencySection() {
                   </div>
                 ) : (
                   <img
-                    alt={`AI workflow: ${featureTabs[activeTab].label}`}
+                    alt={`AI workflow: ${activeFeature.label}`}
                     className="w-full h-full object-cover object-center pointer-events-none rounded-tl-[8px]"
                     src={slideImages[activeTab]}
                   />
@@ -461,7 +490,7 @@ export function EfficiencySection() {
               <motion.div
                 key={`text-d-${activeTab}`}
                 className={`absolute z-10 ${
-                  featureTabs[activeTab].customSlide === true
+                  activeVariant === "product"
                     ? "left-[45px] top-[45px] max-w-[435px]"
                     : "left-16 top-14 max-w-[460px]"
                 }`}
@@ -476,11 +505,11 @@ export function EfficiencySection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  {renderTitle(featureTabs[activeTab])}
+                  {renderTitle(activeFeature)}
                 </motion.p>
                 <motion.p
                   className={`font-['Figtree',sans-serif] font-light text-[#333] text-[16px] leading-[21px] mt-3 opacity-80 ${
-                    featureTabs[activeTab].customSlide === true
+                    activeVariant === "product"
                       ? "max-w-[435px]"
                       : "max-w-[409px]"
                   }`}
@@ -488,7 +517,7 @@ export function EfficiencySection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  {featureTabs[activeTab].slideDescription || featureTabs[activeTab].description}
+                  {activeFeature.slideDescription || activeFeature.description}
                 </motion.p>
               </motion.div>
             </AnimatePresence>
@@ -498,20 +527,13 @@ export function EfficiencySection() {
               <motion.div
                 key={`slide-d-${activeTab}`}
                 className="absolute"
-                style={{
-                  left: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide === "character" ? "0" : featureTabs[activeTab].customSlide === true ? "0" : featureTabs[activeTab].customSlide ? "10%" : "40%",
-                  right: featureTabs[activeTab].customSlide === true ? "18px" : undefined,
-                  top: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide === "character" ? "0" : featureTabs[activeTab].customSlide === true ? "0" : featureTabs[activeTab].customSlide ? "45%" : "0",
-                  bottom: featureTabs[activeTab].customSlide === true ? "15px" : undefined,
-                  width: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "100%" : featureTabs[activeTab].customSlide === "character" ? "100%" : featureTabs[activeTab].customSlide === true ? "749px" : featureTabs[activeTab].customSlide ? "90%" : "60%",
-                  height: featureTabs[activeTab].customSlide === true ? "277px" : "100%",
-                }}
+                style={DESKTOP_SLIDE_CONTAINER_STYLE[activeVariant]}
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                {featureTabs[activeTab].customSlide === "3d" ? (
+                {activeVariant === "3d" ? (
                   /* 3D Renderings: cascading VR character cards + workflow timeline */
                   <>
                     {/* Cascading 3D render cards — right side */}
@@ -576,28 +598,28 @@ export function EfficiencySection() {
                       </div>
                     </div>
                   </>
-                ) : featureTabs[activeTab].customSlide === "design" ? (
+                ) : activeVariant === "design" ? (
                   /* Book mockups composite image (desktop) */
                   <img
                     alt="Professional design book mockups"
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                     src={imgDesignBooks}
                   />
-                ) : featureTabs[activeTab].customSlide === "character" ? (
+                ) : activeVariant === "character" ? (
                   /* Character generation storyboard flow (desktop) */
                   <img
                     alt="Character generation workflow board"
                     className="absolute right-0 bottom-[2%] w-[89%] h-[96%] object-cover object-right-bottom pointer-events-none"
                     src={imgCharacterFlow}
                   />
-                ) : featureTabs[activeTab].customSlide === true ? (
+                ) : activeVariant === "product" ? (
                   /* Product photography board (desktop) */
                   <img
                     alt="From weeks to hours product photography workflow"
                     className="absolute right-[28px] bottom-[20px] w-[calc(100%-56px)] h-[351px] object-cover object-center pointer-events-none"
                     src={imgProductWeeksToHours}
                   />
-                ) : featureTabs[activeTab].customSlide ? (
+                ) : activeVariant === "custom" ? (
                   /* Custom Figma layout for Product photography: main dark area + side thumbnails */
                   <div className="absolute inset-0 flex gap-[8px]">
                     {/* Main dark workflow image */}
@@ -635,7 +657,7 @@ export function EfficiencySection() {
                   </div>
                 ) : (
                   <img
-                    alt={`AI workflow: ${featureTabs[activeTab].label}`}
+                    alt={`AI workflow: ${activeFeature.label}`}
                     className="w-full h-full object-cover object-center pointer-events-none"
                     src={slideImages[activeTab]}
                   />

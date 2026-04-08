@@ -6,6 +6,7 @@ import {
   useState,
   useCallback,
 } from "react";
+import Image from "next/image";
 
 /**
  * Card-Stacking Section
@@ -29,6 +30,7 @@ import {
 const serviceDetails = [
   {
     title: "Visual Branding",
+    image: "/images/service%20images%20/Visual%20Branding.png",
     subtitle:
       "We craft visuals that resonate emotionally and make your brand unforgettable.",
     items: [
@@ -39,6 +41,7 @@ const serviceDetails = [
   },
   {
     title: "Business Collaterals",
+    image: "/images/service%20images%20/Business%20Collaterals.png",
     subtitle:
       "We create polished business materials like business cards, brochures, and presentations that make your brand look credible and trustworthy.",
     items: [
@@ -49,6 +52,7 @@ const serviceDetails = [
   },
   {
     title: "Product Design",
+    image: "/images/service%20images%20/Product%20Design.png",
     subtitle:
       "We design easy-to-use digital products (like apps, websites, or custom software) that work flawlessly for your customers and help your business grow.",
     items: [
@@ -59,6 +63,7 @@ const serviceDetails = [
   },
   {
     title: "Motion Graphics",
+    image: "/images/service%20images%20/Motion%20Design.png",
     subtitle:
       "We bring your ideas to life with engaging animations from explainer videos to social media clips that capture attention and tell your story clearly to your audience.",
     items: [
@@ -69,6 +74,7 @@ const serviceDetails = [
   },
   {
     title: "Marketing Collateral",
+    image: "/images/service%20images%20/Marketing%20Collateral.png",
     subtitle:
       "We transform your brand with clear marketing materials like brochures and digital assets that make your business look trustworthy and easy to talk to.",
     items: [
@@ -284,10 +290,18 @@ export function ServiceDetailCards() {
                       </div>
                     </div>
 
-                    {/* Gray placeholder block — no image */}
+                    {/* Service image */}
                     <div
                       className="w-full lg:w-[560.576px] lg:shrink-0 lg:flex-1 aspect-square lg:aspect-auto rounded-[10px] overflow-hidden relative bg-[#e7e7e7]"
-                    />
+                    >
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        width={520}
+                        height={360}
+                        className="absolute bottom-0 right-0 object-cover pointer-events-none"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

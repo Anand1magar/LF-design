@@ -31,7 +31,7 @@ export const portfolioItems: PortfolioItem[] = [
     year: "2024",
     category: "HEALTHCARE",
     description:
-      "SecondLook Health provides second-opinion diagnostics powered by expert radiologists and AI. We redesigned their entire patient-facing experience — from scan upload to results delivery — and built a comprehensive medical case management dashboard that brings clarity, calm, and trust to every step.",
+      "SecondLook Health provides second-opinion diagnostics powered by expert radiologists and AI. We redesigned their entire patient-facing experience — from scan upload to results delivery — and built a calmer, clearer journey that creates trust at every step.",
     image: "/portfolio/secondlook-health-new.png",
     brandColor: "#384393",
     client: "SecondLook Health Corp.",
@@ -67,9 +67,9 @@ export const portfolioItems: PortfolioItem[] = [
     slug: "antaranga-ai",
     tagline: "Mental health reimagined through AI",
     year: "2024",
-    category: "HEALTH \u00B7 AI",
+    category: "HEALTH · AI",
     description:
-      "Antaranga.ai needed a product that could bridge the gap between AI-driven mental health screening and human empathy. We designed and shipped a full platform \u2014 from onboarding to clinical dashboards \u2014 that felt approachable to patients and powerful for clinicians.",
+      "Antaranga.ai needed a product that could bridge the gap between AI-driven mental health screening and human empathy. We designed and shipped a full platform — from onboarding to clinical dashboards — that felt approachable to patients and powerful for clinicians.",
     image: "/portfolio/antaranga-ai.png",
     brandColor: "#c45e14",
     client: "Antaranga Health Pvt. Ltd.",
@@ -92,89 +92,88 @@ export const portfolioItems: PortfolioItem[] = [
     aboutHeadline:
       "Antaranga.ai approached us with a complex brief: build a mental health platform powered by AI that never feels cold or impersonal. The screening needed to be clinically rigorous, but the experience had to feel like a conversation with someone who cares.",
     aboutDescription:
-      "We designed two interconnected experiences \u2014 a calming patient interface that uses conversational AI to guide assessments naturally, and a powerful clinical dashboard that gives practitioners real-time insights. Every micro-interaction was crafted to reduce stigma and build trust.",
+      "We designed two interconnected experiences — a calming patient interface that uses conversational AI to guide assessments naturally, and a powerful clinical dashboard that gives practitioners real-time insights. Every micro-interaction was crafted to reduce stigma and build trust.",
     challengeHeadline:
       "The challenge was to leverage AI for clinical accuracy while maintaining the emotional warmth and trust that mental health care demands.",
     summaryHeadline:
-      "The result is a platform that proves technology and empathy can coexist \u2014 giving patients confidence and clinicians clarity.",
+      "The result is a platform that proves technology and empathy can coexist — giving patients confidence and clinicians clarity.",
     summaryDescription:
       "Antaranga.ai now operates across 12 clinics with a 92% patient satisfaction score. The dual-experience approach has become a model for how health-tech platforms can balance precision with compassion, reducing drop-off rates by 45%.",
   },
-
   {
     name: "Frogtoberfest",
     slug: "frogtoberfest",
-    tagline: "Premium content, seamlessly delivered",
+    tagline: "A playful festival brand built to move",
     year: "2025",
-    category: "ENTERTAINMENT",
+    category: "EVENT BRANDING",
     description:
-      "StreamVault was entering a saturated market and needed a distinctive edge. We crafted a visual identity and interface system that feels cinematic \u2014 dark, immersive, and effortlessly navigable \u2014 helping them stand out in a sea of sameness with a truly premium streaming experience.",
+      "Frogtoberfest needed an identity that could feel instantly memorable across posters, social teasers, motion assets, and on-ground festival touchpoints. We built a bold, character-led brand system that feels playful, energetic, and unmistakably ownable.",
     image: "/portfolio/frogtoberfest.png",
     brandColor: "#6c5ce7",
     client: "Frogtoberfest",
     role: "Brand Identity, UI/UX Design, Motion Design",
     duration: "4 months",
     challenge:
-      "In a market dominated by Netflix, Disney+, and others, StreamVault needed to carve out a premium niche. The challenge was to create an interface that felt cinematic and immersive without sacrificing usability or content discoverability.",
+      "The festival needed to stand out in a crowded cultural calendar while staying flexible enough to work across digital campaigns, venue signage, merchandise, and motion-led promotion.",
     solution:
-      "We developed a dark, cinematic design language with rich motion design, intelligent content surfacing, and a typography system that adapts to content mood. The result is an experience that feels like stepping into a theater \u2014 every frame carefully composed.",
+      "We created a high-energy visual system centered around a distinctive mascot, expressive typography, punchy motion, and a modular layout language. The system scales smoothly from launch posters and social reels to stage graphics and event wayfinding.",
     results: [
-      "28% higher session duration vs. industry average",
-      "52% increase in content discovery",
-      "Award-winning interface design",
-      "Seamless experience across 6 platforms",
+      "3.1x increase in social campaign engagement",
+      "Cohesive identity across digital and physical touchpoints",
+      "Launch assets delivered for print, motion, and web",
+      "Festival brand system ready for future yearly editions",
     ],
     tags: ["Brand Identity", "Motion Design"],
-    heroTitle: "Premium streaming\nwith cinematic soul",
+    heroTitle: "A festival identity\nwith personality and momentum",
     heroDescription:
-      "Crafting a visual identity and interface system that feels like stepping into a theater \u2014 dark, immersive, and effortlessly navigable.",
+      "Designing a bold event brand that turns every poster, teaser, and touchpoint into part of the Frogtoberfest experience.",
     aboutHeadline:
-      "StreamVault was entering one of the most competitive markets in tech. With established giants dominating mindshare, the platform needed more than great content \u2014 it needed an experience that felt fundamentally different.",
+      "Frogtoberfest needed more than a logo. It needed a living identity that could create excitement before the event, guide visitors during it, and stay memorable long after it ended.",
     aboutDescription:
-      "We developed a cinematic design language built on darkness, depth, and deliberate motion. Every interaction \u2014 from browsing to playback \u2014 was crafted to feel immersive. The typography system adapts to content mood, and intelligent surfacing ensures discovery feels effortless, not algorithmic.",
+      "We built the brand around a playful-but-premium visual voice: energetic typography, flexible composition rules, and a strong motion language that made every rollout asset feel connected. The result was a system that felt fun, modern, and scalable.",
     challengeHeadline:
-      "The challenge was to create an interface that feels cinematic and premium without sacrificing the usability and discoverability that streaming demands.",
+      "The challenge was to create an event identity vibrant enough to grab attention instantly, but structured enough to stay consistent across every medium.",
     summaryHeadline:
-      "The result is a streaming platform that doesn't just deliver content \u2014 it creates an atmosphere that keeps users coming back.",
+      "The result is a festival brand that feels alive in motion, distinctive in print, and instantly recognizable wherever it appears.",
     summaryDescription:
-      "Frogtoberfest launched to critical acclaim with 28% higher session durations than the industry average. The cinematic design language has become the brand's signature, proving that premium aesthetics and usability can coexist in streaming.",
+      "Frogtoberfest launched with a cohesive identity system that gave the event a strong visual presence across every audience touchpoint. From hype-building social content to on-site graphics, the brand now feels consistent, memorable, and ready to grow year after year.",
   },
   {
     name: "Minimeals",
     slug: "minimeals",
-    tagline: "Premium content, seamlessly delivered",
+    tagline: "Healthy meals made simple for modern families",
     year: "2025",
-    category: "ENTERTAINMENT",
+    category: "FOOD · WELLNESS",
     description:
-      "Minimeals was entering a saturated market and needed a distinctive edge. We crafted a visual identity and interface system that feels cinematic — dark, immersive, and effortlessly navigable — helping them stand out in a sea of sameness with a truly premium streaming experience.",
+      "Minimeals needed a brand and digital experience that made nutritious kids' meals feel convenient, trustworthy, and genuinely joyful. We designed a warm identity system and frictionless ordering flow tailored for busy parents.",
     image: "/portfolio/minimeals.png",
-    brandColor: "#6c5ce7",
+    brandColor: "#f08d49",
     client: "Minimeals",
     role: "Brand Identity, UI/UX Design, Motion Design",
     duration: "4 months",
     challenge:
-      "In a market dominated by Netflix, Disney+, and others, Minimeals needed to carve out a premium niche. The challenge was to create an interface that felt cinematic and immersive without sacrificing usability or content discoverability.",
+      "Parents needed to understand nutrition, choose meals quickly, and trust the product quality at a glance. The challenge was balancing playful branding with the clarity and reassurance required for a family-focused food product.",
     solution:
-      "We developed a dark, cinematic design language with rich motion design, intelligent content surfacing, and a typography system that adapts to content mood. The result is an experience that feels like stepping into a theater — every frame carefully composed.",
+      "We built a bright, friendly brand system supported by easy-to-scan packaging cues, a simple subscription experience, and clear nutritional messaging. Every touchpoint was designed to reduce decision fatigue and build parent confidence.",
     results: [
-      "28% higher session duration vs. industry average",
-      "52% increase in content discovery",
-      "Award-winning interface design",
-      "Seamless experience across 6 platforms",
+      "41% faster first-order completion",
+      "Improved trust through clearer nutrition communication",
+      "Consistent brand rollout across packaging and digital",
+      "Subscription journey optimized for repeat orders",
     ],
     tags: ["Brand Identity", "Motion Design"],
-    heroTitle: "Premium streaming\nwith cinematic soul",
+    heroTitle: "A family-first food brand\nthat feels easy and joyful",
     heroDescription:
-      "Crafting a visual identity and interface system that feels like stepping into a theater — dark, immersive, and effortlessly navigable.",
+      "Creating a warm, trusted brand and ordering experience that helps parents choose nutritious meals without the usual friction.",
     aboutHeadline:
-      "Minimeals was entering one of the most competitive markets in tech. With established giants dominating mindshare, the platform needed more than great content — it needed an experience that felt fundamentally different.",
+      "Minimeals was built for parents who want better meal options for their children but don't have time to decode complicated nutrition labels or confusing subscription flows.",
     aboutDescription:
-      "We developed a cinematic design language built on darkness, depth, and deliberate motion. Every interaction — from browsing to playback — was crafted to feel immersive. The typography system adapts to content mood, and intelligent surfacing ensures discovery feels effortless, not algorithmic.",
+      "We translated that need into a product experience built on warmth, clarity, and speed. The visual identity feels upbeat and modern, while the ordering journey simplifies choice architecture so families can decide with confidence in just a few steps.",
     challengeHeadline:
-      "The challenge was to create an interface that feels cinematic and premium without sacrificing the usability and discoverability that streaming demands.",
+      "The challenge was to make a health-conscious product feel simple and delightful while keeping every decision point clear for busy families.",
     summaryHeadline:
-      "The result is a streaming platform that doesn't just deliver content — it creates an atmosphere that keeps users coming back.",
+      "The result is a food brand experience that feels both trustworthy and cheerful — helping Minimeals stand out in a crowded wellness market.",
     summaryDescription:
-      "Minimeals launched to critical acclaim with 28% higher session durations than the industry average. The cinematic design language has become the brand's signature, proving that premium aesthetics and usability can coexist in streaming.",
+      "Minimeals now has a cohesive identity and digital journey that support both first-time conversion and repeat ordering. The brand feels approachable for children, dependable for parents, and flexible enough to grow across new product lines.",
   },
 ];

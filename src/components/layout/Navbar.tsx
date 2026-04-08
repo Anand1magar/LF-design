@@ -5,6 +5,28 @@ import { motion, AnimatePresence } from "motion/react";
 import { useRouter, usePathname } from "next/navigation";
 import svgPaths from "@/imports/svg-gkhfmtllfb";
 
+// Fallback Contact button component
+function SlideInButton({ buttonText, link, ...props }: any) {
+  const router = useRouter();
+  const handleClick = () => {
+    if (link.startsWith("#")) {
+      const element = document.querySelector(link);
+      element?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push(link);
+    }
+  };
+  
+  return (
+    <button
+      onClick={handleClick}
+      className="h-[36px] rounded-full bg-white px-6 font-['Figtree',sans-serif] font-medium text-[14px] leading-[20px] tracking-[-0.35px] text-black cursor-pointer transition-all hover:shadow-lg"
+    >
+      {buttonText}
+    </button>
+  );
+}
+
 function Logo({ variant = "light" }: { variant?: "light" | "dark" }) {
   const fill = variant === "light" ? "white" : "#1a1a1a";
   return (
@@ -129,12 +151,15 @@ export function Navbar() {
               ))}
             </div>
 
-            <button
-              onClick={handleContact}
-              className="h-[36px] rounded-full bg-white px-6 font-['Figtree',sans-serif] font-medium text-[14px] leading-[20px] tracking-[-0.35px] text-black cursor-pointer"
-            >
-              Contact
-            </button>
+              <SlideInButton
+                buttonText="Contact"
+                link="#contact"
+                variant="IeybCO5OV"
+                defaultTextColor="rgb(0, 0, 0)"
+                defaultBackgroundColor="rgb(255, 255, 255)"
+                hoverTextColor="rgb(255, 255, 255)"
+                hoverBackgroundColor="rgb(0, 85, 255)"
+              />
           </div>
 
           <div className="md:hidden flex items-center justify-between">

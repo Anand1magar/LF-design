@@ -23,13 +23,33 @@ const fadeIn = (delay: number = 0) => ({
 
 /* ─── Gallery placeholder images ─── */
 const projectGallery: Record<string, string[]> = {
+  "antaranga-ai": [
+    "/portfolio/antaranga details images/antaranga01.png",
+    "/portfolio/antaranga details images/antaranga02.png",
+    "/portfolio/antaranga details images/antaranga03.png",
+    "/portfolio/antaranga details images/antaranga04.png",
+    "/portfolio/antaranga details images/antaranga05.png",
+  ],
+  frogtoberfest: [
+    "/portfolio/frogtoger_details_image/frogtober_fest01.png",
+    "/portfolio/frogtoger_details_image/frogtober_fest02.png",
+    "/portfolio/frogtoger_details_image/frogtober_fest03.png",
+    "/portfolio/frogtoger_details_image/frogtober_fest04.png",
+    "/portfolio/frogtoger_details_image/frogtober_fest05.png",
+    "/portfolio/frogtoger_details_image/frogtober_fest06.png",
+  ],
+  minimeals: [
+    "/portfolio/mini%20meal%20details%20images%20/mini%20meals01.png",
+    "/portfolio/mini%20meal%20details%20images%20/mini%20meals02.png",
+    "/portfolio/mini%20meal%20details%20images%20/mini%20meals03.png",
+    "/portfolio/mini%20meal%20details%20images%20/mini%20meals04.png",
+    "/portfolio/mini%20meal%20details%20images%20/mini%20meals05.png",
+  ],
   "second-look-health": [
-    "https://images.unsplash.com/photo-1666214280391-c9ef08d09da8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1593824261342-fd6ee146f73d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1758691463203-cce9d415b2b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1758691463333-c79215e8bc3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1635585558406-23471c000853?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    "https://images.unsplash.com/photo-1584555613497-9ecf9dd06f68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "/portfolio/secondLook%20details%20images%20/second_look01.png",
+    "/portfolio/secondLook%20details%20images%20/second_look02.png",
+    "/portfolio/secondLook%20details%20images%20/second_look03.png",
+    "/portfolio/secondLook%20details%20images%20/second_look04.png",
   ],
   streamvault: [
     "https://images.unsplash.com/photo-1761502479994-3a5e07ec243e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
@@ -51,7 +71,7 @@ export function ProjectDetailPage({ project, slug }: Props) {
   const otherProjects = portfolioItems
     .filter((p) => p.slug !== slug)
     .slice(0, 3);
-  const gallery = projectGallery[slug] || [];
+  const gallery = projectGallery[slug] || (project.image ? [project.image] : []);
 
   return (
     <div className="min-h-screen bg-white">

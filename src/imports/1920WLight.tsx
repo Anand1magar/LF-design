@@ -2735,7 +2735,7 @@ function Description5() {
 function Container74() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Container">
-      <div className="cursor-pointer flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[18px] text-left text-white tracking-[-0.72px] whitespace-nowrap" role="button" tabIndex="0">
+      <div className="cursor-pointer flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[18px] text-left text-white tracking-[-0.72px] whitespace-nowrap" role="button" tabIndex={0}>
         <p className="leading-[25.2px]">Discover more</p>
       </div>
     </div>

@@ -21,6 +21,21 @@ const fadeIn = (delay: number = 0) => ({
 
 /* ─── Gallery placeholder images (6 per project for the scrollable column) ─── */
 const projectGallery: Record<string, string[]> = {
+  frogtoberfest: [
+    "/portfolio/frogtoger_details_image/frogtober_fest01.png",
+    "/portfolio/frogtoger_details_image/frogtober_fest02.png",
+    "/portfolio/frogtoger_details_image/frogtober_fest03.png",
+    "/portfolio/frogtoger_details_image/frogtober_fest04.png",
+    "/portfolio/frogtoger_details_image/frogtober_fest05.png",
+    "/portfolio/frogtoger_details_image/frogtober_fest06.png",
+  ],
+  minimeals: [
+    "/portfolio/mini%20meal%20details%20images%20/mini%20meals01.png",
+    "/portfolio/mini%20meal%20details%20images%20/mini%20meals02.png",
+    "/portfolio/mini%20meal%20details%20images%20/mini%20meals03.png",
+    "/portfolio/mini%20meal%20details%20images%20/mini%20meals04.png",
+    "/portfolio/mini%20meal%20details%20images%20/mini%20meals05.png",
+  ],
   tripadvisor: [
     "https://images.unsplash.com/photo-1678955084335-0546d6e1a4a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cmF2ZWwlMjBhcHAlMjBtb2JpbGUlMjBpbnRlcmZhY2UlMjBkZXNpZ258ZW58MXx8fHwxNzczMjAzMjczfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     "https://images.unsplash.com/photo-1768486173251-95f16f855830?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cm9waWNhbCUyMGRlc3RpbmF0aW9uJTIwYmVhY2glMjByZXNvcnR8ZW58MXx8fHwxNzczMjAzMjczfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
@@ -30,20 +45,17 @@ const projectGallery: Record<string, string[]> = {
     "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGx1eHVyeSUyMGludGVyaW9yJTIwbG9iYnl8ZW58MXx8fHwxNzczMjAzMjc0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   ],
   "antaranga-ai": [
-    "https://images.unsplash.com/photo-1758274526584-7f42956db4b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZW50YWwlMjBoZWFsdGglMjB0aGVyYXB5JTIwY2FsbSUyMG1lZGl0YXRpb258ZW58MXx8fHwxNzczMjAzMjc1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1770169272345-9636d5ef2681?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxBSSUyMHRlY2hub2xvZ3klMjBuZXVyYWwlMjBuZXR3b3JrJTIwYWJzdHJhY3R8ZW58MXx8fHwxNzczMTYzNDUwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1758800624783-1b0ac07ae4fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWxsbmVzcyUyMG1pbmRmdWxuZXNzJTIwcGVhY2VmdWwlMjBuYXR1cmV8ZW58MXx8fHwxNzczMjAzMjc2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1767449441925-737379bc2c4d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGhjYXJlJTIwZGFzaGJvYXJkJTIwZGlnaXRhbCUyMHNjcmVlbnxlbnwxfHx8fDE3NzMyMDMyNzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1758691463084-17ed846d4a50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXRpZW50JTIwZG9jdG9yJTIwY29uc3VsdGF0aW9uJTIwZW1wYXRoeXxlbnwxfHx8fDE3NzMyMDMyNzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1559117660-e81af52c0a50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFpbiUyMHBzeWNob2xvZ3klMjBhYnN0cmFjdCUyMGNvbG9yZnVsfGVufDF8fHx8MTc3MzIwMzI3N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    "/portfolio/antaranga details images/antaranga01.png",
+    "/portfolio/antaranga details images/antaranga02.png",
+    "/portfolio/antaranga details images/antaranga03.png",
+    "/portfolio/antaranga details images/antaranga04.png",
+    "/portfolio/antaranga details images/antaranga05.png",
   ],
   "second-look-health": [
-    "https://images.unsplash.com/photo-1666214280391-c9ef08d09da8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwcmFkaW9sb2d5JTIwc2NhbiUyMGRpYWdub3N0aWN8ZW58MXx8fHwxNzczMjAzMjc4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1593824261342-fd6ee146f73d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3NwaXRhbCUyMG1vZGVybiUyMGFyY2hpdGVjdHVyZSUyMGNsZWFufGVufDF8fHx8MTc3MzIwMzI3OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1758691463203-cce9d415b2b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwdGVjaG5vbG9neSUyMHN0ZXRob3Njb3BlJTIwdGFibGV0fGVufDF8fHx8MTc3MzIwMzI3OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1758691463333-c79215e8bc3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGhjYXJlJTIwcHJvZmVzc2lvbmFsJTIwbGFiJTIwY29hdHxlbnwxfHx8fDE3NzMyMDMyNzl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1635585558406-23471c000853?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXRpZW50JTIwaGVhbHRoJTIwY2hlY2t1cCUyMGNsaW5pY2FsfGVufDF8fHx8MTc3MzIwMzI4MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    "https://images.unsplash.com/photo-1584555613497-9ecf9dd06f68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwaW1hZ2luZyUyMHhyYXklMjByZXN1bHRzfGVufDF8fHx8MTc3MzIwMzI4MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    "/portfolio/secondLook%20details%20images%20/second_look01.png",
+    "/portfolio/secondLook%20details%20images%20/second_look02.png",
+    "/portfolio/secondLook%20details%20images%20/second_look03.png",
+    "/portfolio/secondLook%20details%20images%20/second_look04.png",
   ],
   streamvault: [
     "https://images.unsplash.com/photo-1761502479994-3a5e07ec243e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaW5lbWElMjBkYXJrJTIwdGhlYXRlciUyMHNjcmVlbnxlbnwxfHx8fDE3NzMyMDMyODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
@@ -84,7 +96,7 @@ export function ProjectDetail() {
     .filter((p) => p.slug !== slug)
     .slice(0, 3);
 
-  const gallery = projectGallery[slug || ""] || [];
+  const gallery = projectGallery[slug || ""] || (project.image ? [project.image] : []);
 
   return (
     <div className="min-h-screen bg-white">

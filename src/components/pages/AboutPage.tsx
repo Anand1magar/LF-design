@@ -9,11 +9,11 @@ import imgGeminiTeam from "figma:asset/992614c01d1eceb6d9e290868cb625302c323f1f.
 // import imgTest3 from "figma:asset/091141f21c75218ecd91e4991bd101b8dcc547a5.png";
 // import imgTest4 from "figma:asset/091141f21c75218ecd91e4991bd101b8dcc547a5.png";
 
-import imgTest1 from "src/assets/about/Saira_edited.png";
-import imgTest2 from "src/assets/about/sid_closeup_stillgrab.png";
-import imgTest3 from "src/assets/about/Sid_edited.png";
-import imgTest4 from "src/assets/about/Anand.png";
-import imgTest5 from "src/assets/about/enhanced.png";
+import imgTest1 from "@/assets/about/Saira_edited.png";
+import imgTest2 from "@/assets/about/sid_closeup_stillgrab.png";
+import imgTest3 from "@/assets/about/Sid_edited.png";
+import imgTest4 from "@/assets/about/Anand.png";
+import imgTest5 from "@/assets/about/enhanced.png";
 
 
 

@@ -16,16 +16,45 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  /* ─── Silence Turbopack / webpack mismatch error in Next 16 ─── */
+  turbopack: {},
+
   /* ─── Webpack config ─── */
   webpack(config) {
-    /* Alias: figma:asset → src/assets */
-    config.resolve = config.resolve || {};
-    config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      "figma:asset": path.join(process.cwd(), "src/assets"),
-    };
+    const assetsDir = path.join(process.cwd(), "src", "assets");
 
-    /* Return plain URL strings for image imports (like Vite).
+    /* ── Rewrite `figma:asset/…` imports to real file paths ──
+       Webpack 5 treats the colon in `figma:asset/hash.png` as a
+       custom URI scheme and refuses to resolve it through
+       `resolve.alias`.  We hook into the module factory BEFORE
+       resolution so the request is rewritten to an absolute path
+       that webpack can handle normally. */
+    config.plugins.push({
+      apply(compiler: any) {
+        compiler.hooks.normalModuleFactory.tap(
+          "RewriteFigmaAsset",
+          (factory: any) => {
+            factory.hooks.beforeResolve.tap(
+              "RewriteFigmaAsset",
+              (resolveData: any) => {
+                if (
+                  resolveData &&
+                  resolveData.request &&
+                  resolveData.request.startsWith("figma:asset/")
+                ) {
+                  resolveData.request = resolveData.request.replace(
+                    "figma:asset/",
+                    assetsDir + "/"
+                  );
+                }
+              }
+            );
+          }
+        );
+      },
+    });
+
+    /* ── Return plain URL strings for image imports (like Vite) ──
        Next.js wraps rules in a { oneOf: [...] } — we must prepend
        our rule inside that oneOf so it matches BEFORE the built-in
        image handlers. */

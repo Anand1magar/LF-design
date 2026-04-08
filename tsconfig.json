@@ -43,6 +43,19 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/imports",
+    "src/app/App.tsx",
+    "src/app/pages",
+    "src/app/components",
+    "src/app/data",
+    "src/app/hooks",
+    "src/app_next",
+    "src/main.tsx",
+    "src/vite-env.d.ts",
+    "src/styles",
+    "vite.config.ts",
+    "tsconfig.node.json",
+    "index.html"
   ]
 }
