@@ -259,8 +259,8 @@ export function ServiceDetailCards() {
                   <div
                     className="flex flex-col lg:flex-row lg:items-stretch gap-[32px] md:gap-[34px] lg:gap-[45px] px-[22px] pt-[37px] pb-[22px] md:p-[22px] h-full"
                   >
-                    {/* Title + Subtitle + Items */}
-                    <div className="flex w-full flex-col gap-[30px] max-w-none md:max-w-[304px] lg:max-w-none lg:gap-[47.693px] lg:w-[560.576px] lg:pl-[70px] lg:pr-[70px] lg:justify-center">
+                    {/* Title + Subtitle + Items — equal half */}
+                    <div className="flex w-full flex-col gap-[30px] lg:flex-1 lg:gap-[47.693px] lg:pl-[70px] lg:pr-[70px] lg:justify-center">
                       {/* Title block */}
                       <div className="flex flex-col gap-[18.9px]">
                         <h3 className="font-['Figtree',sans-serif] text-[#1a1a1a] leading-[1.05] lg:leading-[47.693px] tracking-[-1px] font-normal text-[32px] md:text-[40px] lg:text-[48px]">
@@ -290,16 +290,16 @@ export function ServiceDetailCards() {
                       </div>
                     </div>
 
-                    {/* Service image */}
+                    {/* Service image — square on mobile/tablet, fills card height on desktop */}
                     <div
-                      className="w-full lg:w-[560.576px] lg:shrink-0 lg:flex-1 aspect-square lg:aspect-auto rounded-[10px] overflow-hidden relative bg-[#e7e7e7]"
+                      className="w-full lg:flex-1 aspect-square lg:aspect-auto rounded-[10px] overflow-hidden relative bg-[#e7e7e7]"
                     >
                       <Image
                         src={service.image}
                         alt={service.title}
-                        width={520}
-                        height={360}
-                        className="absolute bottom-0 right-0 object-cover pointer-events-none"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover pointer-events-none"
                       />
                     </div>
                   </div>
