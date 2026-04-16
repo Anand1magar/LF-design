@@ -202,15 +202,6 @@ function MascotCard() {
           <p>The 3-week MVP sprint</p>
         </div>
 
-        <button className="flex items-center gap-2 text-white font-['Figtree',sans-serif] font-medium text-[16px] leading-6"
-          style={{ textShadow: "0 0 4px rgba(0,0,0,0.25)" }}
-        >
-          See case study
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d={svgPaths.p154e6c80} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.33333" />
-            <path d={svgPaths.p22879fc0} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.33333" />
-          </svg>
-        </button>
       </div>
     </motion.div>
   );

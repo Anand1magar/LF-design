@@ -16,6 +16,17 @@
   scrollbar-width: none;
 }
 
+/* ─── LF Studio Brand Tokens ─── */
+:root {
+  --lf-cream: #fffcf8;
+  --lf-green: #79b231;
+  --lf-green-dark: #086600;
+  --lf-ink: #030213;
+  --lf-ink-60: rgba(3, 2, 19, 0.6);
+  --lf-ink-30: rgba(3, 2, 19, 0.3);
+  --lf-white: #ffffff;
+}
+
 /* ─── CSS Custom Properties (Light) ─── */
 :root {
   --font-size: 16px;
@@ -136,6 +147,16 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ─── LF Studio brand colour tokens as Tailwind utilities ─── */
+  --color-lf-cream: var(--lf-cream);
+  --color-lf-green: var(--lf-green);
+  --color-lf-green-dark: var(--lf-green-dark);
+  --color-lf-ink: var(--lf-ink);
+
+  /* ─── Font family tokens ─── */
+  --font-sans: var(--font-figtree), sans-serif;
+  --font-display: var(--font-syne), sans-serif;
 }
 
 /* ─── Base layer ─── */

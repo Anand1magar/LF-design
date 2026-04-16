@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import svgPaths from "@/imports/svg-gkhfmtllfb";
 import iconPaths from "@/imports/svg-tscbarbuj1";
 import { useState } from "react";
+import { processStepsData } from "@/data/processData";
 
 /* ───── Inline icon components (from Figma) ───── */
 function UserIcon() {
@@ -85,151 +86,56 @@ function PlusIcon() {
   );
 }
 
-const processSteps = [
-  {
-    icon: "favorite",
-    title: "Empathize",
-    humanDesc: "We capture emotions through interviews.",
-    aiDesc: "AI agents synthesize data for clear reports.",
-    svgContent: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        fill="none"
-      >
-        <mask
-          id="m1"
-          maskUnits="userSpaceOnUse"
-          style={{ maskType: "alpha" as const }}
-          width="28"
-          height="28"
-          x="0"
-          y="0"
-        >
+/** Maps process step IDs to their Figma-sourced SVG icons. */
+function getStepIcon(id: string) {
+  switch (id) {
+    case "empathize": return (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <mask id="m1" maskUnits="userSpaceOnUse" style={{ maskType: "alpha" as const }} width="28" height="28" x="0" y="0">
           <rect fill="#D9D9D9" width="28" height="28" />
         </mask>
-        <g mask="url(#m1)">
-          <path d={svgPaths.p35bab500} fill="#87D032" />
-        </g>
+        <g mask="url(#m1)"><path d={svgPaths.p35bab500} fill="#87D032" /></g>
       </svg>
-    ),
-  },
-  {
-    icon: "search",
-    title: "Define",
-    humanDesc: "We set strategic intent and priority.",
-    aiDesc:
-      "AI tools create HMWs to produce a Value Proposition Canvas.",
-    svgContent: (
-      <svg
-        width="27"
-        height="28"
-        viewBox="0 0 26.8652 28"
-        fill="none"
-      >
+    );
+    case "define": return (
+      <svg width="27" height="28" viewBox="0 0 26.8652 28" fill="none">
         <path d={svgPaths.p18679d80} fill="#87D032" />
       </svg>
-    ),
-  },
-  {
-    icon: "lightbulb",
-    title: "Ideate",
-    humanDesc: "We hold workshops to create solutions.",
-    aiDesc:
-      "AI helps list requirements for a Product Requirement Document.",
-    svgContent: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        fill="none"
-      >
-        <mask
-          id="m3"
-          maskUnits="userSpaceOnUse"
-          style={{ maskType: "alpha" as const }}
-          width="28"
-          height="28"
-          x="0"
-          y="0"
-        >
+    );
+    case "ideate": return (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <mask id="m3" maskUnits="userSpaceOnUse" style={{ maskType: "alpha" as const }} width="28" height="28" x="0" y="0">
           <rect fill="#D9D9D9" width="28" height="28" />
         </mask>
-        <g mask="url(#m3)">
-          <path d={svgPaths.p9ec5bc0} fill="#87D032" />
-        </g>
+        <g mask="url(#m3)"><path d={svgPaths.p9ec5bc0} fill="#87D032" /></g>
       </svg>
-    ),
-  },
-  {
-    icon: "edit",
-    title: "Prototype",
-    humanDesc:
-      "We create prototypes with AI tools to define vision.",
-    aiDesc:
-      "This process produces multiple prototypes for testing.",
-    combinedIcons: true,
-    svgContent: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        fill="none"
-      >
-        <mask
-          id="m4"
-          maskUnits="userSpaceOnUse"
-          style={{ maskType: "alpha" as const }}
-          width="28"
-          height="28"
-          x="0"
-          y="0"
-        >
+    );
+    case "prototype": return (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <mask id="m4" maskUnits="userSpaceOnUse" style={{ maskType: "alpha" as const }} width="28" height="28" x="0" y="0">
           <rect fill="#D9D9D9" width="28" height="28" />
         </mask>
-        <g mask="url(#m4)">
-          <path d={svgPaths.p15eaaff0} fill="#87D032" />
-        </g>
+        <g mask="url(#m4)"><path d={svgPaths.p15eaaff0} fill="#87D032" /></g>
       </svg>
-    ),
-  },
-  {
-    icon: "design",
-    title: "Test",
-    humanDesc: "We conduct usability tests.",
-    aiDesc:
-      "AI tools analyze data to produce a Test & Feedback Report.",
-    svgContent: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        fill="none"
-      >
-        <mask
-          id="m5"
-          maskUnits="userSpaceOnUse"
-          style={{ maskType: "alpha" as const }}
-          width="28"
-          height="28"
-          x="0"
-          y="0"
-        >
+    );
+    case "test": return (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <mask id="m5" maskUnits="userSpaceOnUse" style={{ maskType: "alpha" as const }} width="28" height="28" x="0" y="0">
           <rect fill="#D9D9D9" width="28" height="28" />
         </mask>
-        <g mask="url(#m5)">
-          <path
-            d={svgPaths.p14251b00}
-            fill="#87D032"
-            stroke="white"
-            strokeWidth="0.1"
-          />
-        </g>
+        <g mask="url(#m5)"><path d={svgPaths.p14251b00} fill="#87D032" stroke="white" strokeWidth="0.1" /></g>
       </svg>
-    ),
-  },
-];
+    );
+    default: return null;
+  }
+}
+
+/** Merge text data with icon SVGs at runtime. */
+const processSteps = processStepsData.map((step) => ({
+  ...step,
+  svgContent: getStepIcon(step.id),
+}));
+
 
 export function ProcessSection() {
   return (

@@ -114,6 +114,33 @@ export function HeroSection() {
 	const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 	const isMobileOrTablet = viewport.w < 1024;
 
+	// Also detect actual playback via YouTube postMessage (more reliable than onLoad)
+	useEffect(() => {
+		const handleMessage = (e: MessageEvent) => {
+			if (e.origin !== "https://www.youtube.com") return;
+			try {
+				const d = typeof e.data === "string" ? JSON.parse(e.data) : e.data;
+				// info === 1 means video is actually playing
+				if (d.event === "onStateChange" && d.info === 1) {
+					setVideoReady(true);
+				}
+			} catch {}
+		};
+		window.addEventListener("message", handleMessage);
+		return () => window.removeEventListener("message", handleMessage);
+	}, []);
+
+	// Dismiss the preloader only when BOTH the video is ready AND the intro
+	// has started expanding — so the preloader fades as the hero grows.
+	const preloaderSignalSent = useRef(false);
+	useEffect(() => {
+		if (preloaderSignalSent.current) return;
+		if (videoReady && introProgress > 0) {
+			preloaderSignalSent.current = true;
+			window.dispatchEvent(new CustomEvent("hero-video-ready"));
+		}
+	}, [videoReady, introProgress]);
+
 	useEffect(() => {
 		if (!isVideoModalOpen) return;
 
@@ -133,11 +160,11 @@ export function HeroSection() {
 		};
 	}, [isVideoModalOpen]);
 
-	// Dimensions
+	// Dimensions — initial state matches the GIF preloader card (572×314, r=26)
 	const HERO_HEIGHT_RATIO = 0.6;
-	const INITIAL_W = Math.min(380, viewport.w - 40);
-	const INITIAL_H = Math.min(199, viewport.h * 0.3);
-	const INITIAL_BR = 20;
+	const INITIAL_W = Math.min(572, viewport.w - 40);
+	const INITIAL_H = Math.round(INITIAL_W * (314 / 572));
+	const INITIAL_BR = 26;
 	const TARGET_SIZE = Math.min(viewport.w, viewport.h * HERO_HEIGHT_RATIO);
 	const targetWidth = isMobileOrTablet ? TARGET_SIZE : viewport.w;
 	const targetHeight = isMobileOrTablet ? TARGET_SIZE : viewport.h;

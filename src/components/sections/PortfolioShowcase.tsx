@@ -150,6 +150,7 @@ export function PortfolioShowcase() {
   const snapCfgRef = useRef(snapCfg);
   snapCfgRef.current = snapCfg;
 
+
   useEffect(() => {
     const update = () => {
       const viewportH = window.innerHeight;
@@ -472,7 +473,7 @@ export function PortfolioShowcase() {
       <div className="hidden lg:flex relative">
         {/* Left Sticky Panel — sticks to top while cards scroll by */}
         <div className="w-[35%] sticky top-0 h-screen flex flex-col justify-between px-12 xl:px-20 py-16 xl:py-20 z-10">
-          {/* Top: "Our work" + Portfolio name */}
+          {/* Top: "Portfolio" + Portfolio name */}
           <div className="flex flex-col gap-[8px] pb-[33px] border-b border-[#404040]">
             <motion.p
               initial={{ opacity: 0 }}
@@ -481,7 +482,7 @@ export function PortfolioShowcase() {
               transition={{ duration: 0.6 }}
               className="font-['Figtree',sans-serif] font-light text-[48px] leading-[48px] tracking-[-1.44px] text-white"
             >
-              Our work
+              Portfolio
             </motion.p>
             <div className="min-h-[48px]">
               <AnimatePresence mode="wait">
@@ -571,7 +572,7 @@ export function PortfolioShowcase() {
           transition={{ duration: 0.6 }}
           className="font-['Figtree',sans-serif] text-white/40 text-sm tracking-wide mb-2"
         >
-          Our work
+          Portfolio
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

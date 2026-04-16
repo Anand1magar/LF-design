@@ -7,6 +7,7 @@ import {
   useCallback,
 } from "react";
 import Image from "next/image";
+import { serviceDetails } from "@/data/servicesData";
 
 /**
  * Card-Stacking Section
@@ -26,64 +27,6 @@ import Image from "next/image";
  *     ...
  *   </section>
  */
-
-const serviceDetails = [
-  {
-    title: "Visual Branding",
-    image: "/images/service%20images%20/Visual%20Branding.png",
-    subtitle:
-      "We craft visuals that resonate emotionally and make your brand unforgettable.",
-    items: [
-      "Brand Strategy",
-      "AI Powered Brand Identity Guidelines and Assets",
-      "Web Design and Development",
-    ],
-  },
-  {
-    title: "Business Collaterals",
-    image: "/images/service%20images%20/Business%20Collaterals.png",
-    subtitle:
-      "We create polished business materials like business cards, brochures, and presentations that make your brand look credible and trustworthy.",
-    items: [
-      "Brand Strategy",
-      "AI Powered Brand Identity Guidelines and Assets",
-      "Web Design and Development",
-    ],
-  },
-  {
-    title: "Product Design",
-    image: "/images/service%20images%20/Product%20Design.png",
-    subtitle:
-      "We design easy-to-use digital products (like apps, websites, or custom software) that work flawlessly for your customers and help your business grow.",
-    items: [
-      "Brand Strategy",
-      "AI Powered Brand Identity Guidelines and Assets",
-      "Web Design and Development",
-    ],
-  },
-  {
-    title: "Motion Graphics",
-    image: "/images/service%20images%20/Motion%20Design.png",
-    subtitle:
-      "We bring your ideas to life with engaging animations from explainer videos to social media clips that capture attention and tell your story clearly to your audience.",
-    items: [
-      "Brand Strategy",
-      "AI Powered Brand Identity Guidelines and Assets",
-      "Web Design and Development",
-    ],
-  },
-  {
-    title: "Marketing Collateral",
-    image: "/images/service%20images%20/Marketing%20Collateral.png",
-    subtitle:
-      "We transform your brand with clear marketing materials like brochures and digital assets that make your business look trustworthy and easy to talk to.",
-    items: [
-      "Brand Strategy",
-      "AI Powered Brand Identity Guidelines and Assets",
-      "Web Design and Development",
-    ],
-  },
-];
 
 const TOTAL = serviceDetails.length;
 const PEEK = 10;
@@ -195,11 +138,7 @@ export function ServiceDetailCards() {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#fffcf8] px-5 py-16 sm:px-8 sm:py-20 md:px-12 md:py-24 lg:py-[128px]"
-      style={{
-        paddingLeft: undefined,
-        paddingRight: undefined,
-      }}
+      className="bg-lf-cream px-5 py-16 sm:px-8 sm:py-20 md:px-12 md:py-24 lg:py-[128px]"
     >
       <div
         className="mx-auto w-full lg:px-[140px]"
@@ -273,9 +212,9 @@ export function ServiceDetailCards() {
 
                       {/* Items list */}
                       <div className="flex flex-col">
-                        {service.items.map((item, j) => (
+                        {service.items.map((item) => (
                           <div
-                            key={j}
+                            key={item}
                             className="relative flex items-start justify-between py-[6.359px]"
                           >
                             <div

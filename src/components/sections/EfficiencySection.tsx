@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, type CSSProperties } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { imgSrc } from "@/lib/img";
 import imgNew41 from "@/assets/55c65964acf381f39e149e590d4f29d001407366.png";
@@ -24,8 +24,7 @@ import imgUxFunnel from "@/assets/cf744f1a96eb6285067a9e5d5faaf0f466edc248.png";
 
 /* Character generation flow */
 import imgCharacterFlowAsset from "src/assets/efficiency/character_generatio.png";
-/* Product photography — provided replacement image */
-const imgProductWeeksToHoursAsset = "/images/efficiency/product-photography-showcase.png";
+/* Product photography — weeks to hours */
 /* Illustrations board */
 import imgIllustrationsBoardAsset from "src/assets/efficiency/Illustrations & character consistency.png";
 /* 3D Figma — timeline */
@@ -36,7 +35,7 @@ import img3dFigmaCardsAsset from "@/assets/06748153debd0491677e40b76400489d923c0
 import img3dFigmaCombinedAsset from "src/assets/efficiency/3D renderings & animations.png";
 
 const imgCharacterFlow = imgSrc(imgCharacterFlowAsset);
-const imgProductWeeksToHours = imgProductWeeksToHoursAsset;
+const imgProductWeeksToHours = "/images/efficiency/efficent%20img2.png";
 const imgIllustrationsBoard = imgSrc(imgIllustrationsBoardAsset);
 const img3dFigmaTimeline = imgSrc(img3dFigmaTimelineAsset);
 const img3dFigmaCards = imgSrc(img3dFigmaCardsAsset);
@@ -120,6 +119,63 @@ const slideImages = [
   imgSrc(imgUxFunnel),    // UX workflows
 ];
 
+type SlideVariant = "default" | "product" | "3d" | "design" | "illustrations" | "character" | "ux";
+
+const getSlideVariant = (customSlide: (typeof featureTabs)[number]["customSlide"]): SlideVariant => {
+  if (customSlide === true) return "product";
+  if (
+    customSlide === "3d" ||
+    customSlide === "design" ||
+    customSlide === "illustrations" ||
+    customSlide === "character" ||
+    customSlide === "ux"
+  ) {
+    return customSlide;
+  }
+  return "default";
+};
+
+// Centralized layout config: edit these values in one place.
+const MOBILE_SLIDE_CONTAINER_STYLE: Record<SlideVariant, CSSProperties> = {
+  default: { left: "15%", top: "38%", width: "85%", height: "65%" },
+  product: { left: "0", top: "34%", width: "100%", height: "62%" },
+  "3d": { left: "0", top: "0", width: "100%", height: "100%" },
+  design: { left: "0", top: "42%", width: "100%", height: "58%" },
+  illustrations: { left: "0", top: "42%", width: "100%", height: "58%" },
+  character: { left: "0", top: "36%", width: "100%", height: "64%" },
+  ux: { left: "10%", top: "45%", width: "90%", height: "60%" },
+};
+
+const DESKTOP_SLIDE_CONTAINER_STYLE: Record<SlideVariant, CSSProperties> = {
+  default: { left: "40%", top: "auto", bottom: "0", width: "60%", height: "100%" },
+  product: { left: "auto", right: "18px", top: "auto", bottom: "15px", width: "749px", height: "277px" },
+  "3d": { left: "0", top: "0", bottom: "0", width: "100%", height: "100%" },
+  design: { left: "0", top: "0", bottom: "0", width: "100%", height: "100%" },
+  illustrations: { left: "0", top: "0", bottom: "0", width: "100%", height: "100%" },
+  character: { left: "0", top: "0", width: "100%", height: "100%" },
+  ux: { left: "0", right: "0", top: "0", bottom: "0", width: "100%", height: "100%" },
+};
+
+const DESKTOP_TEXT_CLASS: Record<SlideVariant, string> = {
+  default: "left-16 top-14 max-w-[460px]",
+  product: "left-[45px] top-[45px] max-w-[435px]",
+  "3d": "left-16 top-14 max-w-[460px]",
+  design: "left-16 top-14 max-w-[460px]",
+  illustrations: "left-16 top-14 max-w-[460px]",
+  character: "left-16 top-14 max-w-[460px]",
+  ux: "left-[45px] top-[45px] max-w-[460px]",
+};
+
+const DESKTOP_DESC_CLASS: Record<SlideVariant, string> = {
+  default: "max-w-[409px]",
+  product: "max-w-[435px]",
+  "3d": "max-w-[409px]",
+  design: "max-w-[409px]",
+  illustrations: "max-w-[409px]",
+  character: "max-w-[409px]",
+  ux: "max-w-[460px]",
+};
+
 export function EfficiencySection() {
   const [activeTab, setActiveTab] = useState(0);
   const AUTO_CYCLE_DURATION = 3500; // 3.5 seconds
@@ -157,6 +213,9 @@ export function EfficiencySection() {
     if (timerRef.current) clearTimeout(timerRef.current);
     setActiveTab(i);
   };
+
+  const activeFeature = featureTabs[activeTab];
+  const activeVariant = getSlideVariant(activeFeature.customSlide);
 
   /** Render tab title — highlights speedup value in green when found inside slideTitle */
   const renderTitle = (tab: (typeof featureTabs)[number]) => {
@@ -290,7 +349,7 @@ export function EfficiencySection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  {renderTitle(featureTabs[activeTab])}
+                  {renderTitle(activeFeature)}
                 </motion.p>
                 <motion.p
                   className="font-['Figtree',sans-serif] font-light text-[#333] text-[14px] md:text-base leading-[21px] mt-3 opacity-80 max-w-[320px] md:max-w-[403px]"
@@ -298,7 +357,7 @@ export function EfficiencySection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  {featureTabs[activeTab].slideDescription || featureTabs[activeTab].description}
+                  {activeFeature.slideDescription || activeFeature.description}
                 </motion.p>
               </motion.div>
             </AnimatePresence>
@@ -306,18 +365,13 @@ export function EfficiencySection() {
               <motion.div
                 key={`slide-m-${activeTab}`}
                 className="absolute"
-                style={{
-                  left: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide === "illustrations" ? "0" : featureTabs[activeTab].customSlide === "character" ? "0" : featureTabs[activeTab].customSlide === true ? "0" : featureTabs[activeTab].customSlide ? "10%" : "15%",
-                  top: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "42%" : featureTabs[activeTab].customSlide === "illustrations" ? "42%" : featureTabs[activeTab].customSlide === "character" ? "36%" : featureTabs[activeTab].customSlide === true ? "34%" : featureTabs[activeTab].customSlide ? "45%" : "38%",
-                  width: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "100%" : featureTabs[activeTab].customSlide === "illustrations" ? "100%" : featureTabs[activeTab].customSlide === "character" ? "100%" : featureTabs[activeTab].customSlide === true ? "100%" : featureTabs[activeTab].customSlide ? "90%" : "85%",
-                  height: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "58%" : featureTabs[activeTab].customSlide === "illustrations" ? "58%" : featureTabs[activeTab].customSlide === "character" ? "64%" : featureTabs[activeTab].customSlide === true ? "62%" : featureTabs[activeTab].customSlide ? "60%" : "65%",
-                }}
+                style={MOBILE_SLIDE_CONTAINER_STYLE[activeVariant]}
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                {featureTabs[activeTab].customSlide === "3d" ? (
+                {activeVariant === "3d" ? (
                   /* 3D Renderings: exact Figma composition (mobile) */
                   <>
                     <img
@@ -331,28 +385,27 @@ export function EfficiencySection() {
                       src={img3dFigmaTimeline}
                     />
                   </>
-                ) : featureTabs[activeTab].customSlide === "design" ? (
+                ) : activeVariant === "design" ? (
                   /* Book mockups composite image (mobile) */
                   <img
                     alt="Professional design book mockups"
                     className="absolute right-0 bottom-0 w-[70%] h-[70%] object-cover pointer-events-none"
                     src={imgSrc(imgDesignBooks)}
                   />
-                ) : featureTabs[activeTab].customSlide === "illustrations" ? (
+                ) : activeVariant === "illustrations" ? (
                   <img
                     alt="Illustrations and character consistency board"
                     className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
                     src={imgIllustrationsBoard}
                   />
-                ) : featureTabs[activeTab].customSlide === "character" ? (
+                ) : activeVariant === "character" ? (
                   /* Character generation storyboard flow (mobile) */
                   <img
                     alt="Character generation workflow board"
-                    className="absolute right-0 bottom-0 w-[681.5px] h-[396.095px] object-cover object-right-bottom pointer-events-none"
-                    style={{ aspectRatio: "117 / 68" }}
+                    className="absolute inset-0 w-[70%] h-auto object-cover object-bottom pointer-events-none"
                     src={imgCharacterFlow}
                   />
-                ) : featureTabs[activeTab].customSlide === true ? (
+                ) : activeVariant === "product" ? (
                   /* Product photography board (mobile) */
                   <img
                     alt="From weeks to hours product photography workflow"
@@ -361,7 +414,7 @@ export function EfficiencySection() {
                   />
                 ) : (
                   <img
-                    alt={`AI workflow: ${featureTabs[activeTab].label}`}
+                    alt={`AI workflow: ${activeFeature.label}`}
                     className="w-full h-full object-cover object-center pointer-events-none rounded-tl-[8px]"
                     src={slideImages[activeTab]}
                   />
@@ -434,13 +487,7 @@ export function EfficiencySection() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={`text-d-${activeTab}`}
-                className={`absolute z-10 ${
-                  featureTabs[activeTab].customSlide === true
-                    ? "left-[45px] top-[45px] max-w-[435px]"
-                    : featureTabs[activeTab].customSlide === "ux"
-                      ? "left-[45px] top-[45px] max-w-[460px]"
-                    : "left-16 top-14 max-w-[460px]"
-                }`}
+                className={`absolute z-10 ${DESKTOP_TEXT_CLASS[activeVariant]}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -452,21 +499,15 @@ export function EfficiencySection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  {renderTitle(featureTabs[activeTab])}
+                  {renderTitle(activeFeature)}
                 </motion.p>
                 <motion.p
-                  className={`font-['Figtree',sans-serif] font-light text-[#333] text-[16px] leading-[21px] mt-3 opacity-80 ${
-                    featureTabs[activeTab].customSlide === true
-                      ? "max-w-[435px]"
-                      : featureTabs[activeTab].customSlide === "ux"
-                        ? "max-w-[460px]"
-                      : "max-w-[409px]"
-                  }`}
+                  className={`font-['Figtree',sans-serif] font-light text-[#333] text-[16px] leading-[21px] mt-3 opacity-80 ${DESKTOP_DESC_CLASS[activeVariant]}`}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  {featureTabs[activeTab].slideDescription || featureTabs[activeTab].description}
+                  {activeFeature.slideDescription || activeFeature.description}
                 </motion.p>
               </motion.div>
             </AnimatePresence>
@@ -476,55 +517,47 @@ export function EfficiencySection() {
               <motion.div
                 key={`slide-d-${activeTab}`}
                 className="absolute"
-                style={{
-                  left: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide === "illustrations" ? "0" : featureTabs[activeTab].customSlide === "character" ? "0" : featureTabs[activeTab].customSlide === "ux" ? "0" : featureTabs[activeTab].customSlide ? "auto" : "40%",
-                  right: featureTabs[activeTab].customSlide === true ? "18px" : featureTabs[activeTab].customSlide === "ux" ? "0" : undefined,
-                  top: featureTabs[activeTab].customSlide === "3d" ? "0" : featureTabs[activeTab].customSlide === "design" ? "0" : featureTabs[activeTab].customSlide === "illustrations" ? "0" : featureTabs[activeTab].customSlide === "character" ? "0" : featureTabs[activeTab].customSlide === "ux" ? "0" : featureTabs[activeTab].customSlide ? "auto" : "auto",
-                  bottom: featureTabs[activeTab].customSlide === "character" ? undefined : featureTabs[activeTab].customSlide === true ? "15px" : "0",
-                  width: featureTabs[activeTab].customSlide === "3d" ? "100%" : featureTabs[activeTab].customSlide === "design" ? "100%" : featureTabs[activeTab].customSlide === "illustrations" ? "100%" : featureTabs[activeTab].customSlide === "character" ? "100%" : featureTabs[activeTab].customSlide === "ux" ? "100%" : featureTabs[activeTab].customSlide ? "749px" : "60%",
-                  height: featureTabs[activeTab].customSlide === true ? "277px" : featureTabs[activeTab].customSlide === "ux" ? "100%" : "100%",
-                }}
+                style={DESKTOP_SLIDE_CONTAINER_STYLE[activeVariant]}
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                {featureTabs[activeTab].customSlide === "3d" ? (
+                {activeVariant === "3d" ? (
                   /* 3D Renderings: updated single Figma composition */
                   <img
                     alt="3D renderings and timeline composition"
                     className="absolute left-[45px] top-[95px] w-[908px] h-[392px] object-cover pointer-events-none"
                     src={img3dFigmaCombined}
                   />
-                ) : featureTabs[activeTab].customSlide === "design" ? (
+                ) : activeVariant === "design" ? (
                   /* Book mockups composite image (desktop) */
                   <img
                     alt="Professional design book mockups"
-                    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                    className="absolute inset-0 w-[300px] h-full object-cover pointer-events-none"
                     src={imgSrc(imgDesignBooks)}
                   />
-                ) : featureTabs[activeTab].customSlide === "illustrations" ? (
+                ) : activeVariant === "illustrations" ? (
                   <img
                     alt="Illustrations and character consistency board"
                     className="absolute right-[26px] bottom-[30px] w-[660px] h-[345px] object-cover pointer-events-none"
                     src={imgIllustrationsBoard}
                   />
-                ) : featureTabs[activeTab].customSlide === "character" ? (
+                ) : activeVariant === "character" ? (
                   /* Character generation storyboard flow (desktop) */
                   <img
                     alt="Character generation workflow board"
-                    className="absolute right-[8px] bottom-[6px] w-[86%] max-w-[681.5px] h-auto object-contain object-right-bottom pointer-events-none"
-                    style={{ aspectRatio: "117 / 68" }}
+                    className="absolute right-[12px] bottom-[-18px] w-[400px] h-[396px] object-cover pointer-events-none"
                     src={imgCharacterFlow}
                   />
-                ) : featureTabs[activeTab].customSlide === true ? (
+                ) : activeVariant === "product" ? (
                   /* Product photography board (desktop) */
                   <img
                     alt="From weeks to hours product photography workflow"
                     className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
                     src={imgProductWeeksToHours}
                   />
-                ) : featureTabs[activeTab].customSlide === "ux" ? (
+                ) : activeVariant === "ux" ? (
                   <img
                     alt="AI workflow: UX workflows and rapid PoC generation"
                     className="absolute right-[27px] bottom-0 w-[497px] h-[366px] object-cover pointer-events-none"
@@ -532,7 +565,7 @@ export function EfficiencySection() {
                   />
                 ) : (
                   <img
-                    alt={`AI workflow: ${featureTabs[activeTab].label}`}
+                    alt={`AI workflow: ${activeFeature.label}`}
                     className="w-full h-full object-cover object-bottom pointer-events-none"
                     src={slideImages[activeTab]}
                   />

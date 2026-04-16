@@ -1,28 +1,35 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useRouter, usePathname } from "next/navigation";
 import svgPaths from "@/imports/svg-gkhfmtllfb";
+import { navItems, type NavItem } from "@/data/siteConfig";
+import { useScramble } from "@/hooks/useScramble";
 
-// Fallback Contact button component
-function SlideInButton({ buttonText, link, ...props }: any) {
+function NavContactButton({ href }: { href: string }) {
   const router = useRouter();
+  const { ref, onMouseEnter, onMouseLeave } = useScramble("Contact", { speed: 35, tick: 1 });
+
   const handleClick = () => {
-    if (link.startsWith("#")) {
-      const element = document.querySelector(link);
-      element?.scrollIntoView({ behavior: "smooth" });
+    if (href.startsWith("#")) {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     } else {
-      router.push(link);
+      router.push(href);
     }
   };
-  
+
   return (
     <button
       onClick={handleClick}
-      className="h-[36px] rounded-full bg-white px-6 font-['Figtree',sans-serif] font-medium text-[14px] leading-[20px] tracking-[-0.35px] text-black cursor-pointer transition-all hover:shadow-lg"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className="group inline-flex overflow-hidden transition-all duration-200 hover:scale-[1.04] hover:shadow-[0_0_30px_rgba(135,208,50,0.3)] rounded-full p-[2px] relative items-center justify-center cursor-pointer"
     >
-      {buttonText}
+      <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_60%,#87D032_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <span className="flex items-center justify-center text-black bg-white w-full h-full rounded-full py-[7px] px-5 relative font-['Figtree',sans-serif] font-medium text-[14px] tracking-[-0.35px]">
+        <span ref={ref as React.RefObject<HTMLSpanElement>} className="relative z-10">Contact</span>
+      </span>
     </button>
   );
 }
@@ -63,24 +70,22 @@ function Logo({ variant = "light" }: { variant?: "light" | "dark" }) {
   );
 }
 
-interface NavItem {
-  label: string;
-  action: "scroll" | "route";
-  target: string;
-}
-
-const navItems: NavItem[] = [
-  { label: "Process", action: "scroll", target: "process" },
-  { label: "About", action: "route", target: "/about" },
-  { label: "AI x Design", action: "scroll", target: "ai-design" },
-  { label: "Portfolio", action: "scroll", target: "portfolio" },
-];
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const isAboutPage = pathname.startsWith("/about");
+  const isPortfolioPage = pathname.startsWith("/portfolio");
+
+  // Shrink navbar on scroll
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -125,13 +130,16 @@ export function Navbar() {
   return (
     <>
       <motion.nav
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed top-0 left-0 right-0 z-50"
+        className="fixed top-0 left-0 right-0 z-[10000]"
       >
         <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-12 py-4 md:py-[22px]">
-          <div className="hidden md:flex h-[56px] w-full max-w-[693px] mx-auto items-center justify-between rounded-[80px] bg-[rgba(60,60,60,0.73)] backdrop-blur-[8px] pl-[18px] pr-[13px]">
+          <div
+            className="hidden md:flex h-[56px] w-full mx-auto items-center justify-between rounded-[80px] bg-[rgba(60,60,60,0.73)] backdrop-blur-[8px] pl-[18px] pr-[13px]"
+            style={{
+              maxWidth: scrolled ? "693px" : "820px",
+              transition: "max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          >
             <button
               onClick={() => router.push("/")}
               className="flex h-[36px] w-[193px] items-center rounded-full px-4 cursor-pointer"
@@ -144,22 +152,18 @@ export function Navbar() {
                 <button
                   key={item.label}
                   onClick={() => handleNav(item)}
-                  className={`cursor-pointer transition-opacity hover:opacity-100 ${item.target === "/about" && isAboutPage ? "opacity-100" : "opacity-[0.66]"}`}
+                  className={`cursor-pointer transition-opacity hover:opacity-100 ${
+                    (item.target === "/about" && isAboutPage) || (item.target === "/portfolio" && isPortfolioPage)
+                      ? "opacity-100"
+                      : "opacity-[0.66]"
+                  }`}
                 >
                   {item.label}
                 </button>
               ))}
             </div>
 
-              <SlideInButton
-                buttonText="Contact"
-                link="#contact"
-                variant="IeybCO5OV"
-                defaultTextColor="rgb(0, 0, 0)"
-                defaultBackgroundColor="rgb(255, 255, 255)"
-                hoverTextColor="rgb(255, 255, 255)"
-                hoverBackgroundColor="rgb(0, 85, 255)"
-              />
+              <NavContactButton href="#contact" />
           </div>
 
           <div className="md:hidden flex items-center justify-between">

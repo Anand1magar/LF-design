@@ -9,6 +9,7 @@ const COLUMN_COLORS = [
   "#88B36A",
   "#A5C390",
   "#BCCEAF",
+  
 ];
 
 const SESSION_KEY = "lf-column-preloader-shown";
