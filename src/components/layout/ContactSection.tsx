@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { Mail } from "lucide-react";
 import { Icon } from "@iconify/react";
 import dynamic from "next/dynamic";
+import { siteConfig } from "@/data/siteConfig";
 
 /* Render AsciiGarden only on the client — its seeded-random plant
    positions cause hydration mismatches between server and browser. */
@@ -75,17 +76,6 @@ export function ContactSection() {
           />
         </motion.div>
 
-        <motion.a
-          href="mailto:hello@designstudio.com"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-10 font-['Figtree',sans-serif] font-light text-white text-[14px] underline underline-offset-4 decoration-[#555] hover:decoration-white transition-colors"
-        >
-          hello@designstudio.com
-        </motion.a>
-
         {/* Social Media Icons */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -95,10 +85,10 @@ export function ContactSection() {
           className="mt-6 flex items-center gap-5"
         >
           {[
-            { icon: "ri:twitter-x-fill", href: "#", label: "X (Twitter)" },
-            { icon: "ri:tiktok-fill", href: "#", label: "TikTok" },
-            { icon: "ri:facebook-fill", href: "#", label: "Facebook" },
-            { icon: "ri:instagram-line", href: "#", label: "Instagram" },
+            { icon: "ri:twitter-x-fill", href: siteConfig.social.twitter,   label: "X (Twitter)" },
+            { icon: "ri:tiktok-fill",     href: siteConfig.social.tiktok,    label: "TikTok" },
+            { icon: "ri:facebook-fill",   href: siteConfig.social.facebook,  label: "Facebook" },
+            { icon: "ri:instagram-line",  href: siteConfig.social.instagram, label: "Instagram" },
           ].map((social) => (
             <a
               key={social.label}
@@ -117,7 +107,7 @@ export function ContactSection() {
       <div className="px-6 md:px-12 py-6">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between">
           <span className="font-['Figtree',sans-serif] font-light text-[#444] text-[12px] leading-[16px]">
-            &copy; 2025 Design Studio
+            &copy; 2025 {siteConfig.name}
           </span>
           <span className="font-['Figtree',sans-serif] font-light italic text-[#444] text-[12px] leading-[16px]">
             Crafted with passion

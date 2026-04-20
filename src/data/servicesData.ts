@@ -1,3 +1,8 @@
+import { imgSrc } from "@/lib/img";
+import imgVisualBrandingAsset from "src/assets/services/visual_branding.webp";
+
+const imgVisualBranding = imgSrc(imgVisualBrandingAsset);
+
 export interface ServiceDetail {
   title: string;
   /** URL-encoded path under /images/service images/ */
@@ -9,7 +14,7 @@ export interface ServiceDetail {
 export const serviceDetails: ServiceDetail[] = [
   {
     title: "Visual Branding",
-    image: "/images/service%20images%20/Visual%20Branding.png",
+    image: imgVisualBranding,
     subtitle:
       "We craft visuals that resonate emotionally and make your brand unforgettable.",
     items: [

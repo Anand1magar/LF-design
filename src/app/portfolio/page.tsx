@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { PortfolioShowcase } from "@/components/sections/PortfolioShowcase";
-import { PortfolioSection } from "@/components/sections/PortfolioSection";
+import { PortfolioGrid } from "@/components/sections/PortfolioGrid";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -12,10 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function PortfolioPage() {
-  return (
-    <>
-      <PortfolioShowcase />
-      <PortfolioSection />
-    </>
-  );
+  return <PortfolioGrid />;
 }

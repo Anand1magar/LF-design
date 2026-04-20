@@ -6,6 +6,7 @@ import imgMockup21 from "figma:asset/6344a2742e01c5662fe0e4e13522e4812f6b4628.pn
 import svgPaths from "@/imports/svg-7tpy7wy2y6";
 import { useRouter } from "next/navigation";
 import { portfolioItems as sharedPortfolioItems } from "@/data/portfolioData";
+import { SkeletonImage } from "@/components/ui/SkeletonImage";
 
 /* ───── Logo SVGs per project ───── */
 function AntarangaLogo({ className = "" }: { className?: string }) {
@@ -93,7 +94,7 @@ function PortfolioCard({
         <div className={`absolute inset-0 ${item.bgColor}`} />
 
         {/* Image – scales up on hover */}
-        <img
+        <SkeletonImage
           alt={item.title}
           className={`absolute inset-0 w-full h-full ${item.imageStyle} object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
           src={item.image}

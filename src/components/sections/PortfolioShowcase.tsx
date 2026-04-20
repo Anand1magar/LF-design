@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useRouter } from "next/navigation";
 import { portfolioItems } from "@/data/portfolioData";
+import { SkeletonImage } from "@/components/ui/SkeletonImage";
 
 /* ═══════════════════════════════════════════
    Portfolio Showcase — scroll-driven split layout
@@ -552,7 +553,7 @@ export function PortfolioShowcase() {
                 onClick={() => router.push(`/project/${item.slug}`)}
               >
                 {/* Project image */}
-                <img
+                <SkeletonImage
                   src={item.image}
                   alt={item.name}
                   className="absolute inset-0 w-full h-full object-cover z-0"
@@ -597,7 +598,7 @@ export function PortfolioShowcase() {
             >
               {/* Image */}
               <div className="relative w-full aspect-[471/260] rounded-[10px] overflow-hidden mb-6">
-                <img
+                <SkeletonImage
                   alt={item.name}
                   className="absolute inset-0 w-full h-full object-cover"
                   src={item.image}

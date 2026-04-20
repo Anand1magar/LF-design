@@ -70,7 +70,8 @@ function ServiceCard({
             <img
               alt="Brand design"
               className="absolute top-3 left-0 w-full h-[60%] object-cover"
-              src={imgSrc(imgImage167)}
+              src={imgSrc("src/assets/services/visual_branding.webp")}
+              
             />
             <img
               alt="Brand collateral"

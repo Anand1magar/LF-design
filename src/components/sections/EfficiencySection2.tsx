@@ -180,7 +180,7 @@ export function EfficiencySection2() {
   };
 
   return (
-    <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 md:px-[100px] md:py-[128px]">
+    <section className="bg-white px-5 pt-8 pb-16 sm:px-8 sm:pt-8 sm:pb-20 md:px-[100px] md:pt-8 md:pb-[128px] mt-8 md:mt-12">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}

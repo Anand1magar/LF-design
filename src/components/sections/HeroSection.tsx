@@ -102,7 +102,7 @@ export function HeroSection() {
 		const el = wrapperRef.current;
 		if (!el) return;
 		const observer = new IntersectionObserver(
-			([entry]) => {},
+			() => {},
 			{ threshold: 0.15 }
 		);
 		observer.observe(el);
@@ -201,7 +201,7 @@ export function HeroSection() {
 					{/* YouTube Video Background — iframe scaled to simulate object-fit:cover */}
 					<div className="absolute inset-0 overflow-hidden bg-white">
 						<iframe
-							src={`https://www.youtube.com/embed/${YT_VIDEO_ID}?si=Vb71oiWRIbJ4MLUs&controls=0&autoplay=1&mute=1&loop=1&playlist=${YT_VIDEO_ID}&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0`}
+							src={`https://www.youtube.com/embed/${YT_VIDEO_ID}?si=Vb71oiWRIbJ4MLUs&controls=0&autoplay=1&mute=1&loop=1&playlist=${YT_VIDEO_ID}&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&vq=hd1080`}
 							title="YouTube video player"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 							referrerPolicy="strict-origin-when-cross-origin"
@@ -290,4 +290,3 @@ export function HeroSection() {
 		</div>
 	);
 }
-

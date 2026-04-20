@@ -7,6 +7,12 @@
 /* ─── Dark mode variant ─── */
 @custom-variant dark (&:is(.dark *));
 
+/* ─── Skeleton shimmer ─── */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* ─── Hide scrollbar utility ─── */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
