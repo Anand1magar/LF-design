@@ -5,7 +5,27 @@ import { motion } from "motion/react";
 import { SkeletonImage } from "@/components/ui/SkeletonImage";
 
 /* ─── Card data — content + per-card Figma image placement ──────── */
-const CARDS = [
+type ImgStyle = {
+  right?: number | string;
+  left?: number | string;
+  top?: number | string;
+  bottom?: number | string;
+  width: string;
+  height: string;
+  objectFit: "cover" | "contain";
+};
+
+const CARDS: Array<{
+  id: string;
+  stat: string;
+  prefix: string;
+  suffix: string;
+  description: string;
+  shortLabel: string;
+  image: string;
+  imgStyle: ImgStyle;
+  fade: boolean;
+}> = [
   {
     id: "01",
     stat: "8x",
@@ -151,7 +171,7 @@ function StatCard({
           style={{
             right: card.imgStyle.right,
             left: card.imgStyle.left,
-            top: card.imgStyle.top,
+            top: card.imgStyle.top, 
             bottom: card.imgStyle.bottom,
             width: card.imgStyle.width,
             height: card.imgStyle.height,
@@ -203,7 +223,23 @@ function StatCard({
 export function FasterSection() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const expandedH = 520;
+  const [expandedH, setExpandedH] = useState(520);
+
+  // Recalculate expanded card height so the active card + all future collapsed cards
+  // always fit within the viewport. Past cards are removed from layout flow (height 0).
+  // Worst case = first card active: 5 future cards below.
+  // Formula: viewport - stickyTop(32) - pyPadding(48) - futureCards*(COLLAPSED_H+GAP) - activeMargin
+  useEffect(() => {
+    const calcExpandedH = () => {
+      const available = window.innerHeight - 32 - 48; // top-8 + py-6 × 2
+      const futureTotal = (CARDS.length - 1) * (COLLAPSED_H + GAP);
+      const h = Math.min(520, Math.max(260, available - futureTotal - GAP));
+      setExpandedH(h);
+    };
+    calcExpandedH();
+    window.addEventListener("resize", calcExpandedH, { passive: true });
+    return () => window.removeEventListener("resize", calcExpandedH);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
