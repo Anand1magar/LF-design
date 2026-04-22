@@ -42,7 +42,7 @@ export function HeroSection() {
 		h: typeof window !== "undefined" ? window.innerHeight : 900,
 	});
 
-	const INTRO_DURATION = 2800;
+	const INTRO_DURATION = 2000;
 	const INTRO_HOLD = 2000;
 
 	// Track viewport size
@@ -182,11 +182,15 @@ export function HeroSection() {
 		<div
 			ref={wrapperRef}
 			className="relative"
-			style={{ height: isMobileOrTablet ? "45vh" : "150vh" }}
+			style={{ height: isMobileOrTablet ? "45vh" : (introProgress > 0 ? "150vh" : "100vh") }}
 		>
 			<div
-				className="sticky top-0 overflow-hidden bg-white flex items-center justify-center"
-				style={{ height: isMobileOrTablet ? "45vh" : "100vh" }}
+				className="overflow-hidden bg-white flex items-center justify-center"
+				style={{
+					position: introProgress > 0 ? "sticky" : "relative",
+					top: 0,
+					height: isMobileOrTablet ? "45vh" : "100vh",
+				}}
 			>
 				<div
 					className="overflow-hidden relative"

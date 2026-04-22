@@ -28,6 +28,7 @@
   --lf-green: #79b231;
   --lf-green-dark: #086600;
   --lf-ink: #030213;
+  --lf-green-bright: #87d032;
   --lf-ink-60: rgba(3, 2, 19, 0.6);
   --lf-ink-30: rgba(3, 2, 19, 0.3);
   --lf-white: #ffffff;
@@ -159,6 +160,7 @@
   --color-lf-green: var(--lf-green);
   --color-lf-green-dark: var(--lf-green-dark);
   --color-lf-ink: var(--lf-ink);
+  --color-lf-green-bright: var(--lf-green-bright);
 
   /* ─── Font family tokens ─── */
   --font-sans: var(--font-figtree), sans-serif;

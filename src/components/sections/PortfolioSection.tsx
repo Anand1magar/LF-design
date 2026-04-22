@@ -114,7 +114,7 @@ function PortfolioCard({
         >
           {/* Top row: tag + arrow button */}
           <div className="flex items-start justify-between w-full">
-            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] leading-[15px] px-[13px] py-[5px] rounded-full font-['Figtree',sans-serif]">
+            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] leading-[15px] px-[13px] py-[5px] rounded-full font-sans">
               {item.tag}
             </span>
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
@@ -131,7 +131,7 @@ function PortfolioCard({
         {/* Default state overlay (tag + button, visible when NOT hovered) */}
         <div className="absolute inset-0 flex flex-col justify-between p-5 group-hover:opacity-0 transition-opacity duration-500">
           <div className="flex items-start justify-between">
-            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] px-4 py-1.5 rounded-full font-['Figtree',sans-serif]">
+            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] px-4 py-1.5 rounded-full font-sans">
               {item.tag}
             </span>
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
@@ -143,10 +143,10 @@ function PortfolioCard({
 
       {/* Title row */}
       <div className="flex items-baseline gap-1 px-2.5">
-        <span className="font-['Figtree',sans-serif] font-medium text-[#333] text-[24px] leading-9 tracking-[-0.75px]">
+        <span className="font-sans font-medium text-[#333] text-2xl leading-9 tracking-[-0.75px]">
           {item.title}
         </span>
-        <span className="font-['Figtree',sans-serif] font-medium text-[#333] text-[24px] leading-9 tracking-[-0.75px] opacity-[0.34]">
+        <span className="font-sans font-medium text-[#333] text-2xl leading-9 tracking-[-0.75px] opacity-[0.34]">
           CaseStudies
         </span>
       </div>
@@ -178,7 +178,7 @@ function PlaceholderCard({ index }: { index: number }) {
           }}
         >
           <div className="flex items-start justify-between w-full">
-            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] leading-[15px] px-[13px] py-[5px] rounded-full font-['Figtree',sans-serif]">
+            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] leading-[15px] px-[13px] py-[5px] rounded-full font-sans">
               Case studies
             </span>
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
@@ -194,7 +194,7 @@ function PlaceholderCard({ index }: { index: number }) {
         {/* Default state */}
         <div className="absolute inset-0 flex flex-col justify-between p-5 group-hover:opacity-0 transition-opacity duration-500">
           <div className="flex items-start justify-between">
-            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] px-4 py-1.5 rounded-full font-['Figtree',sans-serif]">
+            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] px-4 py-1.5 rounded-full font-sans">
               Case studies
             </span>
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
@@ -205,10 +205,10 @@ function PlaceholderCard({ index }: { index: number }) {
       </div>
 
       <div className="flex items-baseline gap-1 px-2.5">
-        <span className="font-['Figtree',sans-serif] font-medium text-[#333] text-[24px] leading-9 tracking-[-0.75px]">
+        <span className="font-sans font-medium text-[#333] text-2xl leading-9 tracking-[-0.75px]">
           Antaranga.ai
         </span>
-        <span className="font-['Figtree',sans-serif] font-medium text-[#333] text-[24px] leading-9 tracking-[-0.75px] opacity-[0.34]">
+        <span className="font-sans font-medium text-[#333] text-2xl leading-9 tracking-[-0.75px] opacity-[0.34]">
           CaseStudies
         </span>
       </div>

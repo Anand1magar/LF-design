@@ -42,7 +42,7 @@ export function GifPreloader() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-white pointer-events-auto"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-white pointer-events-none"
       style={{
         opacity: exiting ? 0 : 1,
         transition: exiting ? "opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1)" : "none",

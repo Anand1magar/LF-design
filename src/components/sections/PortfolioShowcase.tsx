@@ -481,7 +481,7 @@ export function PortfolioShowcase() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="font-['Figtree',sans-serif] font-light text-[48px] leading-[48px] tracking-[-1.44px] text-white"
+              className="font-sans font-light text-5xl leading-[48px] tracking-[-1.44px] text-white"
             >
               Portfolio
             </motion.p>
@@ -493,7 +493,7 @@ export function PortfolioShowcase() {
                   animate={{ opacity: 0.5, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="font-['Figtree',sans-serif] font-light text-[48px] leading-[48px] tracking-[-1.44px] text-white"
+                  className="font-sans font-light text-5xl leading-[48px] tracking-[-1.44px] text-white"
                 >
                   {active.name}
                 </motion.p>
@@ -527,7 +527,7 @@ export function PortfolioShowcase() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.22, ease: [0.25, 0.1, 0.25, 1] }}
-                className="font-['Figtree',sans-serif] font-light text-white/50 text-[16px] leading-[1.7] max-w-[380px]"
+                className="font-sans font-light text-white/50 text-xl leading-[1.7] max-w-[380px]"
               >
                 {active.description}
               </motion.p>
@@ -571,7 +571,7 @@ export function PortfolioShowcase() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="font-['Figtree',sans-serif] text-white/40 text-sm tracking-wide mb-2"
+          className="font-sans text-white/40 text-sm tracking-wide mb-2"
         >
           Portfolio
         </motion.p>
@@ -580,7 +580,7 @@ export function PortfolioShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="font-['Figtree',sans-serif] font-light text-3xl md:text-[40px] leading-tight tracking-tight text-white mb-12"
+          className="font-sans font-light text-3xl md:text-[40px] leading-tight tracking-tight text-white mb-12"
         >
           Selected Projects
         </motion.h2>
@@ -606,10 +606,10 @@ export function PortfolioShowcase() {
               </div>
 
               {/* Text */}
-              <h3 className="font-['Figtree',sans-serif] font-light text-white tracking-tight text-[32px]">
+              <h3 className="font-sans font-light text-white tracking-tight text-[32px]">
                 {item.name}
               </h3>
-              <p className="font-['Figtree',sans-serif] font-light text-white/45 leading-[1.65] mt-3 max-w-[440px] text-[14px]">
+              <p className="font-sans font-light text-white/45 leading-[1.65] mt-3 max-w-[440px] text-sm">
                 {item.description}
               </p>
 

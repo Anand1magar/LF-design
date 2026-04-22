@@ -39,7 +39,7 @@ AI-augmented design agency portfolio. Next.js 16 App Router · React 18 · Tailw
 | 4 | TestimonialsSection | [src/components/sections/TestimonialsSection.tsx](src/components/sections/TestimonialsSection.tsx) | **[src/data/testimonialsData.ts](src/data/testimonialsData.ts)** |
 | 5 | ProcessSection | [src/components/sections/ProcessSection.tsx](src/components/sections/ProcessSection.tsx) | **[src/data/processData.ts](src/data/processData.ts)** (icon SVGs stay in component) |
 | 6 | ImpactSection | [src/components/sections/ImpactSection.tsx](src/components/sections/ImpactSection.tsx) | Inline (stat values 60%, 3×) |
-| 7 | EfficiencySection2 | [src/components/sections/EfficiencySection2.tsx](src/components/sections/EfficiencySection2.tsx) | **[src/data/efficiencyData.ts](src/data/efficiencyData.ts)** |
+| 7 | AiEfficiencySection | [src/components/sections/AiEfficiencySection.tsx](src/components/sections/AiEfficiencySection.tsx) | **[src/data/efficiencyData.ts](src/data/efficiencyData.ts)** |
 | 8 | PortfolioShowcase | [src/components/sections/PortfolioShowcase.tsx](src/components/sections/PortfolioShowcase.tsx) | **[src/data/portfolioData.ts](src/data/portfolioData.ts)** |
 | 9 | PortfolioSection | [src/components/sections/PortfolioSection.tsx](src/components/sections/PortfolioSection.tsx) | Inline + portfolioData |
 
@@ -55,7 +55,7 @@ Edit content here, not inside components.
 | [src/data/servicesData.ts](src/data/servicesData.ts) | `serviceDetails`, `ServiceDetail` | ServiceDetailCards, `/api/services` |
 | [src/data/testimonialsData.ts](src/data/testimonialsData.ts) | `carouselTestimonials`, `featuredTestimonials` | TestimonialsSection, `/api/testimonials` |
 | [src/data/processData.ts](src/data/processData.ts) | `processStepsData`, `ProcessStep` | ProcessSection, `/api/config?section=process` |
-| [src/data/efficiencyData.ts](src/data/efficiencyData.ts) | `featureTabs`, `Variant` | EfficiencySection2, `/api/config?section=efficiency` |
+| [src/data/efficiencyData.ts](src/data/efficiencyData.ts) | `featureTabs`, `Variant` | AiEfficiencySection, `/api/config?section=efficiency` |
 | [src/data/siteConfig.ts](src/data/siteConfig.ts) | `siteConfig`, `navItems`, `NavItem` | Navbar, ContactSection, `/api/config?section=nav` |
 
 ---
@@ -111,7 +111,9 @@ All routes are GET-only, return `{ success, count?, data }`.
 
 - **Figma assets**: Import with `import img from "figma:asset/..."`, then `imgSrc(img)` for the URL.
 - **Sticky card stack**: ServiceDetailCards — all cards are sibling direct children of one `<section>` (required for CSS sticky to work across the full scroll range).
-- **Tab auto-cycling**: EfficiencySection2 and TestimonialsSection both use a `setTimeout` in a `useEffect` to advance tabs; click resets the timer.
+- **Tab auto-cycling**: AiEfficiencySection and TestimonialsSection both use a `setTimeout` in a `useEffect` to advance tabs; click resets the timer.
+- **File naming**: All public folders and image files use kebab-case. No spaces allowed anywhere in filenames or folder names.
+- **`src/imports/` is semi-live**: The large `.tsx` layout files (LandingPage, Frame40108, etc.) are dead legacy code — do not use. The `svg-*.ts` files ARE imported by active components (Navbar, ProcessSection, ImpactSection, etc.) — do not delete the folder.
 - **Portfolio slug routing**: `portfolioItems[].slug` must match the URL segment in `/project/[slug]`.
 - **`src/imports/`**: Auto-generated from Figma (SVG path data, asset references). Do not edit manually.
 
@@ -121,8 +123,14 @@ All routes are GET-only, return `{ success, count?, data }`.
 
 | Location | Contents |
 |---|---|
-| [public/images/service images/](public/images/service%20images%20/) | 5 service card images (URL-encoded paths) |
+| [public/images/service-images/](public/images/service-images/) | 5 service card images (kebab-case) |
 | [public/images/efficiency/](public/images/efficiency/) | 3 efficiency section product images |
-| [public/portfolio/](public/portfolio/) | Portfolio thumbnails + detail image galleries |
-| [src/assets/efficiency/](src/assets/efficiency/) | 4 efficiency section feature images (imported via `figma:asset`) |
-| [src/assets/](src/assets/) | Hash-named Figma-exported PNGs — do not rename |
+| [public/images/faster-section/](public/images/faster-section/) | 6 faster section card images |
+| [public/portfolio/portfolio_section/](public/portfolio/portfolio_section/) | Portfolio card thumbnails (.webp) |
+| [public/portfolio/antaranga-details/](public/portfolio/antaranga-details/) | Antaranga.ai case study gallery |
+| [public/portfolio/frogtoberfest-details/](public/portfolio/frogtoberfest-details/) | Frogtoberfest case study gallery |
+| [public/portfolio/minimeals-details/](public/portfolio/minimeals-details/) | Minimeals case study gallery |
+| [public/portfolio/second-look-details/](public/portfolio/second-look-details/) | SecondLook Health case study gallery |
+| [src/assets/efficiency/](src/assets/efficiency/) | 4 efficiency section feature images (imported, kebab-case) |
+| [src/assets/hero-video/](src/assets/hero-video/) | LF showreel .webm (not currently used in HeroSection) |
+| [src/assets/](src/assets/) | Hash-named Figma-exported PNGs — **DO NOT rename** |

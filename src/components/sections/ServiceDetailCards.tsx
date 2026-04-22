@@ -146,8 +146,8 @@ export function ServiceDetailCards() {
       >
         {/* Section Header */}
         <div className="flex flex-col gap-[14px] items-start mb-12 md:mb-24 max-w-[1190px] mx-auto">
-          <p className="font-['Figtree',sans-serif] font-light text-[48px] leading-[1.2] md:leading-[73.5px] tracking-[-1.5px] text-[#1a1a1a]"><span className="text-[#79b231]">End-to-end </span><span>design services</span></p>
-          <p className="font-['Figtree',sans-serif] font-light text-[15px] sm:text-[17px] md:text-[20px] leading-[28px] md:leading-[32.5px] tracking-[-0.5px] text-[#555] max-w-[695px]">
+          <p className="font-sans font-light text-5xl leading-[1.2] md:leading-[73.5px] tracking-[-1.5px] text-[#1a1a1a]"><span className="text-lf-green">End-to-end </span><span>design services</span></p>
+          <p className="font-sans font-light text-[15px] sm:text-[17px] md:text-xl leading-[28px] md:leading-[32.5px] tracking-[-0.5px] text-[#555] max-w-[695px]">
             We craft a seamless blend of branding, marketing, and design that tells your story beautifully. By creating experiences that stick with people, we make sure your brand doesn't just compete—it leads!
           </p>
         </div>
@@ -159,7 +159,6 @@ export function ServiceDetailCards() {
          */}
         <div className="max-w-[1190px] mx-auto">
           {serviceDetails.map((service, i) => {
-            const isLast = i === TOTAL - 1;
             const cardsOnTop = cardsOnTopArr[i];
             const scale = Math.max(
               1 - cardsOnTop * SCALE_STEP,
@@ -177,11 +176,7 @@ export function ServiceDetailCards() {
                   top: getStickyTop(i),
                   zIndex: i + 1,
                   height: CARD_HEIGHT,
-                  marginBottom: isLast
-                    ? 0
-                    : isMobile
-                      ? SCROLL_GAP_MOBILE
-                      : SCROLL_GAP,
+                  marginBottom: isMobile ? SCROLL_GAP_MOBILE : SCROLL_GAP,
                 }}
               >
                 {/* Visual card — transforms here are fine, they're INSIDE the sticky element */}
@@ -202,10 +197,10 @@ export function ServiceDetailCards() {
                     <div className="flex w-full flex-col gap-[30px] lg:flex-1 lg:gap-[47.693px] lg:pl-[70px] lg:pr-[70px] lg:justify-center">
                       {/* Title block */}
                       <div className="flex flex-col gap-[18.9px]">
-                        <h3 className="font-['Figtree',sans-serif] text-[#1a1a1a] leading-[1.05] lg:leading-[47.693px] tracking-[-1px] font-normal text-[32px] md:text-[40px] lg:text-[48px]">
+                        <h3 className="font-sans text-[#1a1a1a] leading-[1.05] lg:leading-[47.693px] tracking-[-1px] font-normal text-[32px] md:text-[40px] lg:text-5xl">
                           {service.title}
                         </h3>
-                        <p className="font-['Figtree',sans-serif] text-[#1a1a1a] opacity-[0.56] text-[16px] md:text-[18px] lg:text-[20px] leading-[23px] lg:leading-[28px] font-normal lg:pl-[5px]">
+                        <p className="font-sans text-[#1a1a1a] opacity-[0.56] text-base md:text-lg lg:text-xl leading-[23px] lg:leading-[28px] font-normal lg:pl-[5px]">
                           {service.subtitle}
                         </p>
                       </div>
@@ -221,7 +216,7 @@ export function ServiceDetailCards() {
                               aria-hidden="true"
                               className="absolute inset-0 border-b-[0.795px] border-dashed border-[rgba(0,0,0,0.12)] pointer-events-none"
                             />
-                            <p className="font-['Figtree',sans-serif] text-black opacity-[0.78] text-[16px] leading-[23px] md:leading-[47.693px] font-normal flex-1">
+                            <p className="font-sans text-black opacity-[0.78] text-base leading-[23px] md:leading-[47.693px] font-normal flex-1">
                               {item}
                             </p>
                           </div>

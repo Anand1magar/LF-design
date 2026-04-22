@@ -91,7 +91,7 @@ function QuoteCard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="bg-white rounded-[10px] overflow-hidden relative h-auto min-h-[350px] md:h-[434px] flex flex-col"
+      className="bg-white rounded-3xl overflow-hidden relative h-auto min-h-[350px] md:h-[434px] flex flex-col"
     >
       {/* Decorative quote mark */}
       <div className="absolute left-[60px] md:left-[124px] -top-10 opacity-50 pointer-events-none">
@@ -101,10 +101,10 @@ function QuoteCard() {
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-between h-full px-6 sm:px-10 pt-10 sm:pt-[72px] pb-8 sm:pb-10">
         <div className="flex flex-col gap-6">
-          <h3 className="font-['Figtree',sans-serif] font-medium text-[#1a1a1a] text-[24px] leading-[30px] tracking-[-0.72px] max-w-[250px]">
+          <h3 className="font-sans font-medium text-[#1a1a1a] text-2xl leading-[30px] tracking-[-0.72px] max-w-[250px]">
             AI-powered design that scales faster.
           </h3>
-          <p className="font-['Figtree',sans-serif] font-light text-[#555] text-[16px] leading-[26px] tracking-[-0.16px] max-w-[295px]">
+          <p className="font-sans font-light text-[#555] text-base leading-[26px] tracking-[-0.16px] max-w-[295px]">
             We leverage intelligent workflows to build high-performance
             products and uncover data-driven opportunities that drive growth.
           </p>
@@ -119,10 +119,10 @@ function QuoteCard() {
             />
           </div>
           <div>
-            <p className="font-['Figtree',sans-serif] font-medium text-[#1a1a1a] text-[16px] leading-6">
+            <p className="font-sans font-medium text-[#1a1a1a] text-base leading-6">
               Abhash Bikram Thapa
             </p>
-            <p className="font-['Figtree',sans-serif] text-[#888] text-[14px] leading-5">
+            <p className="font-sans text-[#888] text-sm leading-5">
               Director, Design
             </p>
           </div>
@@ -146,7 +146,7 @@ function StatCard60() {
     >
       {/* Top row */}
       <div className="flex items-center justify-between w-[304px]">
-        <span className="font-['Figtree',sans-serif] font-medium text-[14px] leading-5 text-[#1a1a1a]">
+        <span className="font-sans font-medium text-sm leading-5 text-[#1a1a1a]">
           Fact 01
         </span>
         <div className="w-10 h-10 rounded-full bg-[#f5f5f5] flex items-center justify-center">
@@ -156,16 +156,16 @@ function StatCard60() {
 
       {/* Big number */}
       <div className="flex items-baseline">
-        <span className="font-['Figtree',sans-serif] text-[#1a1a1a] text-[100px] leading-[100px] tracking-[-5px]">
+        <span className="font-sans text-[#1a1a1a] text-[100px] leading-[100px] tracking-[-5px]">
           <AnimatedNumber target={60} />
         </span>
-        <span className="font-['Figtree',sans-serif] text-[#1a1a1a] text-[48px] leading-12 tracking-[-5px] relative top-[4.67px] ml-0.5">
+        <span className="font-sans text-[#1a1a1a] text-5xl leading-12 tracking-[-5px] relative top-[4.67px] ml-0.5">
           %
         </span>
       </div>
 
       {/* Description */}
-      <p className="font-['Figtree',sans-serif] font-light text-[#555] text-[18px] leading-[24.75px] tracking-[-0.18px] max-w-[250px]">
+      <p className="font-sans font-light text-[#555] text-lg leading-[24.75px] tracking-[-0.18px] max-w-[250px]">
         Average reduction in design-to-dev time using AI workflows.
       </p>
     </motion.div>
@@ -195,7 +195,7 @@ function MascotCard() {
       </div>
 
       <div className="relative z-10 flex flex-col gap-6 max-w-[304px]">
-        <div className="font-['Figtree',sans-serif] font-medium text-white text-[30px] leading-[37.5px] tracking-[-0.9px] max-w-[276px]"
+        <div className="font-sans font-medium text-white text-3xl leading-[37.5px] tracking-[-0.9px] max-w-[276px]"
           style={{ textShadow: "0 0 4px rgba(0,0,0,0.25)" }}
         >
           <p className="mb-0">$0 to $1M</p>
@@ -222,11 +222,11 @@ function TimelineCard() {
       {/* Left – text */}
       <div className="flex flex-col gap-10 md:flex-1 md:justify-between md:pr-6 md:gap-0">
         <div className="flex flex-col gap-6">
-          <h3 className="font-['Figtree',sans-serif] font-medium text-[#1a1a1a] text-[36px] leading-[45px] tracking-[-1.08px] max-w-[320px]">
-            <span className="text-[#87d032]">AI-accelerated </span>
+          <h3 className="font-sans font-medium text-[#1a1a1a] text-4xl leading-[45px] tracking-[-1.08px] max-w-[320px]">
+            <span className="text-lf-green-bright">AI-accelerated </span>
             design, delivered in 21 days.
           </h3>
-          <p className="font-['Figtree',sans-serif] font-light text-[#555] text-[16px] leading-[26px] tracking-[-0.16px] max-w-[320px]">
+          <p className="font-sans font-light text-[#555] text-base leading-[26px] tracking-[-0.16px] max-w-[320px]">
             We combine human creativity with generative speed to transform
             complex ideas into pixel-perfect products in record time.
           </p>
@@ -249,9 +249,9 @@ function TimelineCard() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="absolute left-0 top-[203.2px] bg-[rgba(135,208,50,0.4)] px-5 py-2 rounded-full"
+            className="absolute left-0 top-[203.2px] bg-lf-green-bright/40 px-5 py-2 rounded-full"
           >
-            <span className="font-['Figtree',sans-serif] font-medium text-[14px] leading-5 text-[#1a1a1a]">
+            <span className="font-sans font-medium text-sm leading-5 text-[#1a1a1a]">
               AI Discovery
             </span>
           </motion.div>
@@ -260,9 +260,9 @@ function TimelineCard() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="absolute left-[98px] top-[124.5px] bg-[rgba(135,208,50,0.6)] px-5 py-2 rounded-full md:left-[106px]"
+            className="absolute left-[98px] top-[124.5px] bg-lf-green-bright/60 px-5 py-2 rounded-full md:left-[106px]"
           >
-            <span className="font-['Figtree',sans-serif] font-medium text-[14px] leading-5 text-[#1a1a1a]">
+            <span className="font-sans font-medium text-sm leading-5 text-[#1a1a1a]">
               Smart Concept
             </span>
           </motion.div>
@@ -271,9 +271,9 @@ function TimelineCard() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.7 }}
-            className="absolute left-[201px] top-[53.8px] bg-[#87D032] px-5 py-2 rounded-full md:left-[209px]"
+            className="absolute left-[201px] top-[53.8px] bg-lf-green-bright px-5 py-2 rounded-full md:left-[209px]"
           >
-            <span className="font-['Figtree',sans-serif] font-medium text-[14px] leading-5 text-[#1a1a1a]">
+            <span className="font-sans font-medium text-sm leading-5 text-[#1a1a1a]">
               Execution
             </span>
           </motion.div>
@@ -281,13 +281,13 @@ function TimelineCard() {
 
         {/* Bottom labels */}
         <div className="absolute bottom-0 left-0 right-0 flex justify-between items-center pt-[17px] border-t border-[#f5f5f5]">
-          <span className="font-['Figtree',sans-serif] text-[12px] leading-4 text-[#888]">
+          <span className="font-sans text-[12px] leading-4 text-[#888]">
             1 Week
           </span>
-          <span className="font-['Figtree',sans-serif] text-[12px] leading-4 text-[#888]">
+          <span className="font-sans text-[12px] leading-4 text-[#888]">
             2 Weeks
           </span>
-          <span className="font-['Figtree',sans-serif] text-[12px] leading-4 text-[#888]">
+          <span className="font-sans text-[12px] leading-4 text-[#888]">
             3 Weeks
           </span>
         </div>
@@ -310,7 +310,7 @@ function StatCard3x() {
     >
       {/* Top row */}
       <div className="flex items-center justify-between w-[304px] max-w-full">
-        <span className="font-['Figtree',sans-serif] font-medium text-[14px] leading-5 text-[#1a1a1a]">
+        <span className="font-sans font-medium text-sm leading-5 text-[#1a1a1a]">
           Fact 02
         </span>
         <div className="w-10 h-10 rounded-full bg-[#f5f5f5] flex items-center justify-center">
@@ -319,12 +319,12 @@ function StatCard3x() {
       </div>
 
       {/* Big number */}
-      <p className="font-['Figtree',sans-serif] text-[#1a1a1a] text-[64px] leading-16 tracking-[-3.2px]">
+      <p className="font-sans text-[#1a1a1a] text-[64px] leading-16 tracking-[-3.2px]">
         <AnimatedNumber target={3} suffix="x" />
       </p>
 
       {/* Description */}
-      <p className="font-['Figtree',sans-serif] font-light text-[#555] text-[16px] leading-[22px] tracking-[-0.16px] max-w-[315px]">
+      <p className="font-sans font-light text-[#555] text-base leading-[22px] tracking-[-0.16px] max-w-[315px]">
         More iterations per sprint compared to traditional design.
       </p>
     </motion.div>

@@ -32,7 +32,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: "HEALTHCARE",
     description:
       "SecondLook Health provides second-opinion diagnostics powered by expert radiologists and AI. We redesigned their entire patient-facing experience — from scan upload to results delivery — and built a calmer, clearer journey that creates trust at every step.",
-    image: "/portfolio/secondlook-health-new.png",
+    image: "/portfolio/portfolio_section/second_look_1x.webp",
     brandColor: "#384393",
     client: "SecondLook Health Corp.",
     role: "UX/UI Design, Design System, Front-end Development",
@@ -70,7 +70,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: "HEALTH · AI",
     description:
       "Antaranga.ai needed a product that could bridge the gap between AI-driven mental health screening and human empathy. We designed and shipped a full platform — from onboarding to clinical dashboards — that felt approachable to patients and powerful for clinicians.",
-    image: "/portfolio/antaranga-ai.png",
+    image: "/portfolio/portfolio_section/antarang_1x.webp",
     brandColor: "#c45e14",
     client: "Antaranga Health Pvt. Ltd.",
     role: "Product Design, Brand Identity, Development",
@@ -108,7 +108,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: "EVENT BRANDING",
     description:
       "Frogtoberfest needed an identity that could feel instantly memorable across posters, social teasers, motion assets, and on-ground festival touchpoints. We built a bold, character-led brand system that feels playful, energetic, and unmistakably ownable.",
-    image: "/portfolio/frogtoberfest.png",
+    image: "/portfolio/portfolio_section/frogtoberfest_1x.webp",
     brandColor: "#6c5ce7",
     client: "Frogtoberfest",
     role: "Brand Identity, UI/UX Design, Motion Design",
@@ -146,7 +146,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: "FOOD · WELLNESS",
     description:
       "Minimeals needed a brand and digital experience that made nutritious kids' meals feel convenient, trustworthy, and genuinely joyful. We designed a warm identity system and frictionless ordering flow tailored for busy parents.",
-    image: "/portfolio/minimeals.png",
+    image: "/portfolio/portfolio_section/minimeals_1x.webp",
     brandColor: "#f08d49",
     client: "Minimeals",
     role: "Brand Identity, UI/UX Design, Motion Design",

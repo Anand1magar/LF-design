@@ -16,9 +16,7 @@ import { ServiceDetailCards } from "@/components/sections/ServiceDetailCards";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { ImpactSection } from "@/components/sections/ImpactSection";
-import { EfficiencySection } from "@/components/sections/EfficiencySection";
-import { EfficiencySection2 } from "@/components/sections/EfficiencySection2";
-import { FasterSection } from "@/components/sections/FasterSection";
+import { AiEfficiencySection } from "@/components/sections/AiEfficiencySection";
 import { PortfolioShowcase } from "@/components/sections/PortfolioShowcase";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 
@@ -35,10 +33,8 @@ export default function HomePage() {
         </div>
         <ImpactSection />
         <div id="ai-design">
-          {/* <EfficiencySection /> */}
-          <EfficiencySection2 />
+          <AiEfficiencySection />
         </div>
-        <FasterSection />
         <div id="portfolio">
           <PortfolioShowcase />
         </div>

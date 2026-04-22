@@ -1,0 +1,150 @@
+# LF Studio — Cursor AI Rules (Vibecoding)
+# Next.js 16 App Router · React 18 · TypeScript 5.5 · Tailwind CSS v4 · Framer Motion 12
+
+## Project Identity
+AI-augmented design agency portfolio. Single-page homepage + /about + /project/[slug] case studies.
+All homepage content uses server components wrapping client-section components.
+
+---
+
+## Stack Rules
+
+- **Next.js 16 App Router ONLY** — no Pages Router patterns
+- **Tailwind CSS v4** — use `@theme` for tokens, NOT `tailwind.config.ts`
+  - Brand tokens: `bg-lf-cream`, `bg-lf-green`, `text-lf-ink`, `text-lf-green-bright`
+  - CSS linter may flag `@theme`, `@source`, `@custom-variant`, `@apply` — these are VALID Tailwind v4 syntax, not errors
+- **Framer Motion**: import from `"motion/react"` (v12 package name), NOT `"framer-motion"`
+- **TypeScript strict mode** — no implicit any
+
+---
+
+## File & Folder Naming Conventions
+
+| Type | Convention | Example |
+|---|---|---|
+| React components | PascalCase.tsx | `HeroSection.tsx`, `AiEfficiencySection.tsx` |
+| Data files | camelCase + Data suffix | `portfolioData.ts`, `servicesData.ts` |
+| Hooks | camelCase + use prefix | `useInView.ts`, `useScramble.ts` |
+| Utilities | camelCase | `img.ts`, `utils.ts` |
+| Public folders & image files | kebab-case | `service-images/`, `business-collaterals.png` |
+| `src/assets/` hash files | **DO NOT rename** | `01e9fb8693b4b3c1.png` |
+
+**NEVER create files or folders with spaces in the name.**
+
+---
+
+## Directory Map (Quick Reference)
+
+```
+src/app/                    — Next.js routes (page.tsx, layout.tsx, route.ts)
+src/components/layout/     — Navbar, ContactSection, GifPreloader, ElasticDivider
+src/components/sections/   — Homepage section components (one section = one file)
+src/components/pages/      — Full-page wrappers (AboutPage, ProjectDetailPage)
+src/components/ui/         — shadcn/ui primitives — do NOT modify
+src/components/figma/      — Figma-generated utility components
+src/data/                  — Single source of truth for all content (edit here only)
+src/assets/                — Figma-exported images; hash-named files MUST NOT be renamed
+src/imports/               — Auto-generated Figma SVG path data; do not edit manually
+src/hooks/                 — Custom React hooks
+src/lib/                   — Utilities: imgSrc(), cn()
+src/types/                 — TypeScript declarations
+public/images/             — Static images (service-images/, efficiency/, faster-section/)
+public/portfolio/          — Portfolio thumbnails + detail galleries
+```
+
+---
+
+## Critical Patterns
+
+### Image imports from `src/assets/`
+Always wrap with `imgSrc()` — returns a plain URL string:
+```tsx
+import imgFoo from "@/assets/some-image.png";
+import { imgSrc } from "@/lib/img";
+const url = imgSrc(imgFoo);
+```
+
+### Figma asset imports (hash-named files)
+```tsx
+import img from "figma:asset/01e9fb8693b4b3c1ba8fff50a7a6d95ec10e880a.png";
+// Resolves via webpack plugin in next.config.ts → src/assets/{hash}.png
+// NEVER rename hash files — they are keyed by content hash
+```
+
+### Public images
+Use plain string paths — no import needed:
+```tsx
+src="/images/service-images/business-collaterals.png"
+src="/portfolio/portfolio_section/second_look_1x.webp"
+```
+
+### Sticky card stack (`ServiceDetailCards`)
+ALL cards MUST be direct siblings inside ONE `<section>` element.
+CSS sticky only sticks within the nearest scrolling ancestor.
+Never wrap individual cards in their own positioned containers.
+
+### Tab auto-cycling pattern
+Both `AiEfficiencySection` and `TestimonialsSection` use:
+```tsx
+useEffect(() => {
+  timerRef.current = setTimeout(advanceTab, AUTO_CYCLE_MS);
+  return () => clearTimeout(timerRef.current);
+}, [activeTab, advanceTab]);
+```
+Click handlers must `clearTimeout` before `setActiveTab` to reset the timer.
+
+### Portfolio slug routing
+`portfolioItems[].slug` in `src/data/portfolioData.ts` MUST exactly match:
+- The URL segment in `/project/[slug]`
+- The key in `projectGallery` map in `ProjectDetailPage.tsx`
+
+Current slugs: `second-look-health`, `antaranga-ai`, `frogtoberfest`, `minimeals`
+
+### `"use client"` directive
+Add to any component using: `useState`, `useEffect`, `useRef`, event handlers,
+`motion` components from `motion/react`, `useRouter`, `usePathname`.
+Server components (no directive needed): `page.tsx`, `layout.tsx`, static data rendering.
+
+---
+
+## Data Editing Rules
+
+**NEVER edit content inside component files.** Always edit `src/data/*.ts`:
+
+| File | Controls |
+|---|---|
+| `portfolioData.ts` | Portfolio items + case study content |
+| `servicesData.ts` | Service card content + images |
+| `efficiencyData.ts` | AI efficiency tabs, speedups, descriptions |
+| `processData.ts` | Process steps |
+| `testimonialsData.ts` | Testimonials carousel + featured |
+| `siteConfig.ts` | Nav items, social links, brand config |
+
+---
+
+## Adding New Things
+
+### New homepage section
+1. Create `src/components/sections/MyNewSection.tsx` (add `"use client"` if interactive)
+2. Add data to `src/data/` or inline if trivial
+3. Import + add to `src/app/page.tsx` in correct order
+4. Update CLAUDE.md sections table
+
+### New portfolio project
+1. Add `PortfolioItem` object to `src/data/portfolioData.ts` (include `slug`)
+2. Add gallery images to `public/portfolio/{slug}-details/` (kebab-case folder)
+3. Add gallery entry to `projectGallery` map in `src/components/pages/ProjectDetailPage.tsx`
+4. Add thumbnail to `public/portfolio/portfolio_section/{slug}_1x.webp`
+
+---
+
+## What NOT to Do
+
+- Do NOT add `tailwind.config.ts` — project uses Tailwind v4 `@theme` blocks
+- Do NOT rename hash-named files in `src/assets/`
+- Do NOT import large layout files from `src/imports/` (they are legacy) — only the `svg-*.ts` files there are in use
+- Do NOT use `next/image` unless images have known dimensions (project uses `<img>` + `imgSrc()`)
+- Do NOT install `framer-motion` — the package is `motion` (v12), import from `"motion/react"`
+- Do NOT edit `src/components/ui/` — regenerate via shadcn CLI if needed
+- Do NOT create folders or filenames with spaces
+- Do NOT URL-encode paths in source code — rename the file/folder instead

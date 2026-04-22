@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { portfolioItems, type PortfolioItem } from "@/data/portfolioData";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
 import { useRef } from "react";
@@ -24,32 +24,32 @@ const fadeIn = (delay: number = 0) => ({
 /* ─── Gallery placeholder images ─── */
 const projectGallery: Record<string, string[]> = {
   "antaranga-ai": [
-    "/portfolio/antaranga details images/antaranga01.png",
-    "/portfolio/antaranga details images/antaranga02.png",
-    "/portfolio/antaranga details images/antaranga03.png",
-    "/portfolio/antaranga details images/antaranga04.png",
-    "/portfolio/antaranga details images/antaranga05.png",
+    "/portfolio/antaranga-details/antaranga01.png",
+    "/portfolio/antaranga-details/antaranga02.png",
+    "/portfolio/antaranga-details/antaranga03.png",
+    "/portfolio/antaranga-details/antaranga04.png",
+    "/portfolio/antaranga-details/antaranga05.png",
   ],
   frogtoberfest: [
-    "/portfolio/frogtoger_details_image/frogtober_fest01.png",
-    "/portfolio/frogtoger_details_image/frogtober_fest02.png",
-    "/portfolio/frogtoger_details_image/frogtober_fest03.png",
-    "/portfolio/frogtoger_details_image/frogtober_fest04.png",
-    "/portfolio/frogtoger_details_image/frogtober_fest05.png",
-    "/portfolio/frogtoger_details_image/frogtober_fest06.png",
+    "/portfolio/frogtoberfest-details/frogtober-fest01.png",
+    "/portfolio/frogtoberfest-details/frogtober-fest02.png",
+    "/portfolio/frogtoberfest-details/frogtober-fest03.png",
+    "/portfolio/frogtoberfest-details/frogtober-fest04.png",
+    "/portfolio/frogtoberfest-details/frogtober-fest05.png",
+    "/portfolio/frogtoberfest-details/frogtober-fest06.png",
   ],
   minimeals: [
-    "/portfolio/mini%20meal%20details%20images%20/mini%20meals01.png",
-    "/portfolio/mini%20meal%20details%20images%20/mini%20meals02.png",
-    "/portfolio/mini%20meal%20details%20images%20/mini%20meals03.png",
-    "/portfolio/mini%20meal%20details%20images%20/mini%20meals04.png",
-    "/portfolio/mini%20meal%20details%20images%20/mini%20meals05.png",
+    "/portfolio/minimeals-details/minimeals01.png",
+    "/portfolio/minimeals-details/minimeals02.png",
+    "/portfolio/minimeals-details/minimeals03.png",
+    "/portfolio/minimeals-details/minimeals04.png",
+    "/portfolio/minimeals-details/minimeals05.png",
   ],
   "second-look-health": [
-    "/portfolio/secondLook%20details%20images%20/second_look01.png",
-    "/portfolio/secondLook%20details%20images%20/second_look02.png",
-    "/portfolio/secondLook%20details%20images%20/second_look03.png",
-    "/portfolio/secondLook%20details%20images%20/second_look04.png",
+    "/portfolio/second-look-details/second_look01.png",
+    "/portfolio/second-look-details/second_look02.png",
+    "/portfolio/second-look-details/second_look03.png",
+    "/portfolio/second-look-details/second_look04.png",
   ],
   streamvault: [
     "https://images.unsplash.com/photo-1761502479994-3a5e07ec243e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",

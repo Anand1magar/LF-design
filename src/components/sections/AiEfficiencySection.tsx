@@ -4,10 +4,10 @@ import { useState, useEffect, useCallback, useRef, type CSSProperties } from "re
 import { motion, AnimatePresence } from "motion/react";
 import { imgSrc } from "@/lib/img";
 import imgUxFunnelAsset from "@/assets/cf744f1a96eb6285067a9e5d5faaf0f466edc248.png";
-import imgDesignBooksAsset from "src/assets/efficiency/General graphic design.png";
-import imgCharacterFlowAsset from "src/assets/efficiency/character_generatio.png";
-import imgIllustrationsBoardAsset from "src/assets/efficiency/Illustrations & character consistency.png";
-import img3dCombinedAsset from "src/assets/efficiency/3D renderings & animations.png";
+import imgDesignBooksAsset from "src/assets/efficiency/general-graphic-design.png";
+import imgCharacterFlowAsset from "src/assets/efficiency/character-generation.png";
+import imgIllustrationsBoardAsset from "src/assets/efficiency/illustrations-character-consistency.png";
+import img3dCombinedAsset from "src/assets/efficiency/3d-renderings-animations.png";
 
 const imgCharacterFlow = imgSrc(imgCharacterFlowAsset);
 const imgProductWeeksToHours = "/images/efficiency/product-photography-showcase.png";
@@ -110,7 +110,7 @@ const DESKTOP_DESC_CLASS: Record<Variant, string> = {
 };
 
 /* ─── Component ──────────────────────────────────────────────────── */
-export function EfficiencySection2() {
+export function AiEfficiencySection() {
   const [activeTab, setActiveTab] = useState(0);
   const AUTO_CYCLE = 3500;
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -150,7 +150,7 @@ export function EfficiencySection2() {
         <>
           <span>We are </span>
           <motion.span
-            className="font-semibold text-[#87D032] inline-block"
+            className="font-semibold text-lf-green-bright inline-block"
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.15, ease: [0.34, 1.56, 0.64, 1] }}
@@ -167,7 +167,7 @@ export function EfficiencySection2() {
       <>
         <span>{title.slice(0, idx)}</span>
         <motion.span
-          className="font-semibold text-[#87D032] inline-block"
+          className="font-semibold text-lf-green-bright inline-block"
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, delay: 0.15, ease: [0.34, 1.56, 0.64, 1] }}
@@ -180,7 +180,7 @@ export function EfficiencySection2() {
   };
 
   return (
-    <section className="bg-white px-5 pt-8 pb-16 sm:px-8 sm:pt-8 sm:pb-20 md:px-[100px] md:pt-8 md:pb-[128px] mt-8 md:mt-12">
+    <section className="bg-white m-0 p-[128px]">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -189,11 +189,11 @@ export function EfficiencySection2() {
         transition={{ duration: 0.7 }}
         className="max-w-[1190px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-8 mb-10 border-b border-[#e5e5e5]"
       >
-        <h2 className="font-['Figtree',sans-serif] font-light text-[28px] sm:text-3xl md:text-[48px] leading-tight tracking-tight">
-          <span className="text-[#87D032]">65%</span>
+        <h2 className="font-sans font-light text-[28px] sm:text-3xl md:text-5xl leading-tight tracking-tight">
+          <span className="text-lf-green-bright">65%</span>
           <span className="text-[#1a1a1a]"> more efficient</span>
         </h2>
-        <p className="font-['Figtree',sans-serif] font-light text-[#888] text-base leading-relaxed max-w-[404px] mt-4 md:mt-0">
+        <p className="font-sans font-light text-[#888] text-base leading-relaxed max-w-[404px] mt-4 md:mt-0">
           Comprehensive design services for digital growth.
         </p>
       </motion.div>
@@ -221,8 +221,8 @@ export function EfficiencySection2() {
                 className="shrink-0 relative pb-[10px] pt-[10px] px-[10px] md:px-[4px] transition-colors duration-300"
               >
                 <span
-                  className={`font-['Figtree',sans-serif] text-[16px] md:text-[20px] leading-[32px] tracking-[-0.6px] whitespace-nowrap transition-all duration-300 ${
-                    activeTab === i ? "text-[#87D032] font-medium" : "text-[#1a1a1a] opacity-60"
+                  className={`font-sans text-base md:text-xl leading-[32px] tracking-[-0.6px] whitespace-nowrap transition-all duration-300 ${
+                    activeTab === i ? "text-lf-green-bright font-medium" : "text-[#1a1a1a] opacity-60"
                   }`}
                 >
                   {tab.label}
@@ -268,7 +268,7 @@ export function EfficiencySection2() {
                 transition={{ duration: 0.3 }}
               >
                 <motion.p
-                  className="font-['Figtree',sans-serif] text-[#111] text-[22px] md:text-[32px] leading-snug tracking-[-0.96px]"
+                  className="font-sans text-[#111] text-[22px] md:text-[32px] leading-snug tracking-[-0.96px]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.05 }}
@@ -276,7 +276,7 @@ export function EfficiencySection2() {
                   {renderTitle(activeFeature)}
                 </motion.p>
                 <motion.p
-                  className="font-['Figtree',sans-serif] font-light text-[#333] text-[13px] md:text-[16px] leading-[21px] mt-3 opacity-80 max-w-[280px] md:max-w-[403px]"
+                  className="font-sans font-light text-[#333] text-[13px] md:text-base leading-[21px] mt-3 opacity-80 max-w-[280px] md:max-w-[403px]"
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -345,8 +345,8 @@ export function EfficiencySection2() {
                     />
                   )}
                   <span
-                    className={`font-['Figtree',sans-serif] text-[16px] leading-[24px] tracking-[-0.2px] transition-all duration-300 ${
-                      isActive ? "text-[#87D032] font-medium" : "text-[#999] group-hover:text-[#666]"
+                    className={`font-sans text-base leading-[24px] tracking-[-0.2px] transition-all duration-300 ${
+                      isActive ? "text-lf-green-bright font-medium" : "text-[#999] group-hover:text-[#666]"
                     }`}
                   >
                     {tab.label}
@@ -375,7 +375,7 @@ export function EfficiencySection2() {
                 transition={{ duration: 0.3 }}
               >
                 <motion.p
-                  className="font-['Figtree',sans-serif] text-[#111] text-[32px] leading-snug tracking-[-0.96px]"
+                  className="font-sans text-[#111] text-[32px] leading-snug tracking-[-0.96px]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.05 }}
@@ -383,7 +383,7 @@ export function EfficiencySection2() {
                   {renderTitle(activeFeature)}
                 </motion.p>
                 <motion.p
-                  className={`font-['Figtree',sans-serif] font-light text-[#333] text-[16px] leading-[21px] mt-3 opacity-80 ${DESKTOP_DESC_CLASS[activeFeature.variant]}`}
+                  className={`font-sans font-light text-[#333] text-base leading-[21px] mt-3 opacity-80 ${DESKTOP_DESC_CLASS[activeFeature.variant]}`}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}

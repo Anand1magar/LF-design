@@ -2,7 +2,7 @@
  * Efficiency section tab content.
  * `variant` is an identifier — components use it to look up image
  * paths and CSS position maps (those are view-level details kept in
- * EfficiencySection2.tsx).
+ * AiEfficiencySection.tsx).
  */
 export const featureTabs = [
   {

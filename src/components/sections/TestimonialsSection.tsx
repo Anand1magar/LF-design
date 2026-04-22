@@ -171,7 +171,7 @@ function TestimonialCardGrid() {
         >
           {/* Top row: Author (left) + Logo (right) */}
           <div className="flex items-start justify-between">
-            <div className="flex flex-col gap-[3.4px] font-['Figtree',sans-serif]">
+            <div className="flex flex-col gap-[3.4px] font-sans">
               <p className="text-[#121212] text-[10.3px] lg:text-xs tracking-[1.29px] uppercase leading-[12.86px]">
                 Russ Richmond, MD
               </p>
@@ -183,7 +183,7 @@ function TestimonialCardGrid() {
           </div>
 
           {/* Quote at bottom */}
-          <p className="font-['Figtree',sans-serif] font-light text-[#121212] text-[20px] leading-[30px]">
+          <p className="font-sans font-light text-[#121212] text-xl leading-[30px]">
             "It would have taken months to build the product team that we
             inherited overnight with Leapfrog. They're built for startup
             speed, and they have consistently delivered a well-engineered
@@ -233,7 +233,7 @@ function TestimonialCardGrid() {
         >
           {/* Top row: Author (left) + Logo (right) */}
           <div className="flex items-start justify-between">
-            <div className="flex flex-col gap-[3.4px] font-['Figtree',sans-serif]">
+            <div className="flex flex-col gap-[3.4px] font-sans">
               <p className="text-[#121212] text-[10.3px] lg:text-xs tracking-[1.29px] uppercase leading-[12.86px]">
                 Phil
               </p>
@@ -245,7 +245,7 @@ function TestimonialCardGrid() {
           </div>
 
           {/* Quote at bottom */}
-          <p className="font-['Figtree',sans-serif] font-light text-[#121212] text-[20px] leading-[30px]">
+          <p className="font-sans font-light text-[#121212] text-xl leading-[30px]">
             Leapfrog team has been instrumental in Phil&apos;s growth so far. Their
             talent pool has been exceptional and a lot of credit goes to
             Leapfrog&apos;s high quality focus on training and onboarding. We never
@@ -271,7 +271,7 @@ export function TestimonialsSection() {
           className="mb-16 md:mb-24 text-center"
         >
           
-          <h2 className="font-['Figtree',sans-serif] font-light text-3xl md:text-[48px] leading-tight tracking-tight text-[#1a1a1a]">
+          <h2 className="font-sans font-light text-3xl md:text-5xl leading-tight tracking-tight text-[#1a1a1a]">
             Hear it from our partners.
           </h2>
         </motion.div>
