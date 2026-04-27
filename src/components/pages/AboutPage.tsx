@@ -92,10 +92,10 @@ export function AboutPage() {
             transition={{ duration: 0.7 }}
             className="max-w-[716px] flex flex-col gap-[14px]"
           >
-            <h2 className="font-['Syne',sans-serif] font-normal text-[36px] sm:text-[48px] md:text-[64px] leading-[1.1] tracking-[-2.38px] text-[#1a1a1a]">
+            <h2 className="font-['Syne',sans-serif] font-normal text-display-md sm:text-display-xl md:text-display-3xl leading-[1.1] tracking-[-2.38px] text-(--text-body)">
               We build the products that define the next.
             </h2>
-            <p className="font-['Figtree',sans-serif] font-light text-[18px] md:text-[20px] leading-[32.5px] tracking-[0.5px] text-[#555] max-w-[663px]">
+            <p className="font-['Figtree',sans-serif] font-light text-lg md:text-xl leading-[32.5px] tracking-[0.5px] text-(--text-secondary) max-w-[663px]">
               Our team focused on bridging the gap between ambitious concepts
               and technical reality.
             </p>
@@ -109,7 +109,7 @@ export function AboutPage() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="w-full h-[300px] sm:h-[500px] md:h-[700px] relative overflow-hidden bg-[#c9c9c9]"
+        className="w-full h-[300px] sm:h-[500px] md:h-[700px] relative overflow-hidden bg-(--color-ink-300)"
       >
         <img
           src={imgSrc(imgGeminiTeam)}
@@ -119,7 +119,7 @@ export function AboutPage() {
       </motion.section>
 
       {/* 3. STATS SECTION */}
-      <section className="bg-[#f5f5f5] py-[80px] md:py-[180px]">
+      <section className="bg-(--bg-muted) py-[80px] md:py-[180px]">
         <div className="max-w-[1190px] mx-auto px-6 sm:px-8 md:px-16 lg:px-0">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-3">
             {stats.map((stat, i) => (
@@ -132,16 +132,16 @@ export function AboutPage() {
                 className="bg-white rounded-[13.203px] px-[26.406px] py-[35.208px] h-[246px] md:h-[336px] md:rounded-[13px] md:p-[26px] flex flex-col justify-between"
               >
                 <p
-                  className="font-['Instrument_Sans',sans-serif] text-[#111] text-[52.812px] md:text-[53px] tracking-[-1px]"
+                  className="font-['Instrument_Sans',sans-serif] text-(--color-ink-800) text-display-2xl md:text-display-2xl tracking-[-1px]"
                   style={{ lineHeight: 1.2 }}
                 >
                   {stat.number}
                 </p>
                 <div className="flex flex-col gap-[15px]">
-                  <p className="font-['Inter',sans-serif] font-medium text-black text-[22.005px] md:text-[22px] tracking-[-0.8802px] leading-[28.606px]">
+                  <p className="font-['Inter',sans-serif] font-medium text-black text-2xl md:text-2xl tracking-[-0.8802px] leading-[28.606px]">
                     {stat.label}
                   </p>
-                  <p className="font-['Figtree',sans-serif] text-[#595959] text-[16px] capitalize leading-[normal]">
+                  <p className="font-['Figtree',sans-serif] text-(--text-secondary) text-base capitalize leading-[normal]">
                     {stat.desc}
                   </p>
                 </div>
@@ -161,10 +161,10 @@ export function AboutPage() {
             transition={{ duration: 0.6 }}
             className="max-w-[871px] flex flex-col gap-[30px]"
           >
-            <h2 className="font-['Figtree',sans-serif] text-[32px] md:text-[48px] leading-[1.05] tracking-[-1px] text-black">
+            <h2 className="font-['Figtree',sans-serif] text-display-sm md:text-display-xl leading-[1.05] tracking-[-1px] text-black">
               Built by specialists. Validated by millions.
             </h2>
-            <p className="font-['Figtree',sans-serif] font-light text-[18px] md:text-[20px] leading-[32.5px] tracking-[-0.5px] text-[#555]">
+            <p className="font-['Figtree',sans-serif] font-light text-lg md:text-xl leading-[32.5px] tracking-[-0.5px] text-(--text-secondary)">
               We are a product-first collective. We don&apos;t guess we solve. We
               focus on the metrics that matter: conversion, retention, and
               scalability, wrapped in a world-class visual identity.
@@ -181,10 +181,10 @@ export function AboutPage() {
                 transition={{ duration: 0.3, delay: i * 0.02 }}
                 className="flex flex-col gap-0.5 min-w-0"
               >
-                <p className="font-['Figtree',sans-serif] text-[20px] md:text-[24px] text-black whitespace-normal break-words leading-[1.2]">
+                <p className="font-['Figtree',sans-serif] text-xl md:text-2xl text-black whitespace-normal break-words leading-[1.2]">
                   {member.name}
                 </p>
-                <p className="font-['Figtree',sans-serif] text-[14px] md:text-[16px] text-black opacity-40">
+                <p className="font-['Figtree',sans-serif] text-sm md:text-base text-black opacity-40">
                   {member.role}
                 </p>
               </motion.div>
@@ -205,7 +205,7 @@ export function AboutPage() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="font-['Figtree',sans-serif] text-[32px] md:text-[48px] leading-[1.1] tracking-[-1px] text-black">
+                <h2 className="font-['Figtree',sans-serif] text-display-sm md:text-display-xl leading-[1.1] tracking-[-1px] text-black">
                   At LF Studio, every project is powered by people who bring
                   different skills but share the same commitment to clarity and
                   quality.
@@ -216,7 +216,7 @@ export function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="font-['Inter',sans-serif] font-medium text-[#7a7a7a] text-[17px] md:text-[20px] leading-[26px] tracking-[-0.8px] max-w-[771px]"
+                className="font-['Inter',sans-serif] font-medium text-(--color-ink-450) text-base md:text-xl leading-[26px] tracking-[-0.8px] max-w-[771px]"
               >
                 Our team is small but highly organized, working seamlessly across
                 branding, design, and development. We run projects with precision,

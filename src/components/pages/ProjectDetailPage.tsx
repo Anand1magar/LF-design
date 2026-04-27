@@ -76,40 +76,40 @@ export function ProjectDetailPage({ project, slug }: Props) {
   return (
     <div className="min-h-screen bg-white">
       {/* HERO */}
-      <section className="bg-[#f5f5f5] w-full pt-[80px]">
+      <section className="bg-(--bg-muted) w-full pt-[80px]">
         <div className="p-5 sm:p-6 lg:p-8">
           <div className="flex flex-col lg:flex-row gap-5 lg:gap-6 lg:h-[calc(100vh-160px)] min-h-[600px] max-h-[1020px]">
             {/* Left: Project Info Card */}
             <motion.div
               {...fadeUp(0.1)}
-              className="bg-[#ececec] rounded-[16px] lg:w-[42%] shrink-0 overflow-hidden"
+              className="bg-(--color-cream-3) rounded-[16px] lg:w-[42%] shrink-0 overflow-hidden"
             >
               <div className="flex flex-col justify-between h-full px-8 sm:px-10 lg:px-16 pt-7 pb-12">
                 <div className="flex flex-col gap-4">
-                  <h1 className="font-['Syne',sans-serif] text-[#1a1a1a] text-[36px] sm:text-[42px] lg:text-[48px] leading-[1.25] tracking-[-3px]">
+                  <h1 className="font-['Syne',sans-serif] text-(--text-body) text-display-md sm:text-display-lg lg:text-display-xl leading-[1.25] tracking-[-3px]">
                     {project.name}
                   </h1>
-                  <p className="font-['Figtree',sans-serif] text-black/55 text-[18px] sm:text-[20px]">
+                  <p className="font-['Figtree',sans-serif] text-black/55 text-lg sm:text-xl">
                     {project.duration} · {project.year}
                   </p>
                   <div className="flex flex-wrap gap-1">
                     {(project.tags || [project.category]).map((tag) => (
                       <span
                         key={tag}
-                        className="bg-[#e4e4e4] rounded-full px-3 py-2.5 font-['Syne',sans-serif] text-black/80 text-[16px]"
+                        className="bg-(--border-subtle) rounded-full px-3 py-2.5 font-['Syne',sans-serif] text-black/80 text-base"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <p className="font-['Syne',sans-serif] text-black/80 text-[18px] sm:text-[20px] leading-[30px] mt-3 max-w-[500px]">
+                  <p className="font-['Syne',sans-serif] text-black/80 text-lg sm:text-xl leading-[30px] mt-3 max-w-[500px]">
                     {project.description.length > 180
                       ? project.description.slice(0, 180) + "…"
                       : project.description}
                   </p>
                 </div>
                 <div className="mt-8">
-                  <button className="inline-flex items-center gap-1 bg-black text-white rounded-full px-[18px] py-2.5 font-['Figtree',sans-serif] text-[16px] cursor-pointer hover:bg-[#333] transition-colors">
+                  <button className="inline-flex items-center gap-1 bg-black text-white rounded-full px-[18px] py-2.5 font-['Figtree',sans-serif] text-base cursor-pointer hover:bg-(--color-ink-600) transition-colors">
                     Website
                     <ExternalLink className="w-[18px] h-[18px]" />
                   </button>
@@ -141,7 +141,7 @@ export function ProjectDetailPage({ project, slug }: Props) {
                 : Array.from({ length: 6 }).map((_, i) => (
                     <div
                       key={i}
-                      className="w-full shrink-0 h-[530px] rounded-[10px] bg-[#b0b0b0]"
+                      className="w-full shrink-0 h-[530px] rounded-[10px] bg-(--color-ink-300)"
                     />
                   ))}
             </motion.div>
@@ -150,19 +150,19 @@ export function ProjectDetailPage({ project, slug }: Props) {
       </section>
 
       {/* DISCOVER MORE PROJECTS */}
-      <section className="bg-[#f5f5f5] pt-16 md:pt-24 pb-24 md:pb-32">
+      <section className="bg-(--bg-muted) pt-16 md:pt-24 pb-24 md:pb-32">
         <div className="max-w-[1190px] mx-auto px-5 sm:px-8 lg:px-10">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-0 mb-14 md:mb-20">
             <motion.div {...fadeUp(0)} className="lg:w-[300px] shrink-0">
-              <p className="font-['Figtree',sans-serif] text-[#1a1a1a] text-[15px] tracking-[-0.3px]">
+              <p className="font-['Figtree',sans-serif] text-(--text-body) text-sm tracking-[-0.3px]">
                 Discover More
               </p>
             </motion.div>
             <motion.div {...fadeUp(0.08)} className="flex-1">
-              <h2 className="font-['Figtree',sans-serif] font-medium text-[#1a1a1a] text-[36px] md:text-[48px] leading-[1.15] tracking-[-2px]">
+              <h2 className="font-['Figtree',sans-serif] font-medium text-(--text-body) text-display-md md:text-display-xl leading-[1.15] tracking-[-2px]">
                 Want to check more?
               </h2>
-              <p className="font-['Figtree',sans-serif] text-[#999] text-[36px] md:text-[48px] leading-[1.15] tracking-[-2px]">
+              <p className="font-['Figtree',sans-serif] text-(--color-ink-350) text-display-md md:text-display-xl leading-[1.15] tracking-[-2px]">
                 Discover our other projects.
               </p>
             </motion.div>
@@ -176,12 +176,12 @@ export function ProjectDetailPage({ project, slug }: Props) {
                   onClick={() => window.scrollTo({ top: 0 })}
                   className="group block"
                 >
-                  <div className="aspect-[1/1.1] rounded-[16px] overflow-hidden bg-[#a8a8a8] relative mb-3">
+                  <div className="aspect-[1/1.1] rounded-[16px] overflow-hidden bg-(--color-ink-300) relative mb-3">
                     <div className="absolute top-2 left-2 z-10 flex gap-1">
                       {(p.tags || [p.category]).map((tag) => (
                         <span
                           key={tag}
-                          className="backdrop-blur-sm bg-white/20 rounded-[12px] px-3 py-1.5 font-['Figtree',sans-serif] text-white text-[13px] tracking-[-0.3px]"
+                          className="backdrop-blur-sm bg-white/20 rounded-[12px] px-3 py-1.5 font-['Figtree',sans-serif] text-white text-sm tracking-[-0.3px]"
                         >
                           {tag}
                         </span>
@@ -195,10 +195,10 @@ export function ProjectDetailPage({ project, slug }: Props) {
                     />
                   </div>
                   <div className="px-1 pt-3">
-                    <h3 className="font-['Figtree',sans-serif] font-medium text-[#1a1a1a] text-[22px] md:text-[26px] tracking-[-0.8px] leading-[1.3] mb-1">
+                    <h3 className="font-['Figtree',sans-serif] font-medium text-(--text-body) text-2xl md:text-display-xs tracking-[-0.8px] leading-[1.3] mb-1">
                       {p.name}
                     </h3>
-                    <p className="font-['Figtree',sans-serif] text-[#999] text-[16px] md:text-[18px] tracking-[-0.5px] leading-[1.4]">
+                    <p className="font-['Figtree',sans-serif] text-(--color-ink-350) text-base md:text-lg tracking-[-0.5px] leading-[1.4]">
                       {p.tagline}
                     </p>
                   </div>

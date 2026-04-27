@@ -25,7 +25,7 @@ function PortfolioCard({
     >
       {/* Image — locked to Figma ratio 742:453 */}
       <div
-        className="relative w-full overflow-hidden rounded-[10px] bg-[#d8d8d8]"
+        className="relative w-full overflow-hidden rounded-[10px] bg-(--color-ink-300)"
         style={{ aspectRatio: "742 / 453" }}
       >
         <SkeletonImage
@@ -37,10 +37,10 @@ function PortfolioCard({
 
       {/* Text */}
       <div className="flex flex-col gap-1 pt-1">
-        <h3 className="font-['Figtree',sans-serif] font-medium text-[#1a1a1a] text-[18px] leading-[1.25] tracking-[-0.3px]">
+        <h3 className="font-['Figtree',sans-serif] font-medium text-(--text-body) text-lg leading-[1.25] tracking-[-0.3px]">
           {item.name}
         </h3>
-        <p className="font-['Figtree',sans-serif] font-light text-[#888] text-[14px] leading-[1.55]">
+        <p className="font-['Figtree',sans-serif] font-light text-(--text-muted) text-sm leading-[1.55]">
           {item.tagline}
         </p>
       </div>
@@ -59,10 +59,10 @@ export function PortfolioGrid() {
           transition={{ duration: 0.7 }}
           className="max-w-[716px] flex flex-col gap-[14px]"
         >
-          <h1 className="font-['Syne',sans-serif] font-normal text-[36px] sm:text-[48px] md:text-[64px] leading-[1.1] tracking-[-2.38px] text-[#1a1a1a]">
+          <h1 className="font-['Syne',sans-serif] font-normal text-display-md sm:text-display-xl md:text-display-3xl leading-[1.1] tracking-[-2.38px] text-(--text-body)">
             Portfolio
           </h1>
-          <p className="font-['Figtree',sans-serif] font-light text-[18px] md:text-[20px] leading-[32.5px] tracking-[0.5px] text-[#555] max-w-[663px]">
+          <p className="font-['Figtree',sans-serif] font-light text-lg md:text-xl leading-[32.5px] tracking-[0.5px] text-(--text-secondary) max-w-[663px]">
             Brands, products, and experiences built with AI-augmented design.
           </p>
         </motion.div>

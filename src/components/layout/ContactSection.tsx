@@ -23,7 +23,7 @@ export function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-['Syne',sans-serif] font-medium text-center tracking-[-1.6px] leading-[1.2] sm:leading-[1.25] md:leading-[80px] text-[36px] md:text-[48px]"
+          className="font-['Syne',sans-serif] font-medium text-center tracking-[-1.6px] leading-[1.2] sm:leading-[1.25] md:leading-[80px] text-display-md md:text-display-xl"
         >
           Ready to Start Your Project?
         </motion.h2>
@@ -33,7 +33,7 @@ export function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="font-['Figtree',sans-serif] font-light text-[#777] text-[16px] text-center leading-[26px] mt-5 max-w-[425px]"
+          className="font-['Figtree',sans-serif] font-light text-(--text-muted) text-base text-center leading-[26px] mt-5 max-w-[425px]"
         >
           Let&apos;s discuss your vision and create something extraordinary
           together. Get in touch today.
@@ -47,7 +47,7 @@ export function ContactSection() {
           className="mt-8 group/contact relative inline-block"
         >
           <button
-            className="inline-flex min-w-[140px] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-105 font-medium text-[14px] text-[rgba(255,255,255,0.8)] hover:text-white tracking-[-0.35px] leading-[20px] rounded-full py-[12px] px-[23px] relative items-center justify-center gap-2 font-['Figtree',sans-serif]"
+            className="inline-flex min-w-[140px] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-105 font-medium text-sm text-[rgba(255,255,255,0.8)] hover:text-white tracking-[-0.35px] leading-[20px] rounded-full py-[12px] px-[23px] relative items-center justify-center gap-2 font-['Figtree',sans-serif]"
             style={{
               border: "1px solid rgba(255,255,255,0.12)",
               backgroundImage:
@@ -96,7 +96,7 @@ export function ContactSection() {
               aria-label={social.label}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#666] hover:text-white transition-colors duration-300"
+              className="text-(--color-ink-480) hover:text-white transition-colors duration-300"
             >
               <Icon icon={social.icon} width={20} height={20} />
             </a>
@@ -106,10 +106,10 @@ export function ContactSection() {
 
       <div className="px-6 md:px-12 py-6">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between">
-          <span className="font-['Figtree',sans-serif] font-light text-[#444] text-[12px] leading-[16px]">
+          <span className="font-['Figtree',sans-serif] font-light text-(--color-ink-550) text-xs leading-[16px]">
             &copy; 2025 {siteConfig.name}
           </span>
-          <span className="font-['Figtree',sans-serif] font-light italic text-[#444] text-[12px] leading-[16px]">
+          <span className="font-['Figtree',sans-serif] font-light italic text-(--color-ink-550) text-xs leading-[16px]">
             Crafted with passion
           </span>
         </div>

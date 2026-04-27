@@ -44,7 +44,7 @@ const portfolioItems = [
   {
     title: "Antaranga.ai",
     tag: "Case studies",
-    bgColor: "bg-[#1a1a1a]",
+    bgColor: "bg-(--text-body)",
     image: imgSrc(imgMockup21),
     imageStyle: "object-bottom",
     overlayColor: "rgba(170,83,17,0.13)",
@@ -53,7 +53,7 @@ const portfolioItems = [
   {
     title: "Second Look Health",
     tag: "Case studies",
-    bgColor: "bg-[#8a90c6]",
+    bgColor: "bg-periwinkle",
     image: "/portfolio/second-look-health.png",
     imageStyle: "object-center",
     overlayColor: "rgba(90,80,160,0.18)",
@@ -114,7 +114,7 @@ function PortfolioCard({
         >
           {/* Top row: tag + arrow button */}
           <div className="flex items-start justify-between w-full">
-            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] leading-[15px] px-[13px] py-[5px] rounded-full font-sans">
+            <span className="bg-white/10 border border-white/10 text-white text-2xs uppercase tracking-[1px] leading-[15px] px-[13px] py-[5px] rounded-full font-sans">
               {item.tag}
             </span>
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
@@ -131,7 +131,7 @@ function PortfolioCard({
         {/* Default state overlay (tag + button, visible when NOT hovered) */}
         <div className="absolute inset-0 flex flex-col justify-between p-5 group-hover:opacity-0 transition-opacity duration-500">
           <div className="flex items-start justify-between">
-            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] px-4 py-1.5 rounded-full font-sans">
+            <span className="bg-white/10 border border-white/10 text-white text-2xs uppercase tracking-[1px] px-4 py-1.5 rounded-full font-sans">
               {item.tag}
             </span>
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
@@ -143,10 +143,10 @@ function PortfolioCard({
 
       {/* Title row */}
       <div className="flex items-baseline gap-1 px-2.5">
-        <span className="font-sans font-medium text-[#333] text-2xl leading-9 tracking-[-0.75px]">
+        <span className="font-sans font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px]">
           {item.title}
         </span>
-        <span className="font-sans font-medium text-[#333] text-2xl leading-9 tracking-[-0.75px] opacity-[0.34]">
+        <span className="font-sans font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px] opacity-[0.34]">
           CaseStudies
         </span>
       </div>
@@ -165,7 +165,7 @@ function PlaceholderCard({ index }: { index: number }) {
       className="flex flex-col gap-3.5"
     >
       <div className="relative rounded-md overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[547px] group cursor-pointer">
-        <div className="absolute inset-0 bg-[#1a1a1a]" />
+        <div className="absolute inset-0 bg-(--text-body)" />
         <div className="absolute inset-0 rounded-md border border-white/10 pointer-events-none" />
 
         {/* Hover overlay */}
@@ -178,7 +178,7 @@ function PlaceholderCard({ index }: { index: number }) {
           }}
         >
           <div className="flex items-start justify-between w-full">
-            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] leading-[15px] px-[13px] py-[5px] rounded-full font-sans">
+            <span className="bg-white/10 border border-white/10 text-white text-2xs uppercase tracking-[1px] leading-[15px] px-[13px] py-[5px] rounded-full font-sans">
               Case studies
             </span>
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
@@ -194,7 +194,7 @@ function PlaceholderCard({ index }: { index: number }) {
         {/* Default state */}
         <div className="absolute inset-0 flex flex-col justify-between p-5 group-hover:opacity-0 transition-opacity duration-500">
           <div className="flex items-start justify-between">
-            <span className="bg-white/10 border border-white/10 text-white text-[10px] uppercase tracking-[1px] px-4 py-1.5 rounded-full font-sans">
+            <span className="bg-white/10 border border-white/10 text-white text-2xs uppercase tracking-[1px] px-4 py-1.5 rounded-full font-sans">
               Case studies
             </span>
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
@@ -205,10 +205,10 @@ function PlaceholderCard({ index }: { index: number }) {
       </div>
 
       <div className="flex items-baseline gap-1 px-2.5">
-        <span className="font-sans font-medium text-[#333] text-2xl leading-9 tracking-[-0.75px]">
+        <span className="font-sans font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px]">
           Antaranga.ai
         </span>
-        <span className="font-sans font-medium text-[#333] text-2xl leading-9 tracking-[-0.75px] opacity-[0.34]">
+        <span className="font-sans font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px] opacity-[0.34]">
           CaseStudies
         </span>
       </div>

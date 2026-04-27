@@ -146,8 +146,8 @@ export function ServiceDetailCards() {
       >
         {/* Section Header */}
         <div className="flex flex-col gap-[14px] items-start mb-12 md:mb-24 max-w-[1190px] mx-auto">
-          <p className="font-sans font-light text-5xl leading-[1.2] md:leading-[73.5px] tracking-[-1.5px] text-[#1a1a1a]"><span className="text-lf-green">End-to-end </span><span>design services</span></p>
-          <p className="font-sans font-light text-[15px] sm:text-[17px] md:text-xl leading-[28px] md:leading-[32.5px] tracking-[-0.5px] text-[#555] max-w-[695px]">
+          <p className="font-sans font-light text-5xl leading-[1.2] md:leading-[73.5px] tracking-[-1.5px] text-(--text-body)"><span className="text-lf-green">End-to-end </span><span>design services</span></p>
+          <p className="font-sans font-light text-sm sm:text-base md:text-xl leading-[28px] md:leading-[32.5px] tracking-[-0.5px] text-(--text-secondary) max-w-[695px]">
             We craft a seamless blend of branding, marketing, and design that tells your story beautifully. By creating experiences that stick with people, we make sure your brand doesn't just compete—it leads!
           </p>
         </div>
@@ -197,10 +197,10 @@ export function ServiceDetailCards() {
                     <div className="flex w-full flex-col gap-[30px] lg:flex-1 lg:gap-[47.693px] lg:pl-[70px] lg:pr-[70px] lg:justify-center">
                       {/* Title block */}
                       <div className="flex flex-col gap-[18.9px]">
-                        <h3 className="font-sans text-[#1a1a1a] leading-[1.05] lg:leading-[47.693px] tracking-[-1px] font-normal text-[32px] md:text-[40px] lg:text-5xl">
+                        <h3 className="font-sans text-(--text-body) leading-[1.05] lg:leading-[47.693px] tracking-[-1px] font-normal text-display-sm md:text-display-lg lg:text-5xl">
                           {service.title}
                         </h3>
-                        <p className="font-sans text-[#1a1a1a] opacity-[0.56] text-base md:text-lg lg:text-xl leading-[23px] lg:leading-[28px] font-normal lg:pl-[5px]">
+                        <p className="font-sans text-(--text-body) opacity-[0.56] text-base md:text-lg lg:text-xl leading-[23px] lg:leading-[28px] font-normal lg:pl-[5px]">
                           {service.subtitle}
                         </p>
                       </div>
@@ -226,7 +226,7 @@ export function ServiceDetailCards() {
 
                     {/* Service image — square on mobile/tablet, fills card height on desktop */}
                     <div
-                      className="w-full lg:flex-1 aspect-square lg:aspect-auto rounded-[10px] overflow-hidden relative bg-[#e7e7e7]"
+                      className="w-full lg:flex-1 aspect-square lg:aspect-auto rounded-[10px] overflow-hidden relative bg-(--border-subtle)"
                     >
                       <Image
                         src={service.image}

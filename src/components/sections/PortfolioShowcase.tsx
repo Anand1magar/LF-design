@@ -318,7 +318,7 @@ export function PortfolioShowcase() {
   const active = showcaseItems[activeIndex];
 
   return (
-    <section ref={sectionRef} className="bg-[#0a0a0a] text-white relative">
+    <section ref={sectionRef} className="bg-(--bg-dark-alt) text-white relative">
       {/* ── Floating Snap Controller ── */}
       <button
         onClick={() => setShowController((v) => !v)}
@@ -338,16 +338,16 @@ export function PortfolioShowcase() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-16 right-5 z-[9999] w-[280px] max-h-[85vh] overflow-y-auto bg-[#1a1a1a]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl scrollbar-none"
+            className="fixed bottom-16 right-5 z-[9999] w-[280px] max-h-[85vh] overflow-y-auto bg-(--text-body)/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl scrollbar-none"
           >
             <div className="flex items-center justify-between mb-4">
-              <p className="text-white/80 text-[11px] font-medium tracking-widest uppercase">Snap Controls</p>
-              <button onClick={() => { setSnapCfg({ ...DEFAULTS }); localStorage.removeItem(STORAGE_KEY); }} className="text-[10px] text-white/40 hover:text-white/70 transition-colors cursor-pointer">Reset</button>
+              <p className="text-white/80 text-xs font-medium tracking-widest uppercase">Snap Controls</p>
+              <button onClick={() => { setSnapCfg({ ...DEFAULTS }); localStorage.removeItem(STORAGE_KEY); }} className="text-2xs text-white/40 hover:text-white/70 transition-colors cursor-pointer">Reset</button>
             </div>
 
             {/* ── Snap Enabled Toggle ── */}
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
-              <span className="text-[11px] text-white/50">Snap Enabled</span>
+              <span className="text-xs text-white/50">Snap Enabled</span>
               <button
                 onClick={() => updateCfg("snapEnabled", !snapCfg.snapEnabled)}
                 className={`relative w-9 h-5 rounded-full transition-colors duration-200 cursor-pointer ${
@@ -364,7 +364,7 @@ export function PortfolioShowcase() {
 
             {/* ── Snap Intensity ── */}
             <label className="block mb-3">
-              <span className="flex justify-between text-[11px] text-white/50 mb-1">
+              <span className="flex justify-between text-xs text-white/50 mb-1">
                 <span>Snap Intensity</span><span>{snapCfg.snapIntensity}</span>
               </span>
               <input type="range" min="1" max="10" step="1" value={snapCfg.snapIntensity}
@@ -374,7 +374,7 @@ export function PortfolioShowcase() {
 
             {/* ── Sticky Offset ── */}
             <label className="block mb-3">
-              <span className="flex justify-between text-[11px] text-white/50 mb-1">
+              <span className="flex justify-between text-xs text-white/50 mb-1">
                 <span>Sticky Offset</span><span>{snapCfg.stickyOffset}vh</span>
               </span>
               <input type="range" min="5" max="45" step="1" value={snapCfg.stickyOffset}
@@ -384,7 +384,7 @@ export function PortfolioShowcase() {
 
             {/* ── Scroll Smoothing ── */}
             <label className="block mb-3 pb-3 border-b border-white/5">
-              <span className="flex justify-between text-[11px] text-white/50 mb-1">
+              <span className="flex justify-between text-xs text-white/50 mb-1">
                 <span>Scroll Smoothing</span><span>{snapCfg.scrollSmoothing}ms</span>
               </span>
               <input type="range" min="100" max="1000" step="50" value={snapCfg.scrollSmoothing}
@@ -394,7 +394,7 @@ export function PortfolioShowcase() {
 
             {/* Zone Top */}
             <label className="block mb-3">
-              <span className="flex justify-between text-[11px] text-white/50 mb-1">
+              <span className="flex justify-between text-xs text-white/50 mb-1">
                 <span>Zone Top</span><span>{snapCfg.zoneTop.toFixed(2)}</span>
               </span>
               <input type="range" min="0.05" max="0.45" step="0.01" value={snapCfg.zoneTop}
@@ -404,7 +404,7 @@ export function PortfolioShowcase() {
 
             {/* Zone Bottom */}
             <label className="block mb-3">
-              <span className="flex justify-between text-[11px] text-white/50 mb-1">
+              <span className="flex justify-between text-xs text-white/50 mb-1">
                 <span>Zone Bottom</span><span>{snapCfg.zoneBottom.toFixed(2)}</span>
               </span>
               <input type="range" min="0.55" max="0.95" step="0.01" value={snapCfg.zoneBottom}
@@ -414,7 +414,7 @@ export function PortfolioShowcase() {
 
             {/* Ease Power */}
             <label className="block mb-3">
-              <span className="flex justify-between text-[11px] text-white/50 mb-1">
+              <span className="flex justify-between text-xs text-white/50 mb-1">
                 <span>Ease ({snapCfg.easePower === 1 ? "Linear" : snapCfg.easePower === 2 ? "Smooth" : "Cubic"})</span><span>{snapCfg.easePower}</span>
               </span>
               <input type="range" min="1" max="3" step="1" value={snapCfg.easePower}
@@ -424,7 +424,7 @@ export function PortfolioShowcase() {
 
             {/* Gradient Boost */}
             <label className="block mb-3">
-              <span className="flex justify-between text-[11px] text-white/50 mb-1">
+              <span className="flex justify-between text-xs text-white/50 mb-1">
                 <span>Gradient Intensity</span><span>{snapCfg.gradientBoost.toFixed(1)}</span>
               </span>
               <input type="range" min="1" max="8" step="0.1" value={snapCfg.gradientBoost}
@@ -434,7 +434,7 @@ export function PortfolioShowcase() {
 
             {/* Card Height */}
             <label className="block mb-4">
-              <span className="flex justify-between text-[11px] text-white/50 mb-1">
+              <span className="flex justify-between text-xs text-white/50 mb-1">
                 <span>Card Height</span><span>{snapCfg.cardHeight}vh</span>
               </span>
               <input type="range" min="40" max="100" step="5" value={snapCfg.cardHeight}
@@ -445,11 +445,11 @@ export function PortfolioShowcase() {
             {/* ── Save Changes Button ── */}
             <button
               onClick={handleSave}
-              className="w-full py-2 rounded-lg bg-white/10 hover:bg-white/20 active:scale-[0.97] text-white text-[11px] font-medium tracking-wide uppercase transition-all duration-150 cursor-pointer border border-white/5 hover:border-white/15"
+              className="w-full py-2 rounded-lg bg-white/10 hover:bg-white/20 active:scale-[0.97] text-white text-xs font-medium tracking-wide uppercase transition-all duration-150 cursor-pointer border border-white/5 hover:border-white/15"
             >
               💾 Save Changes
             </button>
-            <p className="text-[9px] text-white/25 text-center mt-1.5">
+            <p className="text-2xs text-white/25 text-center mt-1.5">
               Saves to browser &amp; copies DEFAULTS to clipboard
             </p>
           </motion.div>
@@ -463,7 +463,7 @@ export function PortfolioShowcase() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="fixed bottom-5 right-20 z-[10000] bg-green-500/90 text-white text-[11px] font-medium px-4 py-2 rounded-lg shadow-lg backdrop-blur-sm"
+            className="fixed bottom-5 right-20 z-[10000] bg-green-500/90 text-white text-xs font-medium px-4 py-2 rounded-lg shadow-lg backdrop-blur-sm"
           >
             ✓ Config saved — DEFAULTS copied to clipboard
           </motion.div>
@@ -475,7 +475,7 @@ export function PortfolioShowcase() {
         {/* Left Sticky Panel — sticks to top while cards scroll by */}
         <div className="w-[35%] sticky top-0 h-screen flex flex-col justify-between px-12 xl:px-20 py-16 xl:py-20 z-10">
           {/* Top: "Portfolio" + Portfolio name */}
-          <div className="flex flex-col gap-[8px] pb-[33px] border-b border-[#404040]">
+          <div className="flex flex-col gap-[8px] pb-[33px] border-b border-(--color-ink-550)">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -580,7 +580,7 @@ export function PortfolioShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="font-sans font-light text-3xl md:text-[40px] leading-tight tracking-tight text-white mb-12"
+          className="font-sans font-light text-3xl md:text-display-lg leading-tight tracking-tight text-white mb-12"
         >
           Selected Projects
         </motion.h2>
@@ -606,7 +606,7 @@ export function PortfolioShowcase() {
               </div>
 
               {/* Text */}
-              <h3 className="font-sans font-light text-white tracking-tight text-[32px]">
+              <h3 className="font-sans font-light text-white tracking-tight text-display-sm">
                 {item.name}
               </h3>
               <p className="font-sans font-light text-white/45 leading-[1.65] mt-3 max-w-[440px] text-sm">

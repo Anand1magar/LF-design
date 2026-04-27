@@ -136,7 +136,7 @@ function StatCard({
         marginBottom: { duration: 0.65, ease: [0.4, 0, 0.2, 1] },
         opacity:      { duration: 0.25 },
       }}
-      className="overflow-hidden rounded-[12px] bg-[#f9f9f9] relative w-full shrink-0"
+      className="overflow-hidden rounded-[12px] bg-(--bg-subtle) relative w-full shrink-0"
     >
       {/* ── Collapsed / past title ── */}
       <motion.div
@@ -145,7 +145,7 @@ function StatCard({
         className="absolute inset-0 flex items-center px-[54px] pointer-events-none"
       >
         <p
-          className="font-['Figtree',sans-serif] text-[24px] font-normal leading-none"
+          className="font-['Figtree',sans-serif] text-2xl font-normal leading-none"
           style={{ color: isPast ? "rgba(0,0,0,0.55)" : "rgba(0,0,0,0.28)" }}
         >
           {card.shortLabel}
@@ -159,7 +159,7 @@ function StatCard({
         className="absolute inset-0"
       >
         {/* Index */}
-        <span className="absolute top-[37px] left-[54px] font-['Figtree',sans-serif] text-[13px] text-black/40 select-none">
+        <span className="absolute top-[37px] left-[54px] font-['Figtree',sans-serif] text-sm text-black/40 select-none">
           {card.id}
         </span>
 
@@ -189,27 +189,27 @@ function StatCard({
               top: card.imgStyle.top ?? 0,
               bottom: card.imgStyle.bottom ?? 0,
               width: "6rem",
-              background: "linear-gradient(to right, #f9f9f9, transparent)",
+              background: "linear-gradient(to right, var(--bg-subtle), transparent)",
             }}
           />
         )}
 
         {/* Left text panel — anchored to bottom (matches Figma top-[307px] in 520px card) */}
         <div className="absolute left-[54px] bottom-[44px] flex flex-col gap-3 w-[40%] max-w-[460px]">
-          <p className="font-['Figtree',sans-serif] text-[30px] xl:text-[32px] leading-[1.18] tracking-[-0.96px] text-[#111]">
+          <p className="font-['Figtree',sans-serif] text-3xl xl:text-display-sm leading-[1.18] tracking-[-0.96px] text-(--color-ink-800)">
             {card.prefix && <span>{card.prefix}</span>}
-            <span className="text-[#87D032] font-semibold">{card.stat}</span>
+            <span className="text-lf-green-bright font-semibold">{card.stat}</span>
             <span>{card.suffix}</span>
           </p>
 
-          <p className="font-['Figtree',sans-serif] font-light text-[15px] leading-[21px] text-[#333] opacity-80 max-w-[409px]">
+          <p className="font-['Figtree',sans-serif] font-light text-sm leading-[21px] text-(--color-ink-600) opacity-80 max-w-[409px]">
             {card.description}
           </p>
 
           {/* Progress bar */}
           <div className="mt-4 h-[3px] w-full max-w-[426px] rounded-full bg-black/[0.06] overflow-hidden">
             <motion.div
-              className="h-full rounded-full bg-[#979591]"
+              className="h-full rounded-full bg-(--color-ink-450)"
               animate={{ width: `${Math.round(cardProgress * 100)}%` }}
               transition={{ duration: 0.08, ease: "linear" }}
             />

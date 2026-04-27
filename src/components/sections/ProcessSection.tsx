@@ -16,14 +16,14 @@ function UserIcon() {
       >
         <path
           d={iconPaths.p12e51680}
-          stroke="#404040"
+          stroke="var(--color-ink-550)"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="1.4"
         />
         <path
           d={iconPaths.p27fd9e00}
-          stroke="#404040"
+          stroke="var(--color-ink-550)"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="1.4"
@@ -43,21 +43,21 @@ function RobotIcon() {
       >
         <path
           d={iconPaths.p1022480}
-          stroke="#404040"
+          stroke="var(--color-ink-550)"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="1.4"
         />
         <path
           d={iconPaths.p25966000}
-          stroke="#404040"
+          stroke="var(--color-ink-550)"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="1.4"
         />
         <path
           d={iconPaths.p1cfdd300}
-          stroke="#404040"
+          stroke="var(--color-ink-550)"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="1.4"
@@ -78,7 +78,7 @@ function PlusIcon() {
     >
       <path
         d="M3.5 0.5V6.5M0.5 3.5H6.5"
-        stroke="#404040"
+        stroke="var(--color-ink-550)"
         strokeWidth="1"
         strokeLinecap="round"
       />
@@ -92,38 +92,38 @@ function getStepIcon(id: string) {
     case "empathize": return (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <mask id="m1" maskUnits="userSpaceOnUse" style={{ maskType: "alpha" as const }} width="28" height="28" x="0" y="0">
-          <rect fill="#D9D9D9" width="28" height="28" />
+          <rect fill="var(--color-ink-300)" width="28" height="28" />
         </mask>
-        <g mask="url(#m1)"><path d={svgPaths.p35bab500} fill="#87D032" /></g>
+        <g mask="url(#m1)"><path d={svgPaths.p35bab500} fill="var(--lf-green-bright)" /></g>
       </svg>
     );
     case "define": return (
       <svg width="27" height="28" viewBox="0 0 26.8652 28" fill="none">
-        <path d={svgPaths.p18679d80} fill="#87D032" />
+        <path d={svgPaths.p18679d80} fill="var(--lf-green-bright)" />
       </svg>
     );
     case "ideate": return (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <mask id="m3" maskUnits="userSpaceOnUse" style={{ maskType: "alpha" as const }} width="28" height="28" x="0" y="0">
-          <rect fill="#D9D9D9" width="28" height="28" />
+          <rect fill="var(--color-ink-300)" width="28" height="28" />
         </mask>
-        <g mask="url(#m3)"><path d={svgPaths.p9ec5bc0} fill="#87D032" /></g>
+        <g mask="url(#m3)"><path d={svgPaths.p9ec5bc0} fill="var(--lf-green-bright)" /></g>
       </svg>
     );
     case "prototype": return (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <mask id="m4" maskUnits="userSpaceOnUse" style={{ maskType: "alpha" as const }} width="28" height="28" x="0" y="0">
-          <rect fill="#D9D9D9" width="28" height="28" />
+          <rect fill="var(--color-ink-300)" width="28" height="28" />
         </mask>
-        <g mask="url(#m4)"><path d={svgPaths.p15eaaff0} fill="#87D032" /></g>
+        <g mask="url(#m4)"><path d={svgPaths.p15eaaff0} fill="var(--lf-green-bright)" /></g>
       </svg>
     );
     case "test": return (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <mask id="m5" maskUnits="userSpaceOnUse" style={{ maskType: "alpha" as const }} width="28" height="28" x="0" y="0">
-          <rect fill="#D9D9D9" width="28" height="28" />
+          <rect fill="var(--color-ink-300)" width="28" height="28" />
         </mask>
-        <g mask="url(#m5)"><path d={svgPaths.p14251b00} fill="#87D032" stroke="white" strokeWidth="0.1" /></g>
+        <g mask="url(#m5)"><path d={svgPaths.p14251b00} fill="var(--lf-green-bright)" stroke="white" strokeWidth="0.1" /></g>
       </svg>
     );
     default: return null;
@@ -151,9 +151,9 @@ export function ProcessSection() {
         >
           <h2 className="font-sans font-light text-5xl leading-[60px] tracking-[-1.2px]">
             <span className="text-lf-green-bright">AI augmented</span>
-            <span className="text-[#333]"> design process</span>
+            <span className="text-(--color-ink-600)"> design process</span>
           </h2>
-          <p className="font-sans font-light text-[#555] text-base md:text-xl leading-[26px] md:leading-relaxed tracking-[-0.4px] md:tracking-tight max-w-[373px] md:max-w-[695px] mt-4">
+          <p className="font-sans font-light text-(--text-secondary) text-base md:text-xl leading-[26px] md:leading-relaxed tracking-[-0.4px] md:tracking-tight max-w-[373px] md:max-w-[695px] mt-4">
             By augmenting Design Thinking with custom, AI
             agentic tools & workflows, we deliver research,
             value propositions and PoCs 80% faster, enabling us
@@ -165,7 +165,7 @@ export function ProcessSection() {
       {/* Mobile Process Steps (Figma) */}
       <div className="lg:hidden max-w-[1400px] mx-auto">
         <div className="relative pl-[50px]">
-          <div className="absolute left-[14px] top-0 bottom-0 border-l border-dashed border-[#c8c8c8]" />
+          <div className="absolute left-[14px] top-0 bottom-0 border-l border-dashed border-(--border-medium)" />
 
           <div className="flex flex-col gap-8">
             {processSteps.map((step, i) => (
@@ -178,15 +178,15 @@ export function ProcessSection() {
                 className="relative pt-4"
               >
                 <div className="absolute left-[-39px] top-[28px] w-[7px] h-[7px] rounded-full bg-lf-green-bright" />
-                <div className="absolute left-[-32px] top-[31px] w-[24px] border-t border-dashed border-[#c8c8c8]" />
+                <div className="absolute left-[-32px] top-[31px] w-[24px] border-t border-dashed border-(--border-medium)" />
 
                 <div className="flex flex-col gap-5">
                   <div className="w-7 h-7">{step.svgContent}</div>
                   <p
                     className={
                       step.combinedIcons
-                        ? "font-display font-normal text-[#1a1a1a] text-2xl leading-[32px] tracking-[-0.6px]"
-                        : "font-display text-[#1a1a1a] text-[32px] leading-[36px] tracking-[-1px]"
+                        ? "font-display font-normal text-(--text-body) text-2xl leading-[32px] tracking-[-0.6px]"
+                        : "font-display text-(--text-body) text-display-sm leading-[36px] tracking-[-1px]"
                     }
                   >
                     {step.title}
@@ -198,7 +198,7 @@ export function ProcessSection() {
                         <PlusIcon />
                         <RobotIcon />
                       </div>
-                      <p className="font-sans font-light text-[#555] text-sm leading-[22.75px] tracking-[-0.14px] whitespace-pre-wrap">
+                      <p className="font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px] whitespace-pre-wrap">
                         {`${step.humanDesc} `}
                         <br />
                         {step.aiDesc}
@@ -208,13 +208,13 @@ export function ProcessSection() {
                     <div className="flex flex-col gap-[14px]">
                       <div className="flex gap-3 items-start">
                         <UserIcon />
-                        <p className="flex-1 font-sans font-light text-[#555] text-sm leading-[22.75px] tracking-[-0.14px]">
+                        <p className="flex-1 font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
                           {step.humanDesc}
                         </p>
                       </div>
                       <div className="flex gap-3 items-start">
                         <RobotIcon />
-                        <p className="flex-1 font-sans font-light text-[#555] text-sm leading-[22.75px] tracking-[-0.14px]">
+                        <p className="flex-1 font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
                           {step.aiDesc}
                         </p>
                       </div>
@@ -240,7 +240,7 @@ export function ProcessSection() {
                 duration: 1.4,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              className="hidden lg:block absolute top-[3px] left-0 right-0 h-px border-t border-dashed border-[#c8c8c8] origin-left"
+              className="hidden lg:block absolute top-[3px] left-0 right-0 h-px border-t border-dashed border-(--border-medium) origin-left"
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8">
@@ -297,7 +297,7 @@ export function ProcessSection() {
                       delay: 0.5 + i * 0.18,
                       ease: "easeOut",
                     }}
-                    className="hidden lg:block absolute top-[7px] left-[13px] w-px h-[34px] border-l border-dashed border-[#c8c8c8] origin-top"
+                    className="hidden lg:block absolute top-[7px] left-[13px] w-px h-[34px] border-l border-dashed border-(--border-medium) origin-top"
                   />
 
                   <div className="flex flex-col gap-5 pt-4 lg:pt-[48px]">
@@ -307,8 +307,8 @@ export function ProcessSection() {
                     <p
                       className={
                         step.combinedIcons
-                          ? "font-display font-normal text-[#1a1a1a] text-2xl leading-[32px] tracking-[-0.6px]"
-                          : "font-display text-[#1a1a1a] text-xl md:text-2xl tracking-tight"
+                          ? "font-display font-normal text-(--text-body) text-2xl leading-[32px] tracking-[-0.6px]"
+                          : "font-display text-(--text-body) text-xl md:text-2xl tracking-tight"
                       }
                     >
                       {step.title}
@@ -320,7 +320,7 @@ export function ProcessSection() {
                           <PlusIcon />
                           <RobotIcon />
                         </div>
-                        <p className="font-sans font-light text-[#555] text-sm leading-[22.75px] tracking-[-0.14px] whitespace-pre-wrap">
+                        <p className="font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px] whitespace-pre-wrap">
                           {`${step.humanDesc} `}
                           <br />
                           {step.aiDesc}
@@ -330,13 +330,13 @@ export function ProcessSection() {
                       <div className="flex flex-col gap-[14px]">
                         <div className="flex gap-3 items-start">
                           <UserIcon />
-                          <p className="flex-1 font-sans font-light text-[#555] text-sm leading-[22.75px] tracking-[-0.14px]">
+                          <p className="flex-1 font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
                             {step.humanDesc}
                           </p>
                         </div>
                         <div className="flex gap-3 items-start">
                           <RobotIcon />
-                          <p className="flex-1 font-sans font-light text-[#555] text-sm leading-[22.75px] tracking-[-0.14px]">
+                          <p className="flex-1 font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
                             {step.aiDesc}
                           </p>
                         </div>
@@ -384,10 +384,10 @@ function ProcessAccordion() {
                 <div className="relative shrink-0 w-12 flex items-center justify-center">
                   <motion.span
                     animate={{
-                      color: isOpen ? "#87D032" : "#d4d4d4",
+                      color: isOpen ? "var(--lf-green-bright)" : "var(--color-ink-250)",
                     }}
                     transition={{ duration: 0.3 }}
-                    className="font-display text-[32px] md:text-[40px] tracking-tighter select-none"
+                    className="font-display text-display-sm md:text-display-lg tracking-tighter select-none"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </motion.span>
@@ -416,9 +416,9 @@ function ProcessAccordion() {
                     {step.svgContent}
                   </motion.div>
                   <motion.span
-                    animate={{ color: isOpen ? "#1a1a1a" : "#999" }}
+                    animate={{ color: isOpen ? "var(--text-body)" : "var(--color-ink-350)" }}
                     transition={{ duration: 0.3 }}
-                    className="font-display text-xl md:text-[28px] tracking-tight text-left"
+                    className="font-display text-xl md:text-display-xs tracking-tight text-left"
                   >
                     {step.title}
                   </motion.span>
@@ -431,7 +431,7 @@ function ProcessAccordion() {
                   className="w-6 h-6 shrink-0 flex items-center justify-center"
                 >
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M7 1v12M1 7h12" stroke={isOpen ? "#87D032" : "#bbb"} strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M7 1v12M1 7h12" stroke={isOpen ? "var(--lf-green-bright)" : "var(--color-ink-300)"} strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
                 </motion.div>
               </div>
@@ -454,14 +454,14 @@ function ProcessAccordion() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                     transition={{ duration: 0.35, delay: 0.1 }}
-                    className="flex gap-3 items-start bg-[#fafafa] rounded-xl p-4 border border-black/[0.04]"
+                    className="flex gap-3 items-start bg-(--bg-subtle) rounded-xl p-4 border border-black/[0.04]"
                   >
                     <UserIcon />
                     <div>
-                      <p className="font-sans text-[11px] tracking-[1px] uppercase text-lf-green-bright mb-1.5">
+                      <p className="font-sans text-xs tracking-[1px] uppercase text-lf-green-bright mb-1.5">
                         Human
                       </p>
-                      <p className="font-sans font-light text-[#555] text-sm leading-[22px]">
+                      <p className="font-sans font-light text-(--text-secondary) text-sm leading-[22px]">
                         {step.humanDesc}
                       </p>
                     </div>
@@ -471,7 +471,7 @@ function ProcessAccordion() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                     transition={{ duration: 0.35, delay: 0.18 }}
-                    className="flex gap-3 items-start bg-[#1a1a1a] rounded-xl p-4 border border-white/[0.06]"
+                    className="flex gap-3 items-start bg-(--text-body) rounded-xl p-4 border border-white/[0.06]"
                   >
                     <div className="mt-[2px]">
                       <svg width="18" height="18" viewBox="0 0 16.4 17.9" fill="none">
@@ -481,7 +481,7 @@ function ProcessAccordion() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-sans text-[11px] tracking-[1px] uppercase text-lf-green-bright mb-1.5">
+                      <p className="font-sans text-xs tracking-[1px] uppercase text-lf-green-bright mb-1.5">
                         AI Agent
                       </p>
                       <p className="font-sans font-light text-white/70 text-sm leading-[22px]">
@@ -549,7 +549,7 @@ function ProcessPipeline() {
             <div className="relative border border-black/[0.06] bg-white rounded-[6px] p-5 lg:p-6 h-full flex flex-col gap-4 group hover:border-lf-green-bright/30 transition-colors duration-300">
               {/* Step number + icon row */}
               <div className="flex items-center justify-between">
-                <span className="font-sans text-[11px] tracking-[1.5px] text-[#bbb] uppercase">
+                <span className="font-sans text-xs tracking-[1.5px] text-(--color-ink-300) uppercase">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="w-6 h-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
@@ -558,7 +558,7 @@ function ProcessPipeline() {
               </div>
 
               {/* Title */}
-              <p className="font-display text-[#1a1a1a] text-lg tracking-tight">
+              <p className="font-display text-(--text-body) text-lg tracking-tight">
                 {step.title}
               </p>
 
@@ -579,14 +579,14 @@ function ProcessPipeline() {
               <div className="flex flex-col gap-3 mt-auto">
                 <div className="flex gap-2.5 items-start">
                   <UserIcon />
-                  <p className="flex-1 font-sans font-light text-[#666] text-[13px] leading-[20px]">
+                  <p className="flex-1 font-sans font-light text-(--color-ink-480) text-sm leading-[20px]">
                     {step.humanDesc}
                   </p>
                 </div>
                 <div className="h-px bg-black/[0.04]" />
                 <div className="flex gap-2.5 items-start">
                   <RobotIcon />
-                  <p className="flex-1 font-sans font-light text-[#666] text-[13px] leading-[20px]">
+                  <p className="flex-1 font-sans font-light text-(--color-ink-480) text-sm leading-[20px]">
                     {step.aiDesc}
                   </p>
                 </div>
@@ -608,7 +608,7 @@ function ProcessPipeline() {
                 <svg width="8" height="12" viewBox="0 0 8 12" fill="none">
                   <path
                     d="M1.5 1L6.5 6L1.5 11"
-                    stroke="#87D032"
+                    stroke="var(--lf-green-bright)"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -628,12 +628,12 @@ function ProcessPipeline() {
         transition={{ duration: 0.5, delay: 1.0 }}
         className="flex items-center justify-between mt-6 px-2"
       >
-        <span className="font-sans text-[12px] text-[#bbb] tracking-wide">
+        <span className="font-sans text-xs text-(--color-ink-300) tracking-wide">
           5 steps
         </span>
         <div className="flex items-center gap-2">
           <div className="w-1.5 h-1.5 rounded-full bg-lf-green-bright" />
-          <span className="font-sans text-[12px] text-[#999] tracking-wide">
+          <span className="font-sans text-xs text-(--color-ink-350) tracking-wide">
             Human + AI at every stage
           </span>
         </div>

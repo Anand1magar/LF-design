@@ -187,13 +187,13 @@ export function AiEfficiencySection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7 }}
-        className="max-w-[1190px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-8 mb-10 border-b border-[#e5e5e5]"
+        className="max-w-[1190px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-8 mb-10 border-b border-(--border-subtle)"
       >
-        <h2 className="font-sans font-light text-[28px] sm:text-3xl md:text-5xl leading-tight tracking-tight">
+        <h2 className="font-sans font-light text-display-xs sm:text-3xl md:text-5xl leading-tight tracking-tight">
           <span className="text-lf-green-bright">65%</span>
-          <span className="text-[#1a1a1a]"> more efficient</span>
+          <span className="text-(--text-body)"> more efficient</span>
         </h2>
-        <p className="font-sans font-light text-[#888] text-base leading-relaxed max-w-[404px] mt-4 md:mt-0">
+        <p className="font-sans font-light text-(--text-muted) text-base leading-relaxed max-w-[404px] mt-4 md:mt-0">
           Comprehensive design services for digital growth.
         </p>
       </motion.div>
@@ -208,7 +208,7 @@ export function AiEfficiencySection() {
           transition={{ duration: 0.5 }}
           className="relative lg:hidden"
         >
-          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#e5e5e5]" />
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-(--border-subtle)" />
           <div
             ref={tabsScrollRef}
             className="flex gap-[6px] md:gap-[22px] overflow-x-auto no-scrollbar relative"
@@ -222,7 +222,7 @@ export function AiEfficiencySection() {
               >
                 <span
                   className={`font-sans text-base md:text-xl leading-[32px] tracking-[-0.6px] whitespace-nowrap transition-all duration-300 ${
-                    activeTab === i ? "text-lf-green-bright font-medium" : "text-[#1a1a1a] opacity-60"
+                    activeTab === i ? "text-lf-green-bright font-medium" : "text-(--text-body) opacity-60"
                   }`}
                 >
                   {tab.label}
@@ -236,7 +236,7 @@ export function AiEfficiencySection() {
                     <motion.div
                       key={`prog-mob-${activeTab}`}
                       className="w-full h-full origin-left"
-                      style={{ background: "linear-gradient(90deg, #a4e654 0%, #87D032 100%)" }}
+                      style={{ background: "linear-gradient(90deg, var(--color-green-100) 0%, var(--lf-green-bright) 100%)" }}
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
                       transition={{ duration: AUTO_CYCLE / 1000, ease: "linear" }}
@@ -256,7 +256,7 @@ export function AiEfficiencySection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="w-full lg:hidden"
         >
-          <div className="bg-[#f9f9f9] rounded-[20px] overflow-hidden min-h-[500px] md:min-h-[540px] relative">
+          <div className="bg-(--bg-subtle) rounded-[20px] overflow-hidden min-h-[500px] md:min-h-[540px] relative">
             {/* Text */}
             <AnimatePresence mode="wait">
               <motion.div
@@ -268,7 +268,7 @@ export function AiEfficiencySection() {
                 transition={{ duration: 0.3 }}
               >
                 <motion.p
-                  className="font-sans text-[#111] text-[22px] md:text-[32px] leading-snug tracking-[-0.96px]"
+                  className="font-sans text-(--color-ink-800) text-2xl md:text-display-sm leading-snug tracking-[-0.96px]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.05 }}
@@ -276,7 +276,7 @@ export function AiEfficiencySection() {
                   {renderTitle(activeFeature)}
                 </motion.p>
                 <motion.p
-                  className="font-sans font-light text-[#333] text-[13px] md:text-base leading-[21px] mt-3 opacity-80 max-w-[280px] md:max-w-[403px]"
+                  className="font-sans font-light text-(--color-ink-600) text-sm md:text-base leading-[21px] mt-3 opacity-80 max-w-[280px] md:max-w-[403px]"
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -333,12 +333,12 @@ export function AiEfficiencySection() {
                   onClick={() => handleTabClick(i)}
                   className="relative text-left py-[14px] pl-5 pr-4 cursor-pointer transition-colors duration-200 group"
                 >
-                  <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#e0e0e0]" />
+                  <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-(--border-subtle)" />
                   {isActive && (
                     <motion.div
                       key={`beam2-${activeTab}`}
                       className="absolute left-0 top-0 bottom-0 w-[3px] origin-top"
-                      style={{ background: "linear-gradient(180deg, #a4e654 0%, #87D032 100%)" }}
+                      style={{ background: "linear-gradient(180deg, var(--color-green-100) 0%, var(--lf-green-bright) 100%)" }}
                       initial={{ scaleY: 0 }}
                       animate={{ scaleY: 1 }}
                       transition={{ duration: AUTO_CYCLE / 1000, ease: "linear" }}
@@ -346,7 +346,7 @@ export function AiEfficiencySection() {
                   )}
                   <span
                     className={`font-sans text-base leading-[24px] tracking-[-0.2px] transition-all duration-300 ${
-                      isActive ? "text-lf-green-bright font-medium" : "text-[#999] group-hover:text-[#666]"
+                      isActive ? "text-lf-green-bright font-medium" : "text-(--color-ink-350) group-hover:text-(--color-ink-480)"
                     }`}
                   >
                     {tab.label}
@@ -362,7 +362,7 @@ export function AiEfficiencySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex-1 bg-[#f9f9f9] rounded-[20px] overflow-hidden relative"
+            className="flex-1 bg-(--bg-subtle) rounded-[20px] overflow-hidden relative"
           >
             {/* Text overlay */}
             <AnimatePresence mode="wait">
@@ -375,7 +375,7 @@ export function AiEfficiencySection() {
                 transition={{ duration: 0.3 }}
               >
                 <motion.p
-                  className="font-sans text-[#111] text-[32px] leading-snug tracking-[-0.96px]"
+                  className="font-sans text-(--color-ink-800) text-display-sm leading-snug tracking-[-0.96px]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.05 }}
@@ -383,7 +383,7 @@ export function AiEfficiencySection() {
                   {renderTitle(activeFeature)}
                 </motion.p>
                 <motion.p
-                  className={`font-sans font-light text-[#333] text-base leading-[21px] mt-3 opacity-80 ${DESKTOP_DESC_CLASS[activeFeature.variant]}`}
+                  className={`font-sans font-light text-(--color-ink-600) text-base leading-[21px] mt-3 opacity-80 ${DESKTOP_DESC_CLASS[activeFeature.variant]}`}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}

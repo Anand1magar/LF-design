@@ -140,7 +140,7 @@ function TestimonialCardGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6 }}
-            className="bg-[#edece8] rounded-[12px] overflow-hidden relative flex items-center justify-center flex-1"
+            className="bg-(--color-cream-2) rounded-[12px] overflow-hidden relative flex items-center justify-center flex-1"
           >
             <LaudioLogoSmall className="w-[93px] lg:w-[122px] h-auto opacity-90" />
           </motion.div>
@@ -151,7 +151,7 @@ function TestimonialCardGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="bg-[#cfcbc8] rounded-[12px] overflow-hidden relative flex-1"
+            className="bg-(--color-ink-300) rounded-[12px] overflow-hidden relative flex-1"
           >
             <img
               alt="Russ Richmond, MD"
@@ -172,10 +172,10 @@ function TestimonialCardGrid() {
           {/* Top row: Author (left) + Logo (right) */}
           <div className="flex items-start justify-between">
             <div className="flex flex-col gap-[3.4px] font-sans">
-              <p className="text-[#121212] text-[10.3px] lg:text-xs tracking-[1.29px] uppercase leading-[12.86px]">
+              <p className="text-(--color-ink-800) text-2xs lg:text-xs tracking-[1.29px] uppercase leading-[12.86px]">
                 Russ Richmond, MD
               </p>
-              <p className="text-[#121212] opacity-50 text-[10.3px] lg:text-xs leading-[12.86px]">
+              <p className="text-(--color-ink-800) opacity-50 text-2xs lg:text-xs leading-[12.86px]">
                 CEO of Laudio
               </p>
             </div>
@@ -183,7 +183,7 @@ function TestimonialCardGrid() {
           </div>
 
           {/* Quote at bottom */}
-          <p className="font-sans font-light text-[#121212] text-xl leading-[30px]">
+          <p className="font-sans font-light text-(--color-ink-800) text-xl leading-[30px]">
             "It would have taken months to build the product team that we
             inherited overnight with Leapfrog. They're built for startup
             speed, and they have consistently delivered a well-engineered
@@ -202,7 +202,7 @@ function TestimonialCardGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: 0.12 }}
-            className="bg-[#292322] rounded-[12px] overflow-hidden relative flex items-center justify-center flex-1"
+            className="bg-charcoal rounded-[12px] overflow-hidden relative flex items-center justify-center flex-1"
           >
             <PhilLogoWhite />
           </motion.div>
@@ -213,7 +213,7 @@ function TestimonialCardGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: 0.18 }}
-            className="bg-[#686869] rounded-[12px] overflow-hidden relative flex-1"
+            className="bg-steel rounded-[12px] overflow-hidden relative flex-1"
           >
             <img
               alt="Team member"
@@ -234,10 +234,10 @@ function TestimonialCardGrid() {
           {/* Top row: Author (left) + Logo (right) */}
           <div className="flex items-start justify-between">
             <div className="flex flex-col gap-[3.4px] font-sans">
-              <p className="text-[#121212] text-[10.3px] lg:text-xs tracking-[1.29px] uppercase leading-[12.86px]">
+              <p className="text-(--color-ink-800) text-2xs lg:text-xs tracking-[1.29px] uppercase leading-[12.86px]">
                 Phil
               </p>
-              <p className="text-[#121212] opacity-50 text-[10.3px] lg:text-xs leading-[12.86px]">
+              <p className="text-(--color-ink-800) opacity-50 text-2xs lg:text-xs leading-[12.86px]">
                 Engineering Leadership
               </p>
             </div>
@@ -245,7 +245,7 @@ function TestimonialCardGrid() {
           </div>
 
           {/* Quote at bottom */}
-          <p className="font-sans font-light text-[#121212] text-xl leading-[30px]">
+          <p className="font-sans font-light text-(--color-ink-800) text-xl leading-[30px]">
             Leapfrog team has been instrumental in Phil&apos;s growth so far. Their
             talent pool has been exceptional and a lot of credit goes to
             Leapfrog&apos;s high quality focus on training and onboarding. We never
@@ -260,7 +260,7 @@ function TestimonialCardGrid() {
 
 export function TestimonialsSection() {
   return (
-    <section className="bg-[#f5f5f5] py-20 md:py-32">
+    <section className="bg-(--bg-muted) py-20 md:py-32">
       <div className="max-w-[1190px] mx-auto px-6 md:px-16 lg:px-[192px]">
         {/* Header */}
         <motion.div
@@ -271,7 +271,7 @@ export function TestimonialsSection() {
           className="mb-16 md:mb-24 text-center"
         >
           
-          <h2 className="font-sans font-light text-3xl md:text-5xl leading-tight tracking-tight text-[#1a1a1a]">
+          <h2 className="font-sans font-light text-3xl md:text-5xl leading-tight tracking-tight text-(--text-body)">
             Hear it from our partners.
           </h2>
         </motion.div>

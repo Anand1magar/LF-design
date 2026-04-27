@@ -16,27 +16,27 @@ import img011 from "figma:asset/42ee4ceb8a55562fc02ad5e27fccb90d0ea699c9.png";
 const services = [
   {
     title: "Visual Branding",
-    bg: "bg-[#111438]",
+    bg: "bg-navy",
     type: "branding" as const,
   },
   {
     title: "Business Collaterals",
-    bg: "bg-[#e5e5e5]",
+    bg: "bg-(--border-subtle)",
     type: "collaterals" as const,
   },
   {
     title: "Product Design",
-    bg: "bg-[#e5e5e5]",
+    bg: "bg-(--border-subtle)",
     type: "product" as const,
   },
   {
     title: "Motion Graphics",
-    bg: "bg-[#e5e5e5]",
+    bg: "bg-(--border-subtle)",
     type: "motion" as const,
   },
   {
     title: "Marketing Collateral",
-    bg: "bg-[#e5e5e5]",
+    bg: "bg-(--border-subtle)",
     type: "marketing" as const,
   },
 ];
@@ -63,7 +63,7 @@ function ServiceCard({
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className={`${bg} rounded-md overflow-hidden relative h-[280px] sm:h-[320px] md:h-[349px] border border-[#d4d4d4]`}
+        className={`${bg} rounded-md overflow-hidden relative h-[280px] sm:h-[320px] md:h-[349px] border border-(--color-ink-250)`}
       >
         {type === "branding" && (
           <>
@@ -115,7 +115,7 @@ function ServiceCard({
           </div>
         )}
       </motion.div>
-      <p className="font-['Syne',sans-serif] text-[#1a1a1a] text-xl md:text-2xl tracking-tight px-2">
+      <p className="font-['Syne',sans-serif] text-(--text-body) text-xl md:text-2xl tracking-tight px-2">
         {title}
       </p>
     </motion.div>
@@ -124,7 +124,7 @@ function ServiceCard({
 
 export function ServicesSection() {
   return (
-    <section className="bg-[#fffcf8] px-6 md:px-16 lg:px-[240px] py-20 md:py-32">
+    <section className="bg-lf-cream px-6 md:px-16 lg:px-[240px] py-20 md:py-32">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -133,14 +133,14 @@ export function ServicesSection() {
         transition={{ duration: 0.7 }}
         className="mb-16 md:mb-24"
       >
-        <p className="font-['Figtree',sans-serif] font-medium text-xs text-[#888] tracking-[1.2px] uppercase mb-4">
+        <p className="font-['Figtree',sans-serif] font-medium text-xs text-(--text-muted) tracking-[1.2px] uppercase mb-4">
           What We Do
         </p>
-        <h2 className="font-['Figtree',sans-serif] font-light text-3xl md:text-[48px] leading-tight tracking-tight text-[#1a1a1a]">
-          <span className="text-[#79B231]">End-to-end </span>
+        <h2 className="font-['Figtree',sans-serif] font-light text-3xl md:text-display-xl leading-tight tracking-tight text-(--text-body)">
+          <span className="text-lf-green">End-to-end </span>
           <span>design services</span>
         </h2>
-        <p className="font-['Figtree',sans-serif] font-light text-[#555] text-base md:text-xl leading-relaxed tracking-tight max-w-[695px] mt-4">
+        <p className="font-['Figtree',sans-serif] font-light text-(--text-secondary) text-base md:text-xl leading-relaxed tracking-tight max-w-[695px] mt-4">
           We bridge the gap between branding, marketing & sales assets, UX
           design and motion design to give you a definitive competitive edge
           when going to market.
@@ -158,8 +158,8 @@ export function ServicesSection() {
       <div className="hidden xl:flex items-center mt-10 gap-0 w-screen relative left-1/2 -translate-x-1/2 px-4 sm:px-6 md:px-10">
         {services.map((_, i) => (
           <div key={i} className="flex items-center flex-1">
-            <div className="flex-1 border-t border-dashed border-[#c8c8c8]" />
-            <div className="w-2 h-2 rounded-full bg-[#79B231] shrink-0" />
+            <div className="flex-1 border-t border-dashed border-(--border-medium)" />
+            <div className="w-2 h-2 rounded-full bg-lf-green shrink-0" />
           </div>
         ))}
       </div>

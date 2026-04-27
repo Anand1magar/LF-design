@@ -26,8 +26,8 @@ function NavContactButton({ href }: { href: string }) {
       onMouseLeave={onMouseLeave}
       className="group inline-flex overflow-hidden transition-all duration-200 hover:scale-[1.04] hover:shadow-[0_0_30px_rgba(135,208,50,0.3)] rounded-full p-[2px] relative items-center justify-center cursor-pointer"
     >
-      <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_60%,#87D032_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-      <span className="flex items-center justify-center text-black bg-white w-full h-full rounded-full py-[7px] px-5 relative font-['Figtree',sans-serif] font-medium text-[14px] tracking-[-0.35px]">
+      <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_60%,var(--lf-green-bright)_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <span className="flex items-center justify-center text-black bg-white w-full h-full rounded-full py-[7px] px-5 relative font-['Figtree',sans-serif] font-medium text-sm tracking-[-0.35px]">
         <span ref={ref as React.RefObject<HTMLSpanElement>} className="relative z-10">Contact</span>
       </span>
     </button>
@@ -35,7 +35,7 @@ function NavContactButton({ href }: { href: string }) {
 }
 
 function Logo({ variant = "light" }: { variant?: "light" | "dark" }) {
-  const fill = variant === "light" ? "white" : "#1a1a1a";
+  const fill = variant === "light" ? "var(--text-inverse)" : "var(--text-body)";
   return (
     <div className="flex items-center gap-2">
       <svg width="93" height="18" viewBox="0 0 93.2913 17.7296" fill="none">
@@ -57,14 +57,14 @@ function Logo({ variant = "light" }: { variant?: "light" | "dark" }) {
         </defs>
       </svg>
       <svg width="60" height="20" viewBox="0 0 60.085 19.87" fill="none">
-        <path d={svgPaths.p290fbd00} fill="#79B231" />
-        <path d={svgPaths.p17abe200} fill="#79B231" />
-        <path d={svgPaths.p1af7f900} fill="#79B231" />
-        <path d={svgPaths.p27e03100} fill="#79B231" />
-        <path d={svgPaths.p3ca3b800} fill="#79B231" />
-        <path d={svgPaths.p2c0ecc00} fill="#79B231" />
-        <path d={svgPaths.p9021700} fill="#79B231" />
-        <path d={svgPaths.pdfda300} fill="#79B231" />
+        <path d={svgPaths.p290fbd00} fill="var(--lf-green)" />
+        <path d={svgPaths.p17abe200} fill="var(--lf-green)" />
+        <path d={svgPaths.p1af7f900} fill="var(--lf-green)" />
+        <path d={svgPaths.p27e03100} fill="var(--lf-green)" />
+        <path d={svgPaths.p3ca3b800} fill="var(--lf-green)" />
+        <path d={svgPaths.p2c0ecc00} fill="var(--lf-green)" />
+        <path d={svgPaths.p9021700} fill="var(--lf-green)" />
+        <path d={svgPaths.pdfda300} fill="var(--lf-green)" />
       </svg>
     </div>
   );
@@ -147,7 +147,7 @@ export function Navbar() {
               <Logo variant="light" />
             </button>
 
-            <div className="flex items-center gap-6 font-['Figtree',sans-serif] font-medium text-[14px] leading-[20px] tracking-[-0.35px] text-center text-white">
+            <div className="flex items-center gap-6 font-['Figtree',sans-serif] font-medium text-sm leading-[20px] tracking-[-0.35px] text-center text-white">
               {navItems.map((item) => (
                 <button
                   key={item.label}
@@ -217,7 +217,7 @@ export function Navbar() {
                   onClick={() => handleNav(item)}
                   className="text-left py-4 border-b border-white/6 cursor-pointer"
                 >
-                  <span className="font-['Figtree',sans-serif] text-white text-[28px] tracking-tight">
+                  <span className="font-['Figtree',sans-serif] text-white text-display-xs tracking-tight">
                     {item.label}
                   </span>
                 </motion.button>
@@ -231,11 +231,11 @@ export function Navbar() {
             >
               <button
                 onClick={() => setMobileOpen(false)}
-                className="w-full bg-[#79B231] text-white py-3.5 rounded-full font-['Figtree',sans-serif] font-medium text-[15px] cursor-pointer active:scale-[0.98] transition-transform"
+                className="w-full bg-lf-green text-white py-3.5 rounded-full font-['Figtree',sans-serif] font-medium text-sm cursor-pointer active:scale-[0.98] transition-transform"
               >
                 Contact Us
               </button>
-              <p className="font-['Figtree',sans-serif] text-white/30 text-[12px] text-center mt-4">
+              <p className="font-['Figtree',sans-serif] text-white/30 text-xs text-center mt-4">
                 hello@designstudio.com
               </p>
             </motion.div>

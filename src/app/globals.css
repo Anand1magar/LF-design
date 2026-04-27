@@ -22,16 +22,96 @@
   scrollbar-width: none;
 }
 
-/* ─── LF Studio Brand Tokens ─── */
+/* ─── Primitive Palette ─── */
 :root {
-  --lf-cream: #fffcf8;
-  --lf-green: #79b231;
-  --lf-green-dark: #086600;
-  --lf-ink: #030213;
-  --lf-green-bright: #87d032;
-  --lf-ink-60: rgba(3, 2, 19, 0.6);
-  --lf-ink-30: rgba(3, 2, 19, 0.3);
-  --lf-white: #ffffff;
+  /* Green scale */
+  --color-green-50:  #ebf7d8;
+  --color-green-100: #a4e654;
+  --color-green-200: #87d032;
+  --color-green-300: #79b231;
+  --color-green-400: #5da043;
+  --color-green-500: #086600;
+
+  /* Ink / Neutral scale */
+  --color-ink-0:   #ffffff;
+  --color-ink-50:  #fafafa;
+  --color-ink-100: #f5f5f5;
+  --color-ink-200: #e5e5e5;
+  --color-ink-300: #c8c8c8;
+  --color-ink-350: #999999;
+  --color-ink-400: #888888;
+  --color-ink-450: #777777;
+  --color-ink-480: #666666;
+  --color-ink-500: #555555;
+  --color-ink-550: #444444;
+  --color-ink-600: #333333;
+  --color-ink-700: #1a1a1a;
+  --color-ink-800: #111111;
+  --color-ink-900: #0a0a0a;
+  --color-ink-950: #030213;
+
+  /* Cream scale */
+  --color-cream:   #fffcf8;
+  --color-cream-2: #edece8;
+  --color-cream-3: #ececec;
+
+  /* Accent */
+  --color-amber:  #d48818;
+  --color-yellow: #eebb33;
+
+  /* Project / brand tile colors */
+  --color-navy:      #111438;  /* Visual Branding card — deep navy */
+  --color-periwinkle: #8a90c6; /* Second Look Health card — soft indigo */
+  --color-charcoal:  #292322;  /* Phil brand tile — warm dark charcoal */
+  --color-steel:     #686869;  /* Portrait placeholder — neutral steel */
+}
+
+/* ─── Semantic Tokens ─── */
+:root {
+  /* Backgrounds */
+  --bg-page:     var(--color-cream);
+  --bg-surface:  var(--color-ink-0);
+  --bg-subtle:   var(--color-ink-50);
+  --bg-muted:    var(--color-ink-100);
+  --bg-dark:     var(--color-ink-950);
+  --bg-dark-alt: var(--color-ink-900);
+
+  /* Text */
+  --text-primary:   var(--color-ink-950);
+  --text-body:      var(--color-ink-700);
+  --text-secondary: var(--color-ink-500);
+  --text-muted:     var(--color-ink-400);
+  --text-disabled:  var(--color-ink-300);
+  --text-inverse:   var(--color-ink-0);
+
+  /* Brand Accent */
+  --brand:       var(--color-green-300);
+  --brand-bright: var(--color-green-200);
+  --brand-dark:  var(--color-green-500);
+  --brand-light: var(--color-green-50);
+
+  /* Borders */
+  --border-subtle: var(--color-ink-200);
+  --border-medium: var(--color-ink-300);
+  --border-strong: var(--color-ink-600);
+  --border-dark:   rgba(255, 255, 255, 0.08);
+
+  /* Overlays */
+  --overlay-soft: rgba(3, 2, 19, 0.3);
+  --overlay-mid:  rgba(3, 2, 19, 0.6);
+  --overlay-dark: rgba(0, 0, 0, 0.09);
+}
+
+/* ─── LF Studio Brand Tokens → aliased to primitives ─── */
+:root {
+  --lf-cream: var(--color-cream);
+  --lf-green: var(--color-green-300);
+  --lf-green-dark: var(--color-green-500);
+  --lf-ink: var(--color-ink-950);
+  --lf-green-bright: var(--color-green-200);
+  --lf-ink-60: var(--overlay-mid);
+  --lf-ink-30: var(--overlay-soft);
+  --lf-white: var(--color-ink-0);
 }
 
 /* ─── CSS Custom Properties (Light) ─── */
@@ -162,9 +242,79 @@
   --color-lf-ink: var(--lf-ink);
   --color-lf-green-bright: var(--lf-green-bright);
 
+  /* ─── Primitive ink scale as Tailwind utilities ─── */
+  --color-ink-0:   var(--color-ink-0);
+  --color-ink-50:  var(--color-ink-50);
+  --color-ink-100: var(--color-ink-100);
+  --color-ink-200: var(--color-ink-200);
+  --color-ink-300: var(--color-ink-300);
+  --color-ink-350: var(--color-ink-350);
+  --color-ink-400: var(--color-ink-400);
+  --color-ink-450: var(--color-ink-450);
+  --color-ink-480: var(--color-ink-480);
+  --color-ink-500: var(--color-ink-500);
+  --color-ink-550: var(--color-ink-550);
+  --color-ink-600: var(--color-ink-600);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-800: var(--color-ink-800);
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-950: var(--color-ink-950);
+
+  /* ─── Cream scale as Tailwind utilities ─── */
+  --color-cream:   var(--color-cream);
+  --color-cream-2: var(--color-cream-2);
+  --color-cream-3: var(--color-cream-3);
+
+  /* ─── Green scale as Tailwind utilities ─── */
+  --color-green-50:  var(--color-green-50);
+  --color-green-100: var(--color-green-100);
+  --color-green-200: var(--color-green-200);
+  --color-green-300: var(--color-green-300);
+  --color-green-400: var(--color-green-400);
+  --color-green-500: var(--color-green-500);
+
+  /* ─── Project / brand tile colors as Tailwind utilities ─── */
+  --color-navy:       var(--color-navy);
+  --color-periwinkle: var(--color-periwinkle);
+  --color-charcoal:   var(--color-charcoal);
+  --color-steel:      var(--color-steel);
+
+  /* ─── Semantic tokens as Tailwind utilities ─── */
+  --color-bg-page:     var(--bg-page);
+  --color-bg-surface:  var(--bg-surface);
+  --color-bg-subtle:   var(--bg-subtle);
+  --color-bg-muted:    var(--bg-muted);
+  --color-bg-dark:     var(--bg-dark);
+  --color-bg-dark-alt: var(--bg-dark-alt);
+  --color-text-primary:   var(--text-primary);
+  --color-text-body:      var(--text-body);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted:     var(--text-muted);
+  --color-text-disabled:  var(--text-disabled);
+  --color-text-inverse:   var(--text-inverse);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-medium: var(--border-medium);
+  --color-border-strong: var(--border-strong);
+
   /* ─── Font family tokens ─── */
   --font-sans: var(--font-figtree), sans-serif;
   --font-display: var(--font-syne), sans-serif;
+
+  /* ─── Type scale (×4 grid) ─── */
+  /* Body — text-2xs is the only addition; xs–2xl reuse Tailwind defaults */
+  --text-2xs: 0.625rem;        /* 10px — micro labels, tags */
+
+  /* Display — custom utilities that don't conflict with text-3xl…text-9xl */
+  --text-display-xs:  1.75rem; /* 28px — sub-headings         */
+  --text-display-sm:  2rem;    /* 32px — section headings      */
+  --text-display-md:  2.25rem; /* 36px — large section title   */
+  --text-display-lg:  2.5rem;  /* 40px — large headings        */
+  --text-display-xl:  3rem;    /* 48px — page headings         */
+  --text-display-2xl: 3.5rem;  /* 56px — large display         */
+  --text-display-3xl: 4rem;    /* 64px — hero                  */
+  --text-display-4xl: 5rem;    /* 80px — hero XL               */
+  --text-display-5xl: 6rem;    /* 96px — stat / impact         */
+  --text-display-6xl: 6.25rem; /* 100px — oversized stat       */
 }
 
 /* ─── Base layer ─── */

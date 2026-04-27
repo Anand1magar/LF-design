@@ -20,7 +20,7 @@ export function WhatWeDoSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="font-sans font-light leading-[48px] tracking-[-0.1px] max-w-[1190px] text-[#333] text-2xl md:text-[32px]"
+          className="font-sans font-light leading-[48px] tracking-[-0.1px] max-w-[1190px] text-(--color-ink-600) text-2xl md:text-display-sm"
         >
           {PARAGRAPH_WORDS.join(" ")}
         </motion.p>
