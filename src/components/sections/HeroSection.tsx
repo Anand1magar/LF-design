@@ -234,7 +234,7 @@ export function HeroSection() {
 						whileTap={{ scale: 0.98 }}
 						className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 appearance-none border-0 bg-transparent p-0"
 					>
-						<div className="relative h-[84px] w-[84px] overflow-hidden rounded-[90px] border border-[rgba(255,255,255,0.04)] bg-[rgba(0,0,0,0.09)] backdrop-blur-[1px]">
+						<div className="relative h-[84px] w-[84px] overflow-hidden rounded-full border border-white/[0.04] bg-black/[0.09] backdrop-blur-[1px]">
 							<svg
 								viewBox="0 0 24 24"
 								className="absolute left-[18px] top-[18px] h-12 w-12 text-white"
@@ -262,6 +262,9 @@ export function HeroSection() {
 
 			{isVideoModalOpen && (
 				<div
+					role="dialog"
+					aria-modal="true"
+					aria-label="Video player"
 					className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm"
 					onClick={() => setIsVideoModalOpen(false)}
 				>

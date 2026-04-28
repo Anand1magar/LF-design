@@ -69,6 +69,7 @@ function FeaturedTestimonial() {
 function LaudioLogoSmall({ className = "" }: { className?: string }) {
   return (
     <img
+              loading="lazy"
       alt="Laudio"
       className={className}
       src={imgSrc(imgLaudioLogo)}
@@ -128,12 +129,12 @@ function PhilLogoWhite() {
 
 function TestimonialCardGrid() {
   return (
-    <div className="flex flex-col gap-[22px] lg:gap-[22px]">
+    <div className="flex flex-col gap-6">
       {/* ── Row 1: Brand tiles + Quote Card ── */}
       {/* Mobile: image pair stacked above quote */}
-      <div className="flex flex-col lg:flex-row gap-[20px] lg:gap-4">
+      <div className="flex flex-col lg:flex-row gap-5 lg:gap-4">
         {/* Image pair — side by side */}
-        <div className="flex gap-[16px] h-[189px] lg:h-[385px] lg:w-[49%] shrink-0">
+        <div className="flex gap-4 h-[189px] lg:h-[385px] lg:w-[49%] shrink-0">
           {/* Laudio Brand Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -154,6 +155,7 @@ function TestimonialCardGrid() {
             className="bg-(--color-ink-300) rounded-[12px] overflow-hidden relative flex-1"
           >
             <img
+              loading="lazy"
               alt="Russ Richmond, MD"
               className="absolute inset-0 w-full h-full object-cover"
               src={imgSrc(imgPortrait1)}
@@ -167,11 +169,11 @@ function TestimonialCardGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.16 }}
-          className="bg-white rounded-[12px] overflow-hidden relative flex flex-col justify-between p-[24px] lg:p-10 lg:h-[385px] lg:flex-1"
+          className="bg-white rounded-[12px] overflow-hidden relative flex flex-col justify-between p-6 lg:p-10 lg:h-[385px] lg:flex-1"
         >
           {/* Top row: Author (left) + Logo (right) */}
           <div className="flex items-start justify-between">
-            <div className="flex flex-col gap-[3.4px] font-sans">
+            <div className="flex flex-col gap-1 ">
               <p className="text-(--color-ink-800) text-2xs lg:text-xs tracking-[1.29px] uppercase leading-[12.86px]">
                 Russ Richmond, MD
               </p>
@@ -183,7 +185,7 @@ function TestimonialCardGrid() {
           </div>
 
           {/* Quote at bottom */}
-          <p className="font-sans font-light text-(--color-ink-800) text-xl leading-[30px]">
+          <p className=" font-light text-(--color-ink-800) text-xl leading-[30px]">
             "It would have taken months to build the product team that we
             inherited overnight with Leapfrog. They're built for startup
             speed, and they have consistently delivered a well-engineered
@@ -193,9 +195,9 @@ function TestimonialCardGrid() {
       </div>
 
       {/* ── Row 2: Brand tiles + Quote Card ── */}
-      <div className="flex flex-col lg:flex-row gap-[20px] lg:gap-4">
+      <div className="flex flex-col lg:flex-row gap-5 lg:gap-4">
         {/* Image pair — side by side */}
-        <div className="flex gap-[16px] h-[189px] lg:h-[385px] lg:w-[49%] shrink-0 order-1 lg:order-2">
+        <div className="flex gap-4 h-[189px] lg:h-[385px] lg:w-[49%] shrink-0 order-1 lg:order-2">
           {/* Phil Brand Card (dark) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -216,6 +218,7 @@ function TestimonialCardGrid() {
             className="bg-steel rounded-[12px] overflow-hidden relative flex-1"
           >
             <img
+              loading="lazy"
               alt="Team member"
               className="absolute inset-0 w-full h-full object-cover object-top"
               src={imgSrc(imgPortrait2)}
@@ -229,11 +232,11 @@ function TestimonialCardGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="bg-white rounded-[12px] overflow-hidden relative flex flex-col justify-between p-[24px] lg:p-10 lg:h-[385px] lg:flex-1 order-2 lg:order-1"
+          className="bg-white rounded-[12px] overflow-hidden relative flex flex-col justify-between p-6 lg:p-10 lg:h-[385px] lg:flex-1 order-2 lg:order-1"
         >
           {/* Top row: Author (left) + Logo (right) */}
           <div className="flex items-start justify-between">
-            <div className="flex flex-col gap-[3.4px] font-sans">
+            <div className="flex flex-col gap-1 ">
               <p className="text-(--color-ink-800) text-2xs lg:text-xs tracking-[1.29px] uppercase leading-[12.86px]">
                 Phil
               </p>
@@ -245,7 +248,7 @@ function TestimonialCardGrid() {
           </div>
 
           {/* Quote at bottom */}
-          <p className="font-sans font-light text-(--color-ink-800) text-xl leading-[30px]">
+          <p className=" font-light text-(--color-ink-800) text-xl leading-[30px]">
             Leapfrog team has been instrumental in Phil&apos;s growth so far. Their
             talent pool has been exceptional and a lot of credit goes to
             Leapfrog&apos;s high quality focus on training and onboarding. We never
@@ -261,7 +264,7 @@ function TestimonialCardGrid() {
 export function TestimonialsSection() {
   return (
     <section className="bg-(--bg-muted) py-20 md:py-32">
-      <div className="max-w-[1190px] mx-auto px-6 md:px-16 lg:px-[192px]">
+      <div className="max-w-[1190px] mx-auto px-6 md:px-16 lg:px-48">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -271,7 +274,7 @@ export function TestimonialsSection() {
           className="mb-16 md:mb-24 text-center"
         >
           
-          <h2 className="font-sans font-light text-3xl md:text-5xl leading-tight tracking-tight text-(--text-body)">
+          <h2 className=" font-light text-3xl md:text-5xl leading-tight tracking-tight text-(--text-body)">
             Hear it from our partners.
           </h2>
         </motion.div>

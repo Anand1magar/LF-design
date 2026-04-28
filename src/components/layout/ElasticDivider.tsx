@@ -1,10 +1,12 @@
 "use client";
 
+// Gradient green stripes that visually connect the main content to the footer.
+// Band colors form a light-to-dark green ramp using --color-divider-band-* tokens.
 const BANDS = [
-  { color: "#88b36a", height: 14 },
-  { color: "#599f38", height: 13 },
-  { color: "#2d7f0d", height: 12 },
-  { color: "#086600", height: 11 },
+  { color: "var(--color-divider-band-1)", height: 14 },
+  { color: "var(--color-divider-band-2)", height: 13 },
+  { color: "var(--color-divider-band-3)", height: 12 },
+  { color: "var(--color-green-500)",      height: 11 },
 ];
 
 export function ElasticDivider() {

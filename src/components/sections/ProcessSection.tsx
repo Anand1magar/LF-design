@@ -149,11 +149,11 @@ export function ProcessSection() {
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
-          <h2 className="font-sans font-light text-5xl leading-[60px] tracking-[-1.2px]">
+          <h2 className=" font-light text-5xl leading-[60px] tracking-[-1.2px]">
             <span className="text-lf-green-bright">AI augmented</span>
             <span className="text-(--color-ink-600)"> design process</span>
           </h2>
-          <p className="font-sans font-light text-(--text-secondary) text-base md:text-xl leading-[26px] md:leading-relaxed tracking-[-0.4px] md:tracking-tight max-w-[373px] md:max-w-[695px] mt-4">
+          <p className=" font-light text-(--text-secondary) text-base md:text-xl leading-[26px] md:leading-relaxed tracking-[-0.4px] md:tracking-tight max-w-[373px] md:max-w-[695px] mt-4">
             By augmenting Design Thinking with custom, AI
             agentic tools & workflows, we deliver research,
             value propositions and PoCs 80% faster, enabling us
@@ -198,7 +198,7 @@ export function ProcessSection() {
                         <PlusIcon />
                         <RobotIcon />
                       </div>
-                      <p className="font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px] whitespace-pre-wrap">
+                      <p className=" font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px] whitespace-pre-wrap">
                         {`${step.humanDesc} `}
                         <br />
                         {step.aiDesc}
@@ -208,13 +208,13 @@ export function ProcessSection() {
                     <div className="flex flex-col gap-[14px]">
                       <div className="flex gap-3 items-start">
                         <UserIcon />
-                        <p className="flex-1 font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
+                        <p className="flex-1  font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
                           {step.humanDesc}
                         </p>
                       </div>
                       <div className="flex gap-3 items-start">
                         <RobotIcon />
-                        <p className="flex-1 font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
+                        <p className="flex-1  font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
                           {step.aiDesc}
                         </p>
                       </div>
@@ -320,7 +320,7 @@ export function ProcessSection() {
                           <PlusIcon />
                           <RobotIcon />
                         </div>
-                        <p className="font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px] whitespace-pre-wrap">
+                        <p className=" font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px] whitespace-pre-wrap">
                           {`${step.humanDesc} `}
                           <br />
                           {step.aiDesc}
@@ -330,13 +330,13 @@ export function ProcessSection() {
                       <div className="flex flex-col gap-[14px]">
                         <div className="flex gap-3 items-start">
                           <UserIcon />
-                          <p className="flex-1 font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
+                          <p className="flex-1  font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
                             {step.humanDesc}
                           </p>
                         </div>
                         <div className="flex gap-3 items-start">
                           <RobotIcon />
-                          <p className="flex-1 font-sans font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
+                          <p className="flex-1  font-light text-(--text-secondary) text-sm leading-[22.75px] tracking-[-0.14px]">
                             {step.aiDesc}
                           </p>
                         </div>
@@ -458,10 +458,10 @@ function ProcessAccordion() {
                   >
                     <UserIcon />
                     <div>
-                      <p className="font-sans text-xs tracking-[1px] uppercase text-lf-green-bright mb-1.5">
+                      <p className=" text-xs tracking-[1px] uppercase text-lf-green-bright mb-1.5">
                         Human
                       </p>
-                      <p className="font-sans font-light text-(--text-secondary) text-sm leading-[22px]">
+                      <p className=" font-light text-(--text-secondary) text-sm leading-[22px]">
                         {step.humanDesc}
                       </p>
                     </div>
@@ -481,10 +481,10 @@ function ProcessAccordion() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-sans text-xs tracking-[1px] uppercase text-lf-green-bright mb-1.5">
+                      <p className=" text-xs tracking-[1px] uppercase text-lf-green-bright mb-1.5">
                         AI Agent
                       </p>
-                      <p className="font-sans font-light text-white/70 text-sm leading-[22px]">
+                      <p className=" font-light text-white/70 text-sm leading-[22px]">
                         {step.aiDesc}
                       </p>
                     </div>
@@ -549,7 +549,7 @@ function ProcessPipeline() {
             <div className="relative border border-black/[0.06] bg-white rounded-[6px] p-5 lg:p-6 h-full flex flex-col gap-4 group hover:border-lf-green-bright/30 transition-colors duration-300">
               {/* Step number + icon row */}
               <div className="flex items-center justify-between">
-                <span className="font-sans text-xs tracking-[1.5px] text-(--color-ink-300) uppercase">
+                <span className=" text-xs tracking-[1.5px] text-(--color-ink-300) uppercase">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="w-6 h-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
@@ -579,14 +579,14 @@ function ProcessPipeline() {
               <div className="flex flex-col gap-3 mt-auto">
                 <div className="flex gap-2.5 items-start">
                   <UserIcon />
-                  <p className="flex-1 font-sans font-light text-(--color-ink-480) text-sm leading-[20px]">
+                  <p className="flex-1  font-light text-(--color-ink-480) text-sm leading-[20px]">
                     {step.humanDesc}
                   </p>
                 </div>
                 <div className="h-px bg-black/[0.04]" />
                 <div className="flex gap-2.5 items-start">
                   <RobotIcon />
-                  <p className="flex-1 font-sans font-light text-(--color-ink-480) text-sm leading-[20px]">
+                  <p className="flex-1  font-light text-(--color-ink-480) text-sm leading-[20px]">
                     {step.aiDesc}
                   </p>
                 </div>
@@ -628,12 +628,12 @@ function ProcessPipeline() {
         transition={{ duration: 0.5, delay: 1.0 }}
         className="flex items-center justify-between mt-6 px-2"
       >
-        <span className="font-sans text-xs text-(--color-ink-300) tracking-wide">
+        <span className=" text-xs text-(--color-ink-300) tracking-wide">
           5 steps
         </span>
         <div className="flex items-center gap-2">
           <div className="w-1.5 h-1.5 rounded-full bg-lf-green-bright" />
-          <span className="font-sans text-xs text-(--color-ink-350) tracking-wide">
+          <span className=" text-xs text-(--color-ink-350) tracking-wide">
             Human + AI at every stage
           </span>
         </div>
