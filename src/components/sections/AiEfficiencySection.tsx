@@ -27,6 +27,7 @@ function DesktopSlide({ variant }: { variant: Variant }) {
     case "character":
       return (
         <img
+          loading="lazy"
           alt="Character generation workflow"
           className="absolute right-[-38px] bottom-[15px] w-[672px] h-[391px] object-cover pointer-events-none"
           src={imgCharacterFlow}
@@ -36,6 +37,7 @@ function DesktopSlide({ variant }: { variant: Variant }) {
     case "product":
       return (
         <img
+          loading="lazy"
           alt="From weeks to hours — product photography"
           className="absolute right-0 bottom-0 w-[706px] h-[302px] object-cover pointer-events-none"
           src={imgProductWeeksToHours}
@@ -45,6 +47,7 @@ function DesktopSlide({ variant }: { variant: Variant }) {
     case "3d":
       return (
         <img
+          loading="lazy"
           alt="3D renderings timeline"
           className="absolute left-[48px] top-[147px] w-[863px] h-[372px] object-cover pointer-events-none"
           src={img3dCombined}
@@ -54,6 +57,7 @@ function DesktopSlide({ variant }: { variant: Variant }) {
     case "design":
       return (
         <img
+          loading="lazy"
           alt="Professional graphic design"
           className="absolute left-[248px] top-[76px] w-[656px] h-[443px] object-cover pointer-events-none"
           src={imgDesignBooks}
@@ -63,6 +67,7 @@ function DesktopSlide({ variant }: { variant: Variant }) {
     case "illustrations":
       return (
         <img
+          loading="lazy"
           alt="Illustrations and character consistency"
           className="absolute right-0 bottom-0 w-[684px] h-[358px] object-cover pointer-events-none"
           src={imgIllustrationsBoard}
@@ -72,6 +77,7 @@ function DesktopSlide({ variant }: { variant: Variant }) {
     case "ux":
       return (
         <img
+          loading="lazy"
           alt="UX workflow funnel diagram"
           className="absolute right-[27px] bottom-0 w-[497px] h-[366px] object-cover pointer-events-none"
           src={imgUxFunnel}
@@ -92,12 +98,12 @@ const MOBILE_CONTAINER: Record<Variant, CSSProperties> = {
 
 /* ─── Desktop text position per Figma card ───────────────────────── */
 const DESKTOP_TEXT_CLASS: Record<Variant, string> = {
-  character:     "left-[45px] top-[45px] max-w-[460px]",
-  product:       "left-[45px] top-[45px] max-w-[435px]",
-  "3d":          "left-[45px] top-[45px] max-w-[435px]",
-  design:        "left-[43px] top-[48px] max-w-[460px]",
-  illustrations: "left-[43px] top-[48px] max-w-[460px]",
-  ux:            "left-[45px] top-[45px] max-w-[460px]",
+  character:     "left-11 top-11 max-w-[460px]",
+  product:       "left-11 top-11 max-w-[435px]",
+  "3d":          "left-11 top-11 max-w-[435px]",
+  design:        "left-11 top-12 max-w-[460px]",
+  illustrations: "left-11 top-12 max-w-[460px]",
+  ux:            "left-11 top-11 max-w-[460px]",
 };
 
 const DESKTOP_DESC_CLASS: Record<Variant, string> = {
@@ -180,7 +186,7 @@ export function AiEfficiencySection() {
   };
 
   return (
-    <section className="bg-white m-0 p-[128px]">
+    <section className="bg-white m-0 py-20 px-10 md:py-32 xl:px-0">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -189,11 +195,11 @@ export function AiEfficiencySection() {
         transition={{ duration: 0.7 }}
         className="max-w-[1190px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-8 mb-10 border-b border-(--border-subtle)"
       >
-        <h2 className="font-sans font-light text-display-xs sm:text-3xl md:text-5xl leading-tight tracking-tight">
+        <h2 className=" font-light text-display-xs sm:text-3xl md:text-5xl leading-tight tracking-tight">
           <span className="text-lf-green-bright">65%</span>
           <span className="text-(--text-body)"> more efficient</span>
         </h2>
-        <p className="font-sans font-light text-(--text-muted) text-base leading-relaxed max-w-[404px] mt-4 md:mt-0">
+        <p className=" font-light text-(--text-muted) text-base leading-relaxed max-w-[404px] mt-4 md:mt-0">
           Comprehensive design services for digital growth.
         </p>
       </motion.div>
@@ -211,17 +217,17 @@ export function AiEfficiencySection() {
           <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-(--border-subtle)" />
           <div
             ref={tabsScrollRef}
-            className="flex gap-[6px] md:gap-[22px] overflow-x-auto no-scrollbar relative"
+            className="flex gap-1.5 md:gap-6 overflow-x-auto no-scrollbar relative"
           >
             {featureTabs.map((tab, i) => (
               <button
                 key={tab.label}
                 ref={(el) => { tabRefs.current[i] = el; }}
                 onClick={() => handleTabClick(i)}
-                className="shrink-0 relative pb-[10px] pt-[10px] px-[10px] md:px-[4px] transition-colors duration-300"
+                className="shrink-0 relative py-2.5 px-2.5 md:px-1 transition-colors duration-300"
               >
                 <span
-                  className={`font-sans text-base md:text-xl leading-[32px] tracking-[-0.6px] whitespace-nowrap transition-all duration-300 ${
+                  className={` text-base md:text-xl leading-[32px] tracking-[-0.6px] whitespace-nowrap transition-all duration-300 ${
                     activeTab === i ? "text-lf-green-bright font-medium" : "text-(--text-body) opacity-60"
                   }`}
                 >
@@ -261,14 +267,14 @@ export function AiEfficiencySection() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={`text-m2-${activeTab}`}
-                className="absolute left-6 md:left-[45px] top-8 md:top-[45px] max-w-[300px] md:max-w-[460px] z-10"
+                className="absolute left-6 md:left-11 top-8 md:top-11 max-w-[300px] md:max-w-[460px] z-10"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
                 <motion.p
-                  className="font-sans text-(--color-ink-800) text-2xl md:text-display-sm leading-snug tracking-[-0.96px]"
+                  className=" text-(--color-ink-800) text-2xl md:text-display-sm leading-snug tracking-[-0.96px]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.05 }}
@@ -276,7 +282,7 @@ export function AiEfficiencySection() {
                   {renderTitle(activeFeature)}
                 </motion.p>
                 <motion.p
-                  className="font-sans font-light text-(--color-ink-600) text-sm md:text-base leading-[21px] mt-3 opacity-80 max-w-[280px] md:max-w-[403px]"
+                  className=" font-light text-(--color-ink-600) text-sm md:text-base leading-[21px] mt-3 opacity-80 max-w-[280px] md:max-w-[403px]"
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -298,6 +304,7 @@ export function AiEfficiencySection() {
                 transition={{ duration: 0.5 }}
               >
                 <img
+          loading="lazy"
                   alt={activeFeature.label}
                   className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                   src={
@@ -331,7 +338,7 @@ export function AiEfficiencySection() {
                 <button
                   key={tab.label}
                   onClick={() => handleTabClick(i)}
-                  className="relative text-left py-[14px] pl-5 pr-4 cursor-pointer transition-colors duration-200 group"
+                  className="relative text-left py-3.5 pl-5 pr-4 cursor-pointer transition-colors duration-200 group"
                 >
                   <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-(--border-subtle)" />
                   {isActive && (
@@ -345,7 +352,7 @@ export function AiEfficiencySection() {
                     />
                   )}
                   <span
-                    className={`font-sans text-base leading-[24px] tracking-[-0.2px] transition-all duration-300 ${
+                    className={` text-base leading-[24px] tracking-[-0.2px] transition-all duration-300 ${
                       isActive ? "text-lf-green-bright font-medium" : "text-(--color-ink-350) group-hover:text-(--color-ink-480)"
                     }`}
                   >
@@ -375,7 +382,7 @@ export function AiEfficiencySection() {
                 transition={{ duration: 0.3 }}
               >
                 <motion.p
-                  className="font-sans text-(--color-ink-800) text-display-sm leading-snug tracking-[-0.96px]"
+                  className=" text-(--color-ink-800) text-display-sm leading-snug tracking-[-0.96px]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.05 }}
@@ -383,7 +390,7 @@ export function AiEfficiencySection() {
                   {renderTitle(activeFeature)}
                 </motion.p>
                 <motion.p
-                  className={`font-sans font-light text-(--color-ink-600) text-base leading-[21px] mt-3 opacity-80 ${DESKTOP_DESC_CLASS[activeFeature.variant]}`}
+                  className={` font-light text-(--color-ink-600) text-base leading-[21px] mt-3 opacity-80 ${DESKTOP_DESC_CLASS[activeFeature.variant]}`}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}

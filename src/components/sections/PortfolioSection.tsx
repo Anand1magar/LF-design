@@ -61,6 +61,17 @@ const portfolioItems = [
   },
 ];
 
+/* ───── Reusable badge used in both card states ───── */
+function CardBadge({ label, className = "" }: { label: string; className?: string }) {
+  return (
+    <span
+      className={`bg-white/10 border border-white/10 text-white text-2xs uppercase tracking-[1px] rounded-full  ${className}`}
+    >
+      {label}
+    </span>
+  );
+}
+
 /* ───── Portfolio Card with hover effect ───── */
 function PortfolioCard({
   item,
@@ -86,8 +97,10 @@ function PortfolioCard({
       className="flex flex-col gap-3.5"
     >
       {/* Card container */}
-      <div
-        className="relative rounded-md overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[547px] group cursor-pointer"
+      <button
+        type="button"
+        aria-label={`View ${item.title} case study`}
+        className="relative rounded-md overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[547px] group cursor-pointer w-full text-left"
         onClick={() => slug && router.push(`/project/${slug}`)}
       >
         {/* Background color */}
@@ -114,9 +127,7 @@ function PortfolioCard({
         >
           {/* Top row: tag + arrow button */}
           <div className="flex items-start justify-between w-full">
-            <span className="bg-white/10 border border-white/10 text-white text-2xs uppercase tracking-[1px] leading-[15px] px-[13px] py-[5px] rounded-full font-sans">
-              {item.tag}
-            </span>
+            <CardBadge label={item.tag} className="leading-[15px] px-3 py-1" />
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
               <ArrowUpRight className="w-4 h-4 text-white" />
             </div>
@@ -131,22 +142,20 @@ function PortfolioCard({
         {/* Default state overlay (tag + button, visible when NOT hovered) */}
         <div className="absolute inset-0 flex flex-col justify-between p-5 group-hover:opacity-0 transition-opacity duration-500">
           <div className="flex items-start justify-between">
-            <span className="bg-white/10 border border-white/10 text-white text-2xs uppercase tracking-[1px] px-4 py-1.5 rounded-full font-sans">
-              {item.tag}
-            </span>
+            <CardBadge label={item.tag} className="px-4 py-1.5" />
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
               <ArrowUpRight className="w-4 h-4 text-white" />
             </div>
           </div>
         </div>
-      </div>
+      </button>
 
       {/* Title row */}
       <div className="flex items-baseline gap-1 px-2.5">
-        <span className="font-sans font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px]">
+        <span className=" font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px]">
           {item.title}
         </span>
-        <span className="font-sans font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px] opacity-[0.34]">
+        <span className=" font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px] opacity-[0.34]">
           CaseStudies
         </span>
       </div>
@@ -164,7 +173,7 @@ function PlaceholderCard({ index }: { index: number }) {
       transition={{ duration: 0.7, delay: index * 0.15 }}
       className="flex flex-col gap-3.5"
     >
-      <div className="relative rounded-md overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[547px] group cursor-pointer">
+      <div className="relative rounded-md overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[547px] group">
         <div className="absolute inset-0 bg-(--text-body)" />
         <div className="absolute inset-0 rounded-md border border-white/10 pointer-events-none" />
 
@@ -178,9 +187,7 @@ function PlaceholderCard({ index }: { index: number }) {
           }}
         >
           <div className="flex items-start justify-between w-full">
-            <span className="bg-white/10 border border-white/10 text-white text-2xs uppercase tracking-[1px] leading-[15px] px-[13px] py-[5px] rounded-full font-sans">
-              Case studies
-            </span>
+            <CardBadge label="Case studies" className="leading-[15px] px-3 py-1" />
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
               <ArrowUpRight className="w-4 h-4 text-white" />
             </div>
@@ -194,9 +201,7 @@ function PlaceholderCard({ index }: { index: number }) {
         {/* Default state */}
         <div className="absolute inset-0 flex flex-col justify-between p-5 group-hover:opacity-0 transition-opacity duration-500">
           <div className="flex items-start justify-between">
-            <span className="bg-white/10 border border-white/10 text-white text-2xs uppercase tracking-[1px] px-4 py-1.5 rounded-full font-sans">
-              Case studies
-            </span>
+            <CardBadge label="Case studies" className="px-4 py-1.5" />
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
               <ArrowUpRight className="w-4 h-4 text-white" />
             </div>
@@ -205,10 +210,10 @@ function PlaceholderCard({ index }: { index: number }) {
       </div>
 
       <div className="flex items-baseline gap-1 px-2.5">
-        <span className="font-sans font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px]">
+        <span className=" font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px]">
           Antaranga.ai
         </span>
-        <span className="font-sans font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px] opacity-[0.34]">
+        <span className=" font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px] opacity-[0.34]">
           CaseStudies
         </span>
       </div>

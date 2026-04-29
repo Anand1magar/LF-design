@@ -126,13 +126,12 @@ export default function RootLayout({
         <JsonLd data={websiteSchema} />
       </head>
       <body suppressHydrationWarning className="antialiased">
-        <GifPreloader />
-        <div className="w-full min-h-screen bg-lf-cream font-sans">
+        {/* <GifPreloader /> */}
+        <div className="w-full min-h-screen bg-lf-cream ">
           <Navbar />
           {/* Main content */}
           <main
-            className="relative bg-lf-cream rounded-b-3xl p-0"
-            style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.08)" }}
+            className="relative bg-lf-cream rounded-b-3xl p-0 shadow-content"
           >
             {children}
           </main>

@@ -1,79 +1,54 @@
 "use client";
-
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useRouter, usePathname } from "next/navigation";
-import svgPaths from "@/imports/svg-gkhfmtllfb";
 import { navItems, type NavItem } from "@/data/siteConfig";
-import { useScramble } from "@/hooks/useScramble";
+import Image from "next/image";
+import Link from "next/link";
+import LFLogo from "@/assets/Logo.svg";
 
-function NavContactButton({ href }: { href: string }) {
-  const router = useRouter();
-  const { ref, onMouseEnter, onMouseLeave } = useScramble("Contact", { speed: 35, tick: 1 });
+function ContactButton({ fullWidth, className }: { fullWidth?: boolean, className?: string }) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [hovered, setHovered] = useState(false);
 
-  const handleClick = () => {
-    if (href.startsWith("#")) {
-      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      router.push(href);
-    }
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
   return (
-    <button
-      onClick={handleClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      className="group inline-flex overflow-hidden transition-all duration-200 hover:scale-[1.04] hover:shadow-[0_0_30px_rgba(135,208,50,0.3)] rounded-full p-[2px] relative items-center justify-center cursor-pointer"
+    <Link
+      ref={ref}
+      href="mailto:hello@lfdesignstudio.com"
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={`relative overflow-hidden bg-lf-green text-center text-white rounded-full ${fullWidth ? "w-full block py-3.5" : "py-2"} px-4 font-medium text-md active:scale-[0.98] transition-transform ${className}`}
     >
-      <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_60%,var(--lf-green-bright)_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-      <span className="flex items-center justify-center text-black bg-white w-full h-full rounded-full py-[7px] px-5 relative font-['Figtree',sans-serif] font-medium text-sm tracking-[-0.35px]">
-        <span ref={ref as React.RefObject<HTMLSpanElement>} className="relative z-10">Contact</span>
-      </span>
-    </button>
+      {/* Glow blob */}
+      <span
+        className="pointer-events-none absolute rounded-full transition-opacity duration-300"
+        style={{
+          width: 60,
+          height: 60,
+          left: pos.x - 30,
+          top: pos.y - 30,
+          background: "radial-gradient(circle, rgba(255, 255, 255, 0.68) 0%, transparent 70%)",
+          opacity: hovered ? 1 : 0,
+          filter: "blur(6px)",
+        }}
+      />
+      <span className="relative z-10">Contact</span>
+    </Link>
   );
 }
-
-function Logo({ variant = "light" }: { variant?: "light" | "dark" }) {
-  const fill = variant === "light" ? "var(--text-inverse)" : "var(--text-body)";
-  return (
-    <div className="flex items-center gap-2">
-      <svg width="93" height="18" viewBox="0 0 93.2913 17.7296" fill="none">
-        <g clipPath="url(#logo-clip)">
-          <path d={svgPaths.p52dbe00} fill={fill} />
-          <path d={svgPaths.pb4ca280} fill={fill} />
-          <path d={svgPaths.p3b79c000} fill={fill} />
-          <path d={svgPaths.p24467380} fill={fill} />
-          <path d={svgPaths.p16644f80} fill={fill} />
-          <path d={svgPaths.p293c5000} fill={fill} />
-          <path d={svgPaths.p3786ff00} fill={fill} />
-          <path d={svgPaths.p29c81c00} fill={fill} />
-          <path d={svgPaths.p11663900} fill={fill} />
-        </g>
-        <defs>
-          <clipPath id="logo-clip">
-            <rect fill="white" height="17.7296" width="93.2913" />
-          </clipPath>
-        </defs>
-      </svg>
-      <svg width="60" height="20" viewBox="0 0 60.085 19.87" fill="none">
-        <path d={svgPaths.p290fbd00} fill="var(--lf-green)" />
-        <path d={svgPaths.p17abe200} fill="var(--lf-green)" />
-        <path d={svgPaths.p1af7f900} fill="var(--lf-green)" />
-        <path d={svgPaths.p27e03100} fill="var(--lf-green)" />
-        <path d={svgPaths.p3ca3b800} fill="var(--lf-green)" />
-        <path d={svgPaths.p2c0ecc00} fill="var(--lf-green)" />
-        <path d={svgPaths.p9021700} fill="var(--lf-green)" />
-        <path d={svgPaths.pdfda300} fill="var(--lf-green)" />
-      </svg>
-    </div>
-  );
-}
-
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const router = useRouter();
   const pathname = usePathname();
   const isAboutPage = pathname.startsWith("/about");
@@ -82,22 +57,52 @@ export function Navbar() {
   // Shrink navbar on scroll
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
+    const resizeCheck = () => {
+      if(window.innerWidth >= 768 && mobileOpen) {
+        setMobileOpen(false);
+      }
     };
+    window.addEventListener("resize", resizeCheck);
+    return () => window.removeEventListener("resize", resizeCheck);
   }, [mobileOpen]);
+
+  // Track which scroll-target section is visible
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection(null);
+      return;
+    }
+    const scrollTargets = navItems
+      .filter((item) => item.action === "scroll")
+      .map((item) => item.target);
+
+    const observers: IntersectionObserver[] = [];
+
+    scrollTargets.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(id);
+          } else {
+            setActiveSection((prev) => (prev === id ? null : prev));
+          }
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((obs) => obs.disconnect());
+  }, [pathname]);
+
 
   const handleNav = useCallback(
     (item: NavItem) => {
@@ -123,39 +128,36 @@ export function Navbar() {
     [router, pathname]
   );
 
-  const handleContact = useCallback(() => {
-    handleNav({ label: "Contact", action: "scroll", target: "contact" });
-  }, [handleNav]);
-
   return (
     <>
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-[10000]"
+        className="fixed w-full z-[99999]"
       >
-        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-12 py-4 md:py-[22px]">
+        <div className="mx-auto w-full px-4 sm:px-6 md:px-12 py-4 md:py-6">
           <div
-            className="hidden md:flex h-[56px] w-full mx-auto items-center justify-between rounded-[80px] bg-[rgba(60,60,60,0.73)] backdrop-blur-[8px] pl-[18px] pr-[13px]"
+            className={`flex mx-auto h-[64px] items-center justify-between rounded-full backdrop-blur-[6px] px-3 transition-[max-width] duration-250 cubics-bezier(0.4, 0, 0.2, 1) md:nav-gradient ${ !mobileOpen ? 'nav-gradient bg-[rgba(30,30,30,0.90)]' : ''}`}
             style={{
-              maxWidth: scrolled ? "693px" : "820px",
-              transition: "max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+              maxWidth: scrolled ? "800px" : "920px",
             }}
           >
-            <button
-              onClick={() => router.push("/")}
-              className="flex h-[36px] w-[193px] items-center rounded-full px-4 cursor-pointer"
+            <a
+              href="/"
+              className="px-4"
             >
-              <Logo variant="light" />
-            </button>
+              <Image src={LFLogo} alt="LF design logo" className="w-auto" />
+            </a>
 
-            <div className="flex items-center gap-6 font-['Figtree',sans-serif] font-medium text-sm leading-[20px] tracking-[-0.35px] text-center text-white">
+            <div className="hidden md:flex items-center gap-6 font-medium text-sm leading-[20px] tracking-[-0.35px] text-white">
               {navItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => handleNav(item)}
                   className={`cursor-pointer transition-opacity hover:opacity-100 ${
-                    (item.target === "/about" && isAboutPage) || (item.target === "/portfolio" && isPortfolioPage)
-                      ? "opacity-100"
-                      : "opacity-[0.66]"
+                    (item.action === "scroll" && activeSection === item.target) ||
+                    (item.target === "/about" && isAboutPage) ||
+                    (item.target === "/portfolio" && isPortfolioPage)
+                      ? "opacity-100 nav-active"
+                      : "opacity-[0.75]"
                   }`}
                 >
                   {item.label}
@@ -163,22 +165,11 @@ export function Navbar() {
               ))}
             </div>
 
-              <NavContactButton href="#contact" />
-          </div>
-
-          <div className="md:hidden flex items-center justify-between">
-            <button
-              onClick={() => router.push("/")}
-              className="px-3 py-1.5 rounded-full backdrop-blur-xl cursor-pointer"
-              style={{ backgroundColor: "rgba(81,81,81,0.4)" }}
-            >
-              <Logo variant="light" />
-            </button>
+            <ContactButton className="hidden md:flex"/>
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="flex flex-col gap-[5px] p-2.5 rounded-full backdrop-blur-xl cursor-pointer"
-              style={{ backgroundColor: "rgba(81,81,81,0.4)" }}
+              className="md:hidden flex flex-col gap-[5px] w-[40px] h-[40px] items-center justify-center"
               aria-label="Toggle menu"
             >
               <span
@@ -207,7 +198,7 @@ export function Navbar() {
             style={{ backgroundColor: "rgba(10,10,10,0.96)" }}
           >
             <div className="h-[72px] shrink-0" />
-            <div className="flex-1 flex flex-col justify-center px-8 gap-2">
+            <div className="flex-1 flex flex-col justify-center px-12 gap-2">
               {navItems.map((item, i) => (
                 <motion.button
                   key={item.label}
@@ -215,9 +206,9 @@ export function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.05 + i * 0.06 }}
                   onClick={() => handleNav(item)}
-                  className="text-left py-4 border-b border-white/6 cursor-pointer"
+                  className="text-left py-4 border-b border-white/8 cursor-pointer"
                 >
-                  <span className="font-['Figtree',sans-serif] text-white text-display-xs tracking-tight">
+                  <span className="text-white text-display-xs tracking-tight">
                     {item.label}
                   </span>
                 </motion.button>
@@ -229,13 +220,8 @@ export function Navbar() {
               transition={{ duration: 0.4, delay: 0.3 }}
               className="px-8 pb-10"
             >
-              <button
-                onClick={() => setMobileOpen(false)}
-                className="w-full bg-lf-green text-white py-3.5 rounded-full font-['Figtree',sans-serif] font-medium text-sm cursor-pointer active:scale-[0.98] transition-transform"
-              >
-                Contact Us
-              </button>
-              <p className="font-['Figtree',sans-serif] text-white/30 text-xs text-center mt-4">
+              <ContactButton fullWidth />
+              <p className="text-white/60 text-sm text-center mt-4">
                 hello@designstudio.com
               </p>
             </motion.div>

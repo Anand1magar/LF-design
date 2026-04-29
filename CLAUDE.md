@@ -101,7 +101,7 @@ All routes are GET-only, return `{ success, count?, data }`.
 | [src/app/globals.css](src/app/globals.css) | Tailwind v4 base, `@theme inline` brand tokens, font CSS vars |
 | [tailwind.config.ts](tailwind.config.ts) or `@theme` block | Brand tokens: `--lf-cream #fffcf8`, `--lf-green #79b231`, `--lf-ink #030213` |
 
-**Fonts:** `font-sans` = Figtree · `font-display` = Syne (loaded via `next/font/google` in layout).
+**Fonts:** `` = Figtree · `font-display` = Syne (loaded via `next/font/google` in layout).
 
 > Note: `@theme`, `@source`, `@custom-variant`, `@apply` in CSS files are valid **Tailwind v4** syntax. VS Code CSS linter may flag them as errors — these are false positives.
 
