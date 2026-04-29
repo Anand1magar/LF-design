@@ -264,7 +264,7 @@ function TestimonialCardGrid() {
 export function TestimonialsSection() {
   return (
     <section className="bg-(--bg-muted) py-20 md:py-32">
-      <div className="max-w-[1190px] mx-auto px-6 md:px-16 lg:px-48">
+      <div className="max-w-[1190px] mx-auto px-6 md:px-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -290,8 +290,8 @@ export function TestimonialsSection() {
         </div>
 
         {/* Testimonial Card Grid */}
-        <div className="mt-16 md:mt-24 -mx-6 md:-mx-16 lg:-mx-[192px]">
-          <div className="max-w-[1190px] mx-auto px-6 md:px-10">
+        <div className="mt-16">
+          <div className="max-w-[1190px]">
             <TestimonialCardGrid />
           </div>
         </div>

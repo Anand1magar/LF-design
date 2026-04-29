@@ -40,12 +40,9 @@ const SCROLL_GAP_MOBILE = 80;
 
 /* ─── Hook: detect mobile ───────────────────────────────────────── */
 function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined"
-      ? window.innerWidth < breakpoint
-      : false,
-  );
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
+    setIsMobile(window.innerWidth < breakpoint);
     const onResize = () =>
       setIsMobile(window.innerWidth < breakpoint);
     window.addEventListener("resize", onResize);
@@ -141,8 +138,7 @@ export function ServiceDetailCards() {
       className="bg-lf-cream px-5 py-16 sm:px-8 sm:py-20 md:px-12 md:py-24 lg:py-32"
     >
       <div
-        className="mx-auto w-full lg:px-35"
-        style={{ maxWidth: 1470 }}
+        className="max-w-[1190px] mx-auto w-full"
       >
         {/* Section Header */}
         <div className="flex flex-col gap-3.5 items-start mb-12 md:mb-24 max-w-[1190px] mx-auto">
@@ -157,8 +153,9 @@ export function ServiceDetailCards() {
          * This way every card's sticky range = the entire section height,
          * so they all stay pinned and stack on top of each other.
          */}
-        <div className="max-w-[1190px] mx-auto">
+        <div className="max-w-[1190px] mx-auto flex flex-col gap-6">
           {serviceDetails.map((service, i) => {
+
             const cardsOnTop = cardsOnTopArr[i];
             const scale = Math.max(
               1 - cardsOnTop * SCALE_STEP,
@@ -171,30 +168,37 @@ export function ServiceDetailCards() {
               <div
                 key={service.title}
                 data-sticky-card
-                style={{
-                  position: "sticky",
-                  top: getStickyTop(i),
-                  zIndex: i + 1,
-                  height: CARD_HEIGHT,
-                  marginBottom: isMobile ? SCROLL_GAP_MOBILE : SCROLL_GAP,
-                }}
+                style={
+                  !isMobile
+                    ? {
+                        position: "sticky",
+                        top: getStickyTop(i),
+                        zIndex: i + 1,
+                        height: CARD_HEIGHT,
+                      }
+                    : undefined
+                }
               >
                 {/* Visual card — transforms here are fine, they're INSIDE the sticky element */}
                 <div
                   className="bg-white border-0 lg:border lg:border-[rgba(0,0,0,0.06)] rounded-[12px] sm:rounded-2xl md:rounded-[18px] overflow-hidden h-full"
-                  style={{
-                    boxShadow: `0px 4px 75.3px 0px rgba(0,0,0,0.04), 0 ${shadowBlur}px ${shadowBlur * 2}px rgba(0,0,0,${shadowOpacity})`,
-                    transform: `scale(${scale})`,
-                    transformOrigin: "center top",
-                    transition:
-                      "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease-out",
-                  }}
+                  style={
+                    !isMobile
+                      ? {
+                          boxShadow: `0px 4px 75.3px 0px rgba(0,0,0,0.04), 0 ${shadowBlur}px ${shadowBlur * 2}px rgba(0,0,0,${shadowOpacity})`,
+                          transform: `scale(${scale})`,
+                          transformOrigin: "center top",
+                          transition:
+                            "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease-out",
+                        }
+                      : undefined
+                  }
                 >
                   <div
-                    className="flex flex-col lg:flex-row lg:items-stretch gap-8 md:gap-8 lg:gap-11 px-[22px] pt-9 pb-[22px] md:p-[22px] h-full"
+                    className="flex flex-col lg:flex-row lg:items-stretch gap-8 lg:gap-0 pr-6 pt-6 pb-6 pl-6 lg:pl-0 h-full"
                   >
                     {/* Title + Subtitle + Items — equal half */}
-                    <div className="flex w-full flex-col gap-8 lg:flex-1 lg:gap-12 lg:px-[70px] lg:justify-center">
+                    <div className="flex w-full flex-col gap-8 lg:flex-1 lg:gap-12 lg:px-8 xl:px-20 lg:justify-center">
                       {/* Title block */}
                       <div className="flex flex-col gap-5">
                         <h3 className=" text-(--text-body) leading-[1.05] lg:leading-[48px] tracking-[-1px] font-normal text-display-sm md:text-display-lg lg:text-5xl">
@@ -210,13 +214,13 @@ export function ServiceDetailCards() {
                         {service.items.map((item) => (
                           <div
                             key={item}
-                            className="relative flex items-start justify-between py-1.5"
+                            className="relative flex items-start justify-between py-3 md:py-4"
                           >
                             <div
                               aria-hidden="true"
-                              className="absolute inset-0 border-b border-dashed border-[rgba(0,0,0,0.12)] pointer-events-none"
+                              className="absolute inset-0 border-b border-dashed border-[rgba(0,0,0,0.12)] pointer-events-none py-4"
                             />
-                            <p className=" text-black opacity-[0.78] text-base leading-[23px] md:leading-[48px] font-normal flex-1">
+                            <p className=" text-black opacity-[0.78] text-base font-normal flex-1">
                               {item}
                             </p>
                           </div>
@@ -226,7 +230,7 @@ export function ServiceDetailCards() {
 
                     {/* Service image — square on mobile/tablet, fills card height on desktop */}
                     <div
-                      className="w-full lg:flex-1 aspect-square lg:aspect-auto rounded-[10px] overflow-hidden relative bg-(--border-subtle)"
+                      className="w-full lg:flex-1 aspect-square lg:aspect-auto rounded-[10px] overflow-hidden relative bg-(--border-subtle pl-6"
                     >
                       <Image
                         src={service.image}

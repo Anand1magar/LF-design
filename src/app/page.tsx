@@ -21,9 +21,12 @@ import { PortfolioShowcase } from "@/components/sections/PortfolioShowcase";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 
 export default function HomePage() {
+
+
   return (
     <>
       <HeroSection />
+ 
       <div className="relative z-10">
         <WhatWeDoSection />
         <ServiceDetailCards />

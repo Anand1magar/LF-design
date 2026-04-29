@@ -57,7 +57,7 @@ function ServiceCard({
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.2, delay: index * 0.1 }}
       className="flex flex-col gap-5"
     >
       <motion.div
@@ -133,14 +133,14 @@ export function ServicesSection() {
         transition={{ duration: 0.7 }}
         className="mb-16 md:mb-24"
       >
-        <p className="font-['Figtree',sans-serif] font-medium text-xs text-(--text-muted) tracking-[1.2px] uppercase mb-4">
+        <p className="font-medium text-xs text-(--text-muted) tracking-[1.2px] uppercase mb-4">
           What We Do
         </p>
-        <h2 className="font-['Figtree',sans-serif] font-light text-3xl md:text-display-xl leading-tight tracking-tight text-(--text-body)">
+        <h2 className="font-light text-3xl md:text-display-xl leading-tight tracking-tight text-(--text-body)">
           <span className="text-lf-green">End-to-end </span>
           <span>design services</span>
         </h2>
-        <p className="font-['Figtree',sans-serif] font-light text-(--text-secondary) text-base md:text-xl leading-relaxed tracking-tight max-w-[695px] mt-4">
+        <p className="font-light text-(--text-secondary) text-base md:text-xl leading-relaxed tracking-tight max-w-[695px] mt-4">
           We bridge the gap between branding, marketing & sales assets, UX
           design and motion design to give you a definitive competitive edge
           when going to market.

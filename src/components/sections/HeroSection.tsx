@@ -37,16 +37,15 @@ export function HeroSection() {
 	const [introProgress, setIntroProgress] = useState(0);
 	const introStartTime = useRef<number | null>(null);
 	const introRaf = useRef<number>(0);
-	const [viewport, setViewport] = useState({
-		w: typeof window !== "undefined" ? window.innerWidth : 1440,
-		h: typeof window !== "undefined" ? window.innerHeight : 900,
-	});
+	// Always start with SSR-safe defaults so server and first client render match
+	const [viewport, setViewport] = useState({ w: 1440, h: 900 });
 
 	const INTRO_DURATION = 2000;
 	const INTRO_HOLD = 2000;
 
-	// Track viewport size
+	// Sync to real viewport after hydration, then track resizes
 	useEffect(() => {
+		setViewport({ w: window.innerWidth, h: window.innerHeight });
 		const onResize = () =>
 			setViewport({ w: window.innerWidth, h: window.innerHeight });
 		window.addEventListener("resize", onResize);
@@ -199,7 +198,7 @@ export function HeroSection() {
 						height: `${introHeight}px`,
 						borderRadius: `${finalBorderRadius}px`,
 						transform: `scale(${scrollScale})`,
-						willChange: "width, height, border-radius, transform",
+						willChange: "transform",
 					}}
 				>
 					{/* YouTube Video Background — iframe scaled to simulate object-fit:cover */}

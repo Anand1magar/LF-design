@@ -186,7 +186,7 @@ export function AiEfficiencySection() {
   };
 
   return (
-    <section className="bg-white m-0 p-32">
+    <section className="bg-white m-0 py-20 px-10 md:py-32 xl:px-0">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}

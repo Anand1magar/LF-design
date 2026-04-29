@@ -397,3 +397,9 @@
   background-color: var(--color-green-300);
   border-radius: 9999px;
 }
+
+.video-container.scrolled{
+  transform: scale(0.9);
+  border-radius: 20px;
+
+}

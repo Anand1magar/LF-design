@@ -126,7 +126,7 @@ export default function RootLayout({
         <JsonLd data={websiteSchema} />
       </head>
       <body suppressHydrationWarning className="antialiased">
-        <GifPreloader />
+        {/* <GifPreloader /> */}
         <div className="w-full min-h-screen bg-lf-cream ">
           <Navbar />
           {/* Main content */}
