@@ -307,7 +307,7 @@
   --color-border-strong: var(--border-strong);
 
   /* ─── Font family tokens ─── */
-  --: var(--font-figtree), sans-serif;
+  --font-sans: var(--font-figtree), sans-serif;
   --font-display: var(--font-syne), sans-serif;
 
   /* ─── Type scale (×4 grid) ─── */

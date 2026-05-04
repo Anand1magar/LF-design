@@ -4,9 +4,8 @@ import { useRef, useEffect, useState } from "react";
 import { useInView } from "@/hooks/useInView";
 import { imgSrc } from "@/lib/img";
 import svgPaths from "@/imports/svg-gkhfmtllfb";
-import imgImage179 from "figma:asset/5d413caf298873dc65d56217281db22b1953597d.png";
-import imgMascot from "figma:asset/01e9fb8693b4b3c1ba8fff50a7a6d95ec10e880a.png";
-import imgVrHeadset from "figma:asset/6e6798301b9063af5e51e5d0a70fd0286cd71fd3.png";
+import imgAvatarAbhash from "@/assets/impact/avatar-abhash.png";
+import imgVrHeadset from "@/assets/impact/vr-headset.png";
 
 /* ───── Animated number counter ───── */
 function AnimatedNumber({
@@ -47,26 +46,6 @@ function AnimatedNumber({
 }
 
 /* ───── Small reusable arrow-up-right icon ───── */
-function ArrowUpRightIcon({ color = "var(--text-body)" }: { color?: string }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path
-        d={svgPaths.p3e47bd00}
-        stroke={color}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.66667"
-      />
-      <path
-        d={svgPaths.p3610fb80}
-        stroke={color}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.66667"
-      />
-    </svg>
-  );
-}
 
 /* ───── Decorative quote mark SVG ───── */
 function QuoteIcon() {
@@ -116,7 +95,7 @@ function QuoteCard() {
           loading="lazy"
               alt="Abhash Bikram Thapa"
               className="w-full h-full object-cover"
-              src={imgSrc(imgImage179)}
+              src={imgSrc(imgAvatarAbhash)}
             />
           </div>
           <div>
@@ -151,7 +130,7 @@ function StatCard60() {
           Fact 01
         </span>
         <div className="w-10 h-10 rounded-full bg-(--bg-muted) flex items-center justify-center">
-          <ArrowUpRightIcon />
+         
         </div>
       </div>
 
@@ -186,7 +165,7 @@ function MascotCard() {
       className="bg-(--color-ink-400) rounded-3xl overflow-hidden relative h-[434px] flex flex-col justify-end pl-10 pb-10"
     >
       {/* Mascot background */}
-      <div className="absolute inset-0 bg-linear-to-t from-[rgba(0,0,0,0.6)] to-transparent">
+      <div className="absolute inset-0">
         <img
           loading="lazy"
           alt="VR headset illustration"
@@ -316,7 +295,7 @@ function StatCard3x() {
           Fact 02
         </span>
         <div className="w-10 h-10 rounded-full bg-(--bg-muted) flex items-center justify-center">
-          <ArrowUpRightIcon />
+       
         </div>
       </div>
 
