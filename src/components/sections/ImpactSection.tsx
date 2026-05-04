@@ -113,40 +113,55 @@ function QuoteCard() {
 }
 
 /* ═══════════════════════════════════════════
-   Card 2 – 60 % Stat
+   Shared Stat Card
    ═══════════════════════════════════════════ */
-function StatCard60() {
+interface StatCardProps {
+  label: string;
+  target: number;
+  suffix?: string;
+  numberClassName: string;
+  suffixClassName?: string;
+  description: string;
+  descriptionClassName?: string;
+  delay?: number;
+}
+
+function StatCard({
+  label,
+  target,
+  suffix,
+  numberClassName,
+  suffixClassName,
+  description,
+  descriptionClassName = "",
+  delay = 0,
+}: StatCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.1 }}
-      className="bg-white rounded-3xl h-[434px] flex flex-col justify-between p-10"
+      transition={{ duration: 0.6, delay }}
+      className="bg-white rounded-3xl flex flex-col p-10 w-[355px] max-w-full items-start gap-[50px] md:w-auto md:h-[434px] md:items-stretch md:justify-between md:gap-0"
     >
       {/* Top row */}
-      <div className="flex items-center justify-between w-[304px]">
-        <span className=" font-medium text-sm leading-5 text-(--text-body)">
-          Fact 01
-        </span>
-        <div className="w-10 h-10 rounded-full bg-(--bg-muted) flex items-center justify-center">
-         
-        </div>
+      <div className="flex items-center w-[304px] max-w-full">
+        <span className="font-medium text-sm leading-5 text-(--text-body)">{label}</span>
       </div>
 
       {/* Big number */}
       <div className="flex items-baseline">
-        <span className=" text-(--text-body) text-display-6xl leading-[100px] tracking-[-5px]">
-          <AnimatedNumber target={60} />
+        <span className={`text-(--text-body) ${numberClassName}`}>
+          <AnimatedNumber target={target} suffix={suffixClassName ? undefined : suffix} />
         </span>
-        <span className=" text-(--text-body) text-5xl leading-12 tracking-[-5px] relative top-[4.67px] ml-0.5">
-          %
-        </span>
+        {suffixClassName && suffix && (
+          <span className={`text-(--text-body) ${suffixClassName}`}>{suffix}</span>
+        )}
       </div>
 
       {/* Description */}
-      <p className=" font-light text-(--text-secondary) text-lg leading-[24.75px] tracking-[-0.18px] max-w-[250px]">
-        Average reduction in design-to-dev time using AI workflows.
+      <p className={`font-light text-(--text-secondary) ${descriptionClassName}`}>
+        {description}
       </p>
     </motion.div>
   );
@@ -176,12 +191,11 @@ function MascotCard() {
       </div>
 
       <div className="relative z-10 flex flex-col gap-6 max-w-[304px]">
-        <div className=" font-medium text-white text-3xl leading-[37.5px] tracking-[-0.9px] max-w-[276px]"
+        <h3 className="font-medium text-white text-3xl leading-[37.5px] tracking-[-0.9px] max-w-[276px]"
           style={{ textShadow: "0 0 4px rgba(0,0,0,0.25)" }}
         >
-          <p className="mb-0">$0 to $1M</p>
-          <p>The 3-week MVP sprint</p>
-        </div>
+          $0 to $1M<br />The 3-week MVP sprint
+        </h3>
 
       </div>
     </motion.div>
@@ -277,40 +291,6 @@ function TimelineCard() {
   );
 }
 
-/* ═══════════════════════════════════════════
-   Card 5 – 3× Stat
-   ═══════════════════════════════════════════ */
-function StatCard3x() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      className="bg-white rounded-3xl h-[434px] flex flex-col justify-between p-10"
-    >
-      {/* Top row */}
-      <div className="flex items-center justify-between w-[304px] max-w-full">
-        <span className=" font-medium text-sm leading-5 text-(--text-body)">
-          Fact 02
-        </span>
-        <div className="w-10 h-10 rounded-full bg-(--bg-muted) flex items-center justify-center">
-       
-        </div>
-      </div>
-
-      {/* Big number */}
-      <p className=" text-(--text-body) text-display-3xl leading-16 tracking-[-3.2px]">
-        <AnimatedNumber target={3} suffix="x" />
-      </p>
-
-      {/* Description */}
-      <p className=" font-light text-(--text-secondary) text-base leading-[22px] tracking-[-0.16px] max-w-[315px]">
-        More iterations per sprint compared to traditional design.
-      </p>
-    </motion.div>
-  );
-}
 
 /* ═══════════════════════════════════════════
    Main Section
@@ -322,7 +302,16 @@ export function ImpactSection() {
         {/* Top Row – 3 equal cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           <QuoteCard />
-          <StatCard60 />
+          <StatCard
+            label="Fact 01"
+            target={60}
+            suffix="%"
+            numberClassName="text-display-6xl leading-[100px] tracking-[-5px]"
+            suffixClassName="text-5xl leading-12 tracking-[-5px] relative top-[4.67px] ml-0.5"
+            description="Average reduction in design-to-dev time using AI workflows."
+            descriptionClassName="text-lg leading-[24.75px] tracking-[-0.18px] max-w-[250px]"
+            delay={0.1}
+          />
           <MascotCard />
         </div>
 
@@ -331,7 +320,15 @@ export function ImpactSection() {
           <div className="xl:col-span-2">
             <TimelineCard />
           </div>
-          <StatCard3x />
+          <StatCard
+            label="Fact 02"
+            target={3}
+            suffix="x"
+            numberClassName="text-display-3xl leading-16 tracking-[-3.2px]"
+            description="More iterations per sprint compared to traditional design."
+            descriptionClassName="text-base leading-[22px] tracking-[-0.16px] max-w-[315px]"
+            delay={0.2}
+          />
         </div>
       </div>
     </div>

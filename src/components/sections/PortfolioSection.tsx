@@ -1,11 +1,8 @@
 "use client";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-import { imgSrc } from "@/lib/img";
-import imgMockup21 from "figma:asset/6344a2742e01c5662fe0e4e13522e4812f6b4628.png";
 import svgPaths from "@/imports/svg-7tpy7wy2y6";
 import { useRouter } from "next/navigation";
-import { portfolioItems as sharedPortfolioItems } from "@/data/portfolioData";
 import { SkeletonImage } from "@/components/ui/SkeletonImage";
 
 /* ───── Logo SVGs per project ───── */
@@ -45,7 +42,7 @@ const portfolioItems = [
     title: "Antaranga.ai",
     tag: "Case studies",
     bgColor: "bg-(--text-body)",
-    image: imgSrc(imgMockup21),
+    image: "/portfolio/portfolio_section/antarang_1x.webp",
     imageStyle: "object-bottom",
     overlayColor: "rgba(170,83,17,0.13)",
     Logo: AntarangaLogo,
@@ -54,7 +51,7 @@ const portfolioItems = [
     title: "Second Look Health",
     tag: "Case studies",
     bgColor: "bg-periwinkle",
-    image: "/portfolio/second-look-health.png",
+    image: "/portfolio/portfolio_section/second_look_1x.webp",
     imageStyle: "object-center",
     overlayColor: "rgba(90,80,160,0.18)",
     Logo: SecondLookLogo,
@@ -163,71 +160,17 @@ function PortfolioCard({
   );
 }
 
-/* ───── Placeholder card with same hover treatment ───── */
-function PlaceholderCard({ index }: { index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.7, delay: index * 0.15 }}
-      className="flex flex-col gap-3.5"
-    >
-      <div className="relative rounded-md overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[547px] group">
-        <div className="absolute inset-0 bg-(--text-body)" />
-        <div className="absolute inset-0 rounded-md border border-white/10 pointer-events-none" />
-
-        {/* Hover overlay */}
-        <div
-          className="absolute inset-0 rounded-md flex flex-col items-start justify-between p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out"
-          style={{
-            backdropFilter: "blur(15px)",
-            WebkitBackdropFilter: "blur(15px)",
-            backgroundColor: "rgba(100,100,100,0.15)",
-          }}
-        >
-          <div className="flex items-start justify-between w-full">
-            <CardBadge label="Case studies" className="leading-[15px] px-3 py-1" />
-            <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-              <ArrowUpRight className="w-4 h-4 text-white" />
-            </div>
-          </div>
-
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <AntarangaLogo className="w-[60px] h-[63px] transition-transform duration-500 ease-out group-hover:scale-100 scale-75" />
-          </div>
-        </div>
-
-        {/* Default state */}
-        <div className="absolute inset-0 flex flex-col justify-between p-5 group-hover:opacity-0 transition-opacity duration-500">
-          <div className="flex items-start justify-between">
-            <CardBadge label="Case studies" className="px-4 py-1.5" />
-            <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-              <ArrowUpRight className="w-4 h-4 text-white" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex items-baseline gap-1 px-2.5">
-        <span className=" font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px]">
-          Antaranga.ai
-        </span>
-        <span className=" font-medium text-(--color-ink-600) text-2xl leading-9 tracking-[-0.75px] opacity-[0.34]">
-          CaseStudies
-        </span>
-      </div>
-    </motion.div>
-  );
-}
-
 /* ═══════════════════════════════════════════
    Portfolio Section
    ═══════════════════════════════════════════ */
 export function PortfolioSection() {
-  const router = useRouter();
-
   return (
-    null
+    <section className="bg-lf-cream px-5 py-16 sm:px-8 sm:py-20 md:px-12 md:py-24">
+      <div className="max-w-[1190px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {portfolioItems.map((item, i) => (
+          <PortfolioCard key={item.title} item={item} index={i} />
+        ))}
+      </div>
+    </section>
   );
 }

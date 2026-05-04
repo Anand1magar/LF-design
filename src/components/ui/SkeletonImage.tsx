@@ -26,6 +26,8 @@ export function SkeletonImage({
         />
       )}
       <img
+        loading="lazy"
+        decoding="async"
         {...props}
         alt={alt}
         className={`${className} transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
